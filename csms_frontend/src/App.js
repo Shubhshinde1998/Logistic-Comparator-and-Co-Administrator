@@ -1,13 +1,15 @@
 import logo from './logo.svg';
 import './App.css';
 import CustomerReg from './components/CustomerReg';
+import CompanyReg from './components/CompanyReg';
 
 
 function App() {
   return (
    <div><
     header>
-    <CustomerReg/>
+    {/*<CustomerReg/>*/}
+    <CompanyReg />
    </header>
    </div>
     
