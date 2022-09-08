@@ -33,6 +33,19 @@ public class UserController {
 		services.saveOrUpdate(user);  
 		return  user.getUser_Id();  
 	}
+	
+	@PostMapping(value="/login")
+	private User loginUser(@RequestBody User users)
+	{
+		
+		User temp = services.getUserByName(users.getUser_Username());
+		if(temp.getUser_Username().equalsIgnoreCase(users.getUser_Username())&& temp.getUser_Password().equalsIgnoreCase(users.getUser_Password()))
+		{
+			return temp;
+		}
+		else
+			return null;
+	}
 	  
 	@RequestMapping("/user/{id}")  
 	private User getUsers(@PathVariable(name = "id") int userid)  
