@@ -1,15 +1,22 @@
 import logo from './logo.svg';
 import './App.css';
-import Registered from './components/Registered';
-import Login from './components/Login';
+import CustomerReg from './components/CustomerReg';
+import CompanyReg from './components/CompanyReg';
+
 
 function App() {
   return (
-    <div className="App">
+   <div><
+    header>
+    {/*<CustomerReg/>*/}
+    <CompanyReg />
+   </header>
+   </div>
+    
+
       
-        <Registered/>
-      <Login/>
-    </div>
+   
+ 
   );
 }
 
