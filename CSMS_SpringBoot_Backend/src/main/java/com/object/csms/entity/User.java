@@ -15,21 +15,25 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int User_Id;
     
-    @Column(nullable = false, length = 100)
+    @Column(nullable = false, length = 100,name="user_password")
     private String User_Password;
      
-    @Column(nullable = false)
+    @Column(nullable = false,name="user_role")
     private int User_Role;
      
-    @Column(length = 20)
+    @Column(length = 20, name="user_status")
     private String User_Status;
+    
+    @Column(length=100, nullable = false, name="user_username")
+    private String User_Username;
 
-	public User(int user_Id, String user_Password, int user_Role, String user_Status) {
+	public User(int user_Id, String user_Password, int user_Role, String user_Status,String user_Username) {
 		super();
 		User_Id = user_Id;
 		User_Password = user_Password;
 		User_Role = user_Role;
 		User_Status = user_Status;
+		User_Username = user_Username;
 	}
 
 	public User() {
@@ -67,6 +71,14 @@ public class User {
 
 	public void setUser_Status(String user_Status) {
 		User_Status = user_Status;
+	}
+
+	public String getUser_Username() {
+		return User_Username;
+	}
+
+	public void setUser_Username(String user_Username) {
+		User_Username = user_Username;
 	}
     
     

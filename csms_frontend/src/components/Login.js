@@ -1,7 +1,7 @@
-import {useReducer, useState} from 'react';
+import {useReducer, useState,Component} from 'react';
 
 const init = {
-    user_id:0,
+    user_username:"",
     user_password:""
 }
 
@@ -17,29 +17,44 @@ const reducer = (state,action) => {
 let Login = () => {
 
     const [user, dispatch] = useReducer(reducer, init);
-    const [msg, setMsg] = useState("");
     const[book,setBook]=useState({});
 
     const sendData = (e) => {        
             e.preventDefault();
-           
-                fetch("http://localhost:8080/user/"+user.user_id)
-                .then(resp => resp.json())
-                .then(data => setBook(data))
-                if(user.user_id==book.user_Id && user.user_password==book.user_Password)
-                    alert("successful");
-                    else
-                    alert("failed")
-            
+            const reqData = {
+                method: "POST",
+                headers: {
+                    "content-type":"application/json"
+                },
+                body: JSON.stringify({
+                    user_Username: user.user_username
+                })
+    
+            }
+                       
+        fetch("http://localhost:8080/login",reqData)
+        .then(resp => (resp.ok ? resp : Promise.reject(resp)))
+        .then(resp => resp.json())
+        .then(data => setBook(data))                
+        
+            if(book.user_Role===1)
+                alert("admin");
+            else if(book.user_Role===2)
+                alert("company");
+            else if(book.user_Role===3)
+                alert("customer");
+            else
+                alert("check username & password");
+                    
     }
-
+    
     return (
         <div>
             <h1> Login Form </h1>
             <form>
-                <label> Enter ID : </label>
-                <input type="number" name="id" value={user.user_id}
-                onChange={ (e)=>{dispatch({type: 'update', field: 'user_id', val: e.target.value })} }
+                <label> Enter Username : </label>
+                <input type="text" name="name" value={user.user_username}
+                onChange={ (e)=>{dispatch({type: 'update', field: 'user_username', val: e.target.value })} }
                  />
                 <br/>
                 <label> Password : </label>
@@ -55,7 +70,7 @@ let Login = () => {
                 />
             </form>           
             {JSON.stringify(book)} <br/>
-            {msg}
+           
         </div>
     )
 
