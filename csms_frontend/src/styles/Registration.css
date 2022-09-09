@@ -1,0 +1,21 @@
+.register
+{
+    text-align: center;  
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    white-space:nowrap;   
+}
+.formreg
+{
+    text-align: left;
+    border:1em;
+    width: 30%;
+    display:inline-block;   
+}
+#btn1{
+    margin-left:40%;
+}
+
+

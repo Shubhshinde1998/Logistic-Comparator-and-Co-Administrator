@@ -85,7 +85,7 @@ CREATE TABLE `company` (
   PRIMARY KEY (`company_id`),
   KEY `user_id_idx` (`user_id`),
   CONSTRAINT `company_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -94,7 +94,7 @@ CREATE TABLE `company` (
 
 LOCK TABLES `company` WRITE;
 /*!40000 ALTER TABLE `company` DISABLE KEYS */;
-INSERT INTO `company` VALUES (1,'redex','redex@gmail.com','pune',444110,789654321,4),(2,'redexxxx','redexxxx@gmail.com','amravati',444111,789654321,6),(3,'eco','eco@gmail.com','akola',445001,132654789,7),(4,'CDAC','mayurpawar0305@gmail.com','Amravati',444603,789654321,8);
+INSERT INTO `company` VALUES (1,'redex','redex@gmail.com','pune',444110,789654321,4),(2,'redexxxx','redexxxx@gmail.com','amravati',444111,789654321,6),(3,'eco','eco@gmail.com','akola',445001,132654789,7),(4,'CDAC','mayurpawar0305@gmail.com','Amravati',444603,789654321,8),(5,'code','code@gmail.com','akola',789456,78954,9);
 /*!40000 ALTER TABLE `company` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -265,7 +265,7 @@ CREATE TABLE `users` (
   `user_role` int NOT NULL,
   `user_status` varchar(20) DEFAULT 'false',
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -274,7 +274,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'adminn','mayur0305',1,'false'),(3,'admin','admin',1,'false'),(4,'redex','redex123',2,NULL),(5,'redexx','redex1234',2,NULL),(6,'redex1','redex1234',2,NULL),(7,'eco','eco',2,NULL),(8,'CDAC','mayur',2,NULL);
+INSERT INTO `users` VALUES (1,'adminn','mayur0305',1,'false'),(3,'admin','admin',1,'false'),(4,'redex','redex123',2,NULL),(5,'redexx','redex1234',2,NULL),(6,'redex1','redex1234',2,NULL),(7,'eco','eco',2,NULL),(8,'CDAC','mayur',2,NULL),(9,'code','code',2,NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -313,4 +313,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-09-08 19:18:24
+-- Dump completed on 2022-09-09 21:33:35

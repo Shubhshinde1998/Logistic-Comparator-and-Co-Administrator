@@ -1,0 +1,19 @@
+.login
+{
+    text-align: center;  
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+   
+}
+.form
+{
+    border:1em;
+    width: 30%;
+    display:inline-block;    
+}
+.btn{
+    margin-left: 15px;
+}
+
