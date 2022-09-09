@@ -3,11 +3,13 @@ import {useState, useReducer} from 'react';
 
 const init = {
     
-   Company_Name: "",
-   Company_Email:"",
-    City:"",
-    Pincode:"",
-    Contact:"",
+   company_name: "",
+   company_email:"",
+    city:"",
+    pincode:"",
+    contact:"",
+    password:"",
+    role:"",
     agree:false
 }
 const reducer = (state,action) => {
@@ -23,55 +25,87 @@ let CompanyReg =() =>
     
     const [com, dispatch] = useReducer(reducer, init);
     const[agree,setAgree]=useState(false);
+    const[book,setBook]=useState({});
    
     const sendData = (e) => {    
         e.preventDefault();
         if(agree)
         {
-        console.log(JSON.stringify(com));
+            const reqData = {
+                method: "POST",
+                headers: {
+                    "content-type":"application/json"
+                },
+                body: JSON.stringify({
+                    user:{         
+                        user_Password: com.password,
+                        user_Role: com.role,
+                        user_Username: com.company_name
+                     },
+                    company_Name: com.company_name,
+                    company_Emailid: com.company_email,
+                    company_City: com.city,
+                    company_Pincode: com.pincode,
+                    company_Contactno: com.contact
+                })    
+            }
+            
+        fetch("http://localhost:8080/companyregister",reqData)
+        .then(resp => (resp.ok ? resp : Promise.reject(resp)))
+        .then(resp => resp.json())
+        .then(data => setBook(data))   
+        alert("successfull");
+    
         }
         else{
-            console.log("Info cannot be shown here")
+            alert("accept terms and condition")
         }
     }
     return(
         <div>
             <form>
                 <div >
-                    <label>  CompanyName : </label>
-                    <input type="text" name="Company_Name" value={com.Company_Name}
-                    onChange={ (e)=>{dispatch({type: 'update', field: 'Company_Name', val: e.target.value })} }
+                    <label>  Company Name : </label>
+                    <input type="text" name="Company_Name" value={com.company_name}
+                    onChange={ (e)=>{dispatch({type: 'update', field: 'company_name', val: e.target.value })} }
                     />
                 </div>
                 <div >
-                    <label>  CompanyEmail : </label>
-                    <input type="email" name="Email" value={com.Company_Email}
-                    onChange={ (e)=>{dispatch({type: 'update', field: 'Company_Email', val: e.target.value })} }
+                    <label>  Company Email : </label>
+                    <input type="email" name="Email" value={com.company_email}
+                    onChange={ (e)=>{dispatch({type: 'update', field: 'company_email', val: e.target.value })} }
                     />
                 </div>
                 <div >
                     <label>  City: </label>
-                    <input type="text" name="City" value={com.City}
-                    onChange={ (e)=>{dispatch({type: 'update', field: 'City', val: e.target.value })} }
+                    <input type="text" name="City" value={com.city}
+                    onChange={ (e)=>{dispatch({type: 'update', field: 'city', val: e.target.value })} }
                     />
                 </div>
                 <div >
                     <label>  Pincode : </label>
-                    <input type="text" name="Pincode" value={com.Pincode}
-                    onChange={ (e)=>{dispatch({type: 'update', field: 'Pincode', val: e.target.value })} }
+                    <input type="number" name="Pincode" value={com.pincode}
+                    onChange={ (e)=>{dispatch({type: 'update', field: 'pincode', val: e.target.value })} }
                     />
                 </div>
                 <div >
                     <label>  Contact : </label>
-                    <input type="text" name="Contact" value={com.Contact}
-                    onChange={ (e)=>{dispatch({type: 'update', field: 'Contact', val: e.target.value })} }
+                    <input type="number" name="Contact" value={com.contact}
+                    onChange={ (e)=>{dispatch({type: 'update', field: 'contact', val: e.target.value })} }
                     />
                 </div>
                 <div >
-                
-                            
+                    <label>  Password : </label>
+                    <input type="password" name="password" value={com.password}
+                    onChange={ (e)=>{dispatch({type: 'update', field: 'password', val: e.target.value })} }
+                    />
                 </div>
-                
+                <div >
+                    <label>  Role : </label>
+                    <input type="number" name="role" value={com.role}
+                    onChange={ (e)=>{dispatch({type: 'update', field: 'role', val: e.target.value })} }
+                    />
+                </div>              
                 <div >
                     <label>  Agree : </label>
                     <input type="checkbox" name="agree" value={com.agree}

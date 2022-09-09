@@ -18,12 +18,17 @@ public class UserService {
 
 	public void saveOrUpdate(User users)  
 	{  
-		repo.save(users);  
+		repo.save(users); 		
 	}
 	
 	public User getUserById(int id)  
 	{  
 		return repo.findById(id).get();  
+	}
+	
+	public User getUserByName(String username)
+	{
+		return repo.findByName(username).get();		
 	}
 	
 	public void update(User users, int id)  
