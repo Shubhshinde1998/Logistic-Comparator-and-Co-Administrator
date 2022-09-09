@@ -1,4 +1,5 @@
 import {useReducer, useState,Component} from 'react';
+import "../styles/Login.css";
 
 const init = {
     user_username:"",
@@ -27,7 +28,8 @@ let Login = () => {
                     "content-type":"application/json"
                 },
                 body: JSON.stringify({
-                    user_Username: user.user_username
+                    user_Username: user.user_username,
+                    user_Password: user.user_password
                 })
     
             }
@@ -49,27 +51,34 @@ let Login = () => {
     }
     
     return (
-        <div>
+        <div className='login'>
             <h1> Login Form </h1>
-            <form>
-                <label> Enter Username : </label>
-                <input type="text" name="name" value={user.user_username}
-                onChange={ (e)=>{dispatch({type: 'update', field: 'user_username', val: e.target.value })} }
-                 />
-                <br/>
-                <label> Password : </label>
-                <input type="password" name="pwd" value={user.user_password}
-                onChange={ (e)=>{dispatch({type: 'update', field: 'user_password', val: e.target.value })} }
-                />
-                <br/>
-                <input type="submit" className="btn btn-primary" value="Send" 
+            <form className='form'>
+            <div className="form-outline mb-4">
+            <label className="form-label" for="form2Example1">Enter Username</label>
+            <input type="text" id="form2Example1" className="form-control" name="name" value={user.user_username}
+                onChange={ (e)=>{dispatch({type: 'update', field: 'user_username', val: e.target.value })} } />
+            
+            </div>
+
+            <div className="form-outline mb-4">
+            <label className="form-label" for="form2Example2">Password</label>
+                <input type="password" id="form2Example2" className="form-control"  name="pwd" value={user.user_password}
+                onChange={ (e)=>{dispatch({type: 'update', field: 'user_password', val: e.target.value })} }/>
+               
+            </div>
+               
+                <input type="submit" className="btn btn-primary btn-block mb-4" value="Submit" 
                 onClick={ (e)=> {sendData(e)} }
                 />
-                <input type="reset" value="Clear" className="btn btn-primary"
+                <input type="reset" value="Clear" className="btn btn-primary btn-block mb-4"
                 onClick={ ()=>{dispatch({type: 'clear'})} }
                 />
-            </form>           
-            {JSON.stringify(book)} <br/>
+                <div className="text-center">
+                <p>Create a New Account <a href="/register">Register</a></p>
+                </div>
+            </form>    
+            
            
         </div>
     )

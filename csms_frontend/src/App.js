@@ -1,22 +1,22 @@
-import logo from './logo.svg';
 import './App.css';
-import CustomerReg from './components/CustomerReg';
-import CompanyReg from './components/CompanyReg';
+import Home from './components/Home';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Login from './components/Login';
+import CompanyReg from './components/CompanyReg';
 
 
-function App() {
+function App() { 
+
   return (
-   <div>
-    {/*<CustomerReg/>*/}
-    <CompanyReg />
-   <Login/>
+   <div className="App" >
+    <Router>
+        <Routes>
+          <Route path="/"  element={<Home/>} />
+          <Route path="/login"  element={<Login/>} />
+          <Route path="/register"  element={<CompanyReg/>} />
+        </Routes>
+    </Router>
    </div>
-    
-
-      
-   
- 
   );
 }
 
