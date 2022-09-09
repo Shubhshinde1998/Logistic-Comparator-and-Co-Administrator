@@ -38,6 +38,7 @@ public class CompanyController {
 	private Company getCompany(@PathVariable(name = "id") int companyid)  
 	{  
 		return services.getCompanyById(companyid) ;
+		//return to service method after fetching id
 	}  
 	    
 	@PutMapping("/updatecompany/{id}")	 
