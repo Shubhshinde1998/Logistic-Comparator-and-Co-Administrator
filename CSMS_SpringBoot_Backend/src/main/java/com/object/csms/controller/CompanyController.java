@@ -27,7 +27,7 @@ public class CompanyController {
 		return services.listAll();    
 	}
 	
-	@PostMapping(value = "/companyregister")
+		@PostMapping(value = "/companyregister")
 	private int saveCompany (@RequestBody Company company)  
 	{  
 		services.saveOrUpdate(company);  
