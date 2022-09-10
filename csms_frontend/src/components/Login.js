@@ -1,5 +1,6 @@
-import {useReducer, useState,Component} from 'react';
+import {useReducer, useState} from 'react';
 import "../styles/Login.css";
+import { useNavigate } from 'react-router-dom';
 
 const init = {
     user_username:"",
@@ -19,6 +20,7 @@ let Login = () => {
 
     const [user, dispatch] = useReducer(reducer, init);
     const[book,setBook]=useState({});
+    const navigate = useNavigate();
 
     const sendData = (e) => {        
             e.preventDefault();
@@ -37,16 +39,14 @@ let Login = () => {
         fetch("http://localhost:8080/login",reqData)
         .then(resp => (resp.ok ? resp : Promise.reject(resp)))
         .then(resp => resp.json())
-        .then(data => setBook(data))                
+        .then(data => setBook(data))            
         
             if(book.user_Role===1)
-                alert("admin");
+                navigate('/adminpanel');
             else if(book.user_Role===2)
-                alert("company");
+                navigate('/companypanel');
             else if(book.user_Role===3)
-                alert("customer");
-            else
-                alert("check username & password");
+                navigate('/customerpanel');
                     
     }
     
@@ -86,4 +86,3 @@ let Login = () => {
 }
 
 export default Login;
-

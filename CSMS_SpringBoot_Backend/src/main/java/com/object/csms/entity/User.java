@@ -7,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.beans.factory.annotation.Value;
+
 @Entity
 @Table(name="users")
 public class User {
@@ -22,6 +24,7 @@ public class User {
     private int User_Role;
      
     @Column(length = 20, name="user_status")
+    @Value("false")
     private String User_Status;
     
     @Column(length=100, nullable = false, name="user_username")
