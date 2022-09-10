@@ -3,13 +3,15 @@ package com.object.csms.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.object.csms.entity.Company;
 import com.object.csms.entity.Customer;
+<<<<<<< HEAD
 
 
 
 import com.object.csms.repository.CompanyRepository;
 
+=======
+>>>>>>> 0f0f58255f0bac96ea76a92e9ac4e5d6f377433f
 import com.object.csms.repository.CustomerRepository;
 @Service
 public class CustomerService {
