@@ -10,7 +10,7 @@ const init = {
     pincode:"",
     contact:"",
     password:"",
-    role:"",
+    role:"2",
     agree:false
 }
 const reducer = (state,action) => {
@@ -68,45 +68,33 @@ let CompanyReg =() =>
             <form className="formreg">
 
             <div className="form-outline mb-4">
-                <label className="form-label" for="form3Example3">Company Name</label>
-                <input type="text" id="form3Example3" className="form-control" name="Company_Name" value={com.company_name}
+                <input type="text" id="form3Example3" className="form-control" placeholder="Name"name="Company_Name" value={com.company_name}
                     onChange={ (e)=>{dispatch({type: 'update', field: 'company_name', val: e.target.value })} }
                      />                
             </div>
             <div className="form-outline mb-4">
-                <label className="form-label" for="form3Example4">Company Email</label>
-                <input type="email" id="form3Example4" className="form-control" name="Email" value={com.company_email}
+                <input type="email" id="form3Example4" className="form-control" placeholder="Email" name="Email" value={com.company_email}
                     onChange={ (e)=>{dispatch({type: 'update', field: 'company_email', val: e.target.value })} }
                     />                
             </div>
             <div className="form-outline mb-4">
-                <label className="form-label" for="form3Example5">City</label>
-                <input type="text" id="form3Example5" className="form-control" name="City" value={com.city}
+                <input type="text" id="form3Example5" className="form-control" placeholder="City" name="City" value={com.city}
                     onChange={ (e)=>{dispatch({type: 'update', field: 'city', val: e.target.value })} }
                     />                
             </div>
             <div className="form-outline mb-4">
-                <label className="form-label" for="form3Example6">Pincode</label>
-                <input type="number" id="form3Example6" className="form-control" name="Pincode" value={com.pincode}
+                <input type="number" id="form3Example6" className="form-control" placeholder="Pincode"name="Pincode" value={com.pincode}
                     onChange={ (e)=>{dispatch({type: 'update', field: 'pincode', val: e.target.value })} }
                     />                
             </div>
             <div className="form-outline mb-4">
-                <label className="form-label" for="form3Example7">Contact No.</label>
-                <input type="number" id="form3Example7" className="form-control" name="Contact" value={com.contact}
+                <input type="number" id="form3Example7" className="form-control" placeholder="Contact No."name="Contact" value={com.contact}
                     onChange={ (e)=>{dispatch({type: 'update', field: 'contact', val: e.target.value })} }
                     />                
             </div>
             <div className="form-outline mb-4">
-                <label className="form-label" for="form3Example8">Password</label>
-                <input type="password" id="form3Example8" className="form-control" name="password" value={com.password}
+                <input type="password" id="form3Example8" className="form-control" placeholder="Password" name="password" value={com.password}
                     onChange={ (e)=>{dispatch({type: 'update', field: 'password', val: e.target.value })} }
-                    />                
-            </div>
-            <div className="form-outline mb-4">
-                <label className="form-label" for="form3Example9">Role</label>
-                <input type="number" id="form3Example9" className="form-control" name="role" value={com.role}
-                    onChange={ (e)=>{dispatch({type: 'update', field: 'role', val: e.target.value })} }
                     />                
             </div>
             <div className="form-check d-flex justify-content-center mb-4">

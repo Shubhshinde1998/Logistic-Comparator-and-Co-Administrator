@@ -6,6 +6,7 @@ import CompanyReg from './components/CompanyReg';
 
 import Login from './components/Login';
 import CustomerReg from './components/CustomerReg';
+import Register from './components/Register';
 
 
 
@@ -18,9 +19,9 @@ function App() {
         <Routes>
           <Route path="/"  element={<Home/>} />
           <Route path="/login"  element={<Login/>} />
-          <Route path="/register"  element={<CompanyReg/>} />
+          <Route path="/company"  element={<CompanyReg/>} />
           <Route path="/customer"  element={<CustomerReg/>} />
-
+          <Route path="/register"  element={<Register/>} />
         </Routes>
   </Router>
    </div>
