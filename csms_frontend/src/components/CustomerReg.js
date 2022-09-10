@@ -1,3 +1,4 @@
+   
 import React from "react";
 import {useState, useReducer} from 'react';
 import "../styles/Registration.css";
@@ -68,7 +69,7 @@ let CustomerReg =() =>
             <form className="formreg">
 
             <div className="form-outline mb-4">
-                <label className="form-label" for="form3Example3">Customer Name</label>
+                <label className="form-label" for="form3Example3">Company Name</label>
                 <input type="text" id="form3Example3" className="form-control" name="Customer_Name" value={cus.customer_name}
                     onChange={ (e)=>{dispatch({type: 'update', field: 'customer_name', val: e.target.value })} }
                      />                

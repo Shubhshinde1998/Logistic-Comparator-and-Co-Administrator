@@ -12,7 +12,7 @@ function App() {
 
   return (
    <div className="App" >
-    <Router>
+   {/* <Router>
         <Routes>
           <Route path="/"  element={<Home/>} />
           <Route path="/login"  element={<Login/>} />
@@ -20,8 +20,8 @@ function App() {
           <Route path="/customer"  element={<CustomerReg/>} />
 
         </Routes>
-  </Router>
-  
+  </Router>*/}
+  <CustomerReg/>
 
   
 
