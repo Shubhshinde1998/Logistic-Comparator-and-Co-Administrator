@@ -11,16 +11,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.object.csms.entity.Company;
 import com.object.csms.entity.Customer;
-import com.object.csms.service.CompanyService;
 import com.object.csms.service.CustomerService;
-<<<<<<< HEAD
+
 
 @RestController
-=======
-@RestController 
->>>>>>> 51bca0db950d86f50cc358485bf963f1a5f04234
 @CrossOrigin(origins="*")
 public class CustomerController {
 	@Autowired
