@@ -39,6 +39,13 @@ public class User {
 		User_Username = user_Username;
 	}
 
+	public User(int user_Id, int user_Role, String user_Username) {
+		super();
+		User_Id = user_Id;
+		User_Role = user_Role;
+		User_Username = user_Username;
+	}
+
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub

@@ -7,7 +7,7 @@ import CompanyReg from './components/CompanyReg';
 import Login from './components/Login';
 import CustomerReg from './components/CustomerReg';
 import Register from './components/Register';
-import DashboardAdmin from './components/DashboardAdmin';
+import DashboardAdmin from './components/Dashboard/DashboardAdmin';
 import DashboardCompany from './components/DashboardCompany';
 import DashboardCustomer from './components/DashboardCustomer';
 

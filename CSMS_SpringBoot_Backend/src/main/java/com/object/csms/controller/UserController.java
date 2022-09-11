@@ -1,6 +1,11 @@
 package com.object.csms.controller;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,16 +40,20 @@ public class UserController {
 	}
 	
 	@PostMapping(value="/login")
-	private User loginUser(@RequestBody User users)
+	public ResponseEntity<User> loginUser(@RequestBody User users,HttpServletResponse res)
 	{
 		
 		User temp = services.getUserByName(users.getUser_Username());
 		if(temp.getUser_Username().equalsIgnoreCase(users.getUser_Username())&& temp.getUser_Password().equalsIgnoreCase(users.getUser_Password()))
 		{
-			return temp;
+			Cookie cookie = new Cookie("username",temp.getUser_Username());
+					res.addCookie(cookie);
+			User resp = new User(temp.getUser_Id(), temp.getUser_Role(), temp.getUser_Username());
+	
+			return new ResponseEntity<User>(resp,(HttpStatus.OK));
 		}
 		else
-			return null;
+			return new ResponseEntity<User>(HttpStatus.BAD_REQUEST);
 	}
 	  
 	@RequestMapping("/user/{id}")  
