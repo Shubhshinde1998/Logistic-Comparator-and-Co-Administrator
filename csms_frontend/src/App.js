@@ -8,8 +8,8 @@ import Login from './components/Login';
 import CustomerReg from './components/CustomerReg';
 import Register from './components/Register';
 import DashboardAdmin from './components/Dashboard/DashboardAdmin';
-import DashboardCompany from './components/DashboardCompany';
-import DashboardCustomer from './components/DashboardCustomer';
+import DashboardCompany from './components/Dashboard/DashboardCompany';
+import DashboardCustomer from './components/Dashboard/DashboardCustomer';
 
 
 
