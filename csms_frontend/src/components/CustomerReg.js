@@ -4,15 +4,14 @@ import {useState, useReducer} from 'react';
 import "../styles/Registration.css";
 const init = {
     
-    Name: "",
-    Email:"",
-    City:"",
-    Pincode:"",
-    Contact:"",
-    role:"",
-    agree:false
-
-
+    name : "",
+    email :"",
+    city :"",
+    pincode :"",
+    contact :"",
+    password :"",
+    role :"3",
+    agree :false
 }
 const reducer = (state,action) => {
     switch(action.type){
@@ -40,15 +39,16 @@ let CustomerReg =() =>
                 },
                 body: JSON.stringify({
                     user:{         
-                        user_Password: cus.password,
-                        user_Role: cus.role,
-                        user_Username: cus.customer_name
+                        user_Password : cus.password,
+                        user_Role : cus.role,
+                        user_Username : cus.name
                      },
-                    customer_Name: cus. customer_name,
-                    customer_Emailid: cus. customer_email,
-                    customer_City: cus.city,
-                    customer_Pincode: cus.pincode,
-                    customer_Contactno: cus.contact
+                    customer_Name : cus.name,
+                    customer_Emailid : cus.email,
+                    customer_City : cus.city,
+                    customer_Pincode : cus.pincode,
+                    customer_Contactno : cus.contact
+
                 })    
             }
             
@@ -69,40 +69,39 @@ let CustomerReg =() =>
             <form className="formreg">
 
             <div className="form-outline mb-4">
+<<<<<<< HEAD
                 <label className="form-label" for="form3Example3">Company Name</label>
                 <input type="text" id="form3Example3" className="form-control" name="Customer_Name" value={cus.customer_name}
                     onChange={ (e)=>{dispatch({type: 'update', field: 'customer_name', val: e.target.value })} }
+=======
+                <input type="text" id="form3Example3" className="form-control" placeholder="Name" name="Customer_Name" value={cus.name}
+                    onChange={ (e)=>{dispatch({type: 'update', field: 'name', val: e.target.value })} }
+>>>>>>> a2c28defad7b26239c19f7f4a838824d8042b2cf
                      />                
             </div>
             <div className="form-outline mb-4">
-                <label className="form-label" for="form3Example4">Customer Email</label>
-                <input type="email" id="form3Example4" className="form-control" name="Email" value={cus. customer_email}
-                    onChange={ (e)=>{dispatch({type: 'update', field: ' customer_email', val: e.target.value })} }
+                <input type="email" id="form3Example4" className="form-control" placeholder="Email"name="email" value={cus.email}
+                    onChange={ (e)=>{dispatch({type: 'update', field: ' email', val: e.target.value })} }
                     />                
             </div>
             <div className="form-outline mb-4">
-                <label className="form-label" for="form3Example5">City</label>
-                <input type="text" id="form3Example5" className="form-control" name="City" value={cus.city}
+                <input type="text" id="form3Example5" className="form-control" placeholder="City" name="city" value={cus.city}
                     onChange={ (e)=>{dispatch({type: 'update', field: 'city', val: e.target.value })} }
                     />                
             </div>
             <div className="form-outline mb-4">
-                <label className="form-label" for="form3Example6">Pincode</label>
-                <input type="number" id="form3Example6" className="form-control" name="Pincode" value={cus.pincode}
+                <input type="number" id="form3Example6" className="form-control" placeholder="Pincode"name="pincode" value={cus.pincode}
                     onChange={ (e)=>{dispatch({type: 'update', field: 'pincode', val: e.target.value })} }
                     />                
             </div>
             <div className="form-outline mb-4">
-                <label className="form-label" for="form3Example7">Contact No.</label>
-                <input type="number" id="form3Example7" className="form-control" name="Contact" value={cus.contact}
+                <input type="number" id="form3Example7" className="form-control" placeholder="Contact No."name="contact" value={cus.contact}
                     onChange={ (e)=>{dispatch({type: 'update', field: 'contact', val: e.target.value })} }
                     />                
             </div>
-            
             <div className="form-outline mb-4">
-                <label className="form-label" for="form3Example9">Role</label>
-                <input type="number" id="form3Example9" className="form-control" name="role" value={cus.role}
-                    onChange={ (e)=>{dispatch({type: 'update', field: 'role', val: e.target.value })} }
+                <input type="password" id="form3Example8" className="form-control" placeholder="Password"name="password" value={cus.password}
+                    onChange={ (e)=>{dispatch({type: 'update', field: 'password', val: e.target.value })} }
                     />                
             </div>
             <div className="form-check d-flex justify-content-center mb-4">
