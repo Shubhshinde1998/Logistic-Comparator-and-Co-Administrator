@@ -12,8 +12,7 @@ const Dashboard = () => {
    },[])
    const [customer,setCustomer] = useState([]);
 
-    
- 
+
     return (
     <div className="col main pt-5 mt-3">
         <div className="alert alert-warning fade collapse" role="alert" id="myAlert">
