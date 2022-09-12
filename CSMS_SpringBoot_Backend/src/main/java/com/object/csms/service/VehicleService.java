@@ -1,8 +1,9 @@
 package com.object.csms.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.object.csms.entity.Vehicles_Details;
 import com.object.csms.repository.VehicleRepository;
 
@@ -12,7 +13,8 @@ public class VehicleService {
 	@Autowired
 	VehicleRepository repo;
 	
-	public Iterable<Vehicles_Details> listAll() {
+	public Iterable<Vehicles_Details> listAll() 
+	{
         return this.repo.findAll();
     }
 	
@@ -25,20 +27,15 @@ public class VehicleService {
 	{  
 		return repo.findById(id).get();  
 	}	
-	
-	public void update(Vehicles_Details vehicle, int id)  
-	{  
-		repo.save(vehicle);  
-	}  
 	 
 	public void delete(int id)  
 	{  
 		repo.deleteById(id);  
 	}
-	
-	//public void save(int vehicles_details_no, Company company) {
-		//repo.saveVehicle(vehicles_details_no,company);
+
+	public List<Vehicles_Details> getVehicleByCompany_Id(int id) {
 		
-//	}
+		return repo.findByCompany_Id(id);
+	}
 	
 }
