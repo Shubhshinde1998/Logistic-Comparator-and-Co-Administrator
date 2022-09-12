@@ -17,10 +17,17 @@ import com.object.csms.service.CustomerService;
 
 @RestController
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
 =======
 >>>>>>> 0f0f58255f0bac96ea76a92e9ac4e5d6f377433f
+=======
+
+
+
+
+>>>>>>> 065f58233f23ebfa69749d883602c20cf6256a09
 @CrossOrigin(origins="*")
 public class CustomerController {
 	@Autowired

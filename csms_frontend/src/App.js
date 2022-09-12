@@ -2,12 +2,14 @@ import './App.css';
 import Home from './components/Home';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import CompanyReg from './components/CompanyReg';
+
+
 import Login from './components/Login';
 import CustomerReg from './components/CustomerReg';
 import Register from './components/Register';
-import DashboardAdmin from './components/DashboardAdmin';
-import DashboardCompany from './components/DashboardCompany';
-import DashboardCustomer from './components/DashboardCustomer';
+import DashboardAdmin from './components/Dashboard/DashboardAdmin';
+import DashboardCompany from './components/Dashboard/DashboardCompany';
+import DashboardCustomer from './components/Dashboard/DashboardCustomer';
 
 
 
@@ -16,7 +18,7 @@ function App() {
 
   return (
    <div className="App" >
-    <Router>
+   <Router>
         <Routes>
           <Route path="/"  element={<Home/>} />
           <Route path="/login"  element={<Login/>} />
@@ -28,10 +30,6 @@ function App() {
           <Route path="/customerpanel"  element={<DashboardCustomer/>} />
         </Routes>
   </Router>
-  
-
-  
-
    </div>
   );
 }

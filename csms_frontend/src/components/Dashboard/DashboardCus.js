@@ -1,19 +1,20 @@
 import React from 'react'
 import { useEffect, useState } from "react";
 
-export default function DashboardAdmin() {
+export default function DashboardCustomer() {
+
     const [customer,setCustomer] = useState([]);
 
     useEffect(()=>
     {
-        fetch("http://localhost:8080/getallcompany")
+        fetch("http://localhost:8080/getallcustomer")
         .then(resp=>resp.json())
         .then(data=>setCustomer(data))
     },[]);
 
     return(
     <div>
-        <h1>DashboardAdmin</h1>
+        <h1>DashboardCustomer</h1>
 
             <table className="table table-striped" style={{Color:"white",textAlign:"left",margin:"50px"}}>
             <thead>
@@ -31,11 +32,11 @@ export default function DashboardAdmin() {
                 {
                     return(                        
                         <tr scope="row">
-                            <td >{v.company_Name}</td>
-                            <td >{v.company_Emailid}</td>
-                            <td >{v.company_Contactno}</td>
-                            <td >{v.company_City}</td>
-                            <td >{v.company_Pincode}</td>
+                            <td >{v.customer_Name}</td>
+                            <td >{v.customer_Emailid}</td>
+                            <td >{v.customer_Contactno}</td>
+                            <td >{v.customer_City}</td>
+                            <td >{v.customer_Pincode}</td>
                         </tr>
                         )
                     })
