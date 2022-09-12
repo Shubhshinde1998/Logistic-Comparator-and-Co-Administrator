@@ -1,14 +1,22 @@
 package com.object.csms.entity;
 
+import java.util.List;
+import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name="company")
@@ -36,6 +44,10 @@ public class Company {
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="User_Id", referencedColumnName = "User_Id")
 	private User user;
+	
+	@JsonManagedReference
+	@OneToMany(mappedBy = "company",cascade = CascadeType.ALL)
+	private List<Vehicles_Details> vehicle;
 	
 	public Company() {
 		super();
@@ -84,7 +96,7 @@ public class Company {
 	}
 	public int getCompany_Contactno() {
 		return Company_Contactno;
-	}
+	} 
 	public void setCompany_Contactno(int company_Contact) {
 		Company_Contactno = company_Contact;
 	}
@@ -93,6 +105,14 @@ public class Company {
 	}
 	public void setUser(User user) {
 		this.user = user;
+	}
+	public List<Vehicles_Details> getVehicle() {
+		return vehicle;
+	}
+	public void setVehicle(List<Vehicles_Details> vehicle) {
+		for(Vehicles_Details oi : vehicle)
+			oi.setCompany(this);
+		this.vehicle = vehicle;
 	}
 	
 }
