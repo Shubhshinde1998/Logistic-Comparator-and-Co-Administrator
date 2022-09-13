@@ -1,5 +1,4 @@
 import React from 'react'
-import { useEffect, useState } from "react";
 import SidebarAdmin from './SidebarAdmin';
 import NavbarAdmin from './NavbarAdmin';
 import DashboardAd from './DashboardAd';

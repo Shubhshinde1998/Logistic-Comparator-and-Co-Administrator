@@ -39,12 +39,6 @@ public class User {
 		User_Username = user_Username;
 	}
 
-	public User(int user_Id, int user_Role, String user_Username) {
-		super();
-		User_Id = user_Id;
-		User_Role = user_Role;
-		User_Username = user_Username;
-	}
 
 	public User() {
 		super();
@@ -89,6 +83,12 @@ public class User {
 
 	public void setUser_Username(String user_Username) {
 		User_Username = user_Username;
+	}
+
+	@Override
+	public String toString() {
+		return "User [User_Id=" + User_Id + ", User_Password=" + User_Password + ", User_Role=" + User_Role
+				+ ", User_Status=" + User_Status + ", User_Username=" + User_Username + "]";
 	}
     
     
