@@ -1,16 +1,11 @@
 import {useEffect,useState} from 'react';
-import { Route, Routes } from 'react-router-dom';
-import CompanyReg from '../CompanyReg';
+
+import { BrowserRouter as Router, Link, Route, Routes } from "react-router-dom";
+import ListedCompany from '../Admin/ListedCompany';
+
 
 const Dashboard = () => {
 
- 
-   useEffect(() => {
-    fetch("http://localhost:8080/getallcompany")
-    .then(resp=>resp.json())
-    .then(data=>setCustomer(data))
-   },[])
-   const [customer,setCustomer] = useState([]);
 
 
     return (
@@ -68,53 +63,16 @@ const Dashboard = () => {
                 </div>
             </div>
         </div>
-    <div>
-        <Routes>
-            <Route path='/overview' element={<CompanyReg/>}></Route>
-        </Routes>
         
-    </div>
-       
-        <div className="row ">
-            <div className="">
-              <h5 className="mt-3 mb-3 text-secondary">
-               Check More Records of Customer
-              </h5>
-        <div className="table-responsive">                        
-            <table className="table table-striped">
-            <thead className="thead-light">
-                <tr>
-                    <th scope="col">Name</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Contact No.</th>
-                    <th scope="col">City</th>
-                    <th scope="col">Pincode</th>
-                </tr>
-            </thead>
-            <tbody>
-            {                    
-                customer.map((v)=>
-                {
-                    return(                        
-                        <tr scope="row">
-                            <td >{v.company_Name}</td>
-                            <td >{v.company_Emailid}</td>
-                            <td >{v.company_Contactno}</td>
-                            <td >{v.company_City}</td>
-                            <td >{v.company_Pincode}</td>
-                            <td><button className='btn btn-success'>Accept</button></td>
-                            <td><button className='btn btn-danger'>Delete</button></td>
-                        </tr>
-                        )
-                    })
-                }
-                </tbody>
-            </table>
-                </div>
-            </div>
-            
+        <div>
+         
+                <Routes>
+                <Route  path="/overview"element={<ListedCompany/>}></Route>
+                </Routes>
+                    
         </div>
- 
+        
+        
     </div>
     )
 }

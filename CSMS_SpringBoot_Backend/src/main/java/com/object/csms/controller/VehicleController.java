@@ -1,12 +1,13 @@
 package com.object.csms.controller;
 
+import java.util.*;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,7 +26,15 @@ public class VehicleController {
 	@GetMapping("/getallvehicle")
 	public Iterable<Vehicles_Details> getVehicle()
 	{
-		return services.listAll();    
+		Iterable<Vehicles_Details> vehi = services.listAll();
+		return vehi;    
+	}
+	
+	@GetMapping("/{id}/getvehicledetails")
+	public List<Vehicles_Details> getVehicleDetails(@PathVariable(name="id")int id)
+	{
+		List<Vehicles_Details> resp = services.getVehicleByCompany_Id(id);
+		return resp;
 	}
 	
 	@PostMapping(value = "/vehicleregister")
@@ -34,30 +43,16 @@ public class VehicleController {
 		services.saveOrUpdate(vehicle);  
 		return  vehicle.getVehicles_details_id();
 	}
-	//@PostMapping(value="/vehicle")
-	//public int save (Vehicles_Details vehicle)
-	//{
-		//services.save(vehicle.getVehicles_details_no(),vehicle.getCompany());
-		//return vehicle.getVehicles_details_id();
-//	}
 	
 	@RequestMapping("/vehicle/{id}")  
 	private Vehicles_Details getVehicle(@PathVariable(name = "id") int id)  
 	{  
 		return services.getVehicleById(id) ;
 	}  
-	    
-	@PutMapping("/updatevehicle/{id}")	 
-    private Vehicles_Details update(@RequestBody Vehicles_Details vehicle,@PathVariable int id)  
-    {  
-		vehicle.setVehicles_details_id(id);
-		services.saveOrUpdate(vehicle); 
-		return vehicle;  
-    }  
-	 
+
 	@DeleteMapping("/deletevehicle/{id}")  
 	private void deleteVehicle(@PathVariable("id") int id)  
 	{  
-		services.delete(id);  
+		services.delete(id);
 	}
 }

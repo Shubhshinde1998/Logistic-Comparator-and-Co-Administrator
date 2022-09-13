@@ -38,16 +38,32 @@ let Login = () => {
                        
         fetch("http://localhost:8080/login",reqData)
         .then(resp => (resp.ok ? resp : Promise.reject(resp)))
-        .then(resp => resp.json())
-        .then(data => setBook(data))            
+        .then(resp => resp.text())
+        .then(data => {
+            const json=JSON.parse(data);
+            if(!json.error){
+                if(json.user_Role=='1')
+                {
+                    //this.setState({admin:json});
+                    //localStorage.setItem("logeduser",JSON.stringify(this.state.admin));
+                    //mystore.dispatch({type:"logeduser"})
+                    navigate('/adminpanel');
+                }
+                else if(json.user_Role==2)
+                {
+                    navigate('/companypanel');
+                }
+                else if(json.user_Role==3)
+                {
+                    navigate('/customerpanel');
+                }
+            }
+            else
+            {
+                this.setState({loginerror:"invalid"});
+            }
+        })            
         
-            if(book.user_Role===1)
-                navigate('/adminpanel');
-            else if(book.user_Role===2)
-                navigate('/companypanel');
-            else if(book.user_Role===3)
-                navigate('/customerpanel');
-                    
     }
     
     return (
@@ -78,8 +94,9 @@ let Login = () => {
                 <p>Create a New Account <a href="/register">Register</a></p>
                 </div>
             </form>    
-            
-           
+           {/* 
+           <p>{this.state.loginerror}</p>
+           <p>Welcome{JSON.parse(localStorage.getItem("logeduser")).user_Username}</p>*/}
         </div>
     )
 
