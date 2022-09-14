@@ -39,9 +39,6 @@ public class Company {
 	private User user;
 	
 	
-	/*@OneToMany(mappedBy = "company",cascade = CascadeType.ALL)
-	private List<Vehicles_Details> vehicle;*/
-	
 	public Company() {
 		super();
 		// TODO Auto-generated constructor stub

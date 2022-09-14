@@ -1,12 +1,8 @@
-import {useEffect,useState} from 'react';
 
-import { BrowserRouter as Router, Link, Route, Routes } from "react-router-dom";
 import ListedCompany from '../Admin/ListedCompany';
 
 
 const Dashboard = () => {
-
-
 
     return (
     <div className="col main pt-5 mt-3">
@@ -64,10 +60,8 @@ const Dashboard = () => {
             </div>
         </div>
         
-        <div>
-         
-        <ListedCompany/>
-                    
+        <div>         
+        <ListedCompany/>                    
         </div>
         
         

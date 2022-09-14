@@ -1,6 +1,11 @@
 package com.object.csms.controller;
 
+import java.io.Console;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,8 +41,8 @@ public class UserController {
 	}
 	
 	@PostMapping(value="/login")
-	public User checkLogin(@RequestBody LoginRequest users)
-	{		
+	public Object checkLogin(@RequestBody LoginRequest users)
+	{	
 		return services.checkLogin(users.getUsername(), users.getPassword());
 	}
 	  
@@ -55,10 +60,11 @@ public class UserController {
 		return users;  
     }  
 	 
-	@DeleteMapping("/delete/{id}")  
-	public void deleteUser(@PathVariable("id") int id)  
+	@DeleteMapping("/{id}/delete")  
+	public ResponseEntity<HttpStatus> deleteUser(@PathVariable("id") int id)  
 	{  
 		services.delete(id);  
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}  
 	
 }
