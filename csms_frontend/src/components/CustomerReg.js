@@ -71,14 +71,9 @@ let CustomerReg =() =>
             <form className="formreg">
 
             <div className="form-outline mb-4">
-<<<<<<< HEAD
-                <label className="form-label" for="form3Example3">Company Name</label>
-                <input type="text" id="form3Example3" className="form-control" name="Customer_Name" value={cus.customer_name}
-                    onChange={ (e)=>{dispatch({type: 'update', field: 'customer_name', val: e.target.value })} }
-=======
                 <input type="text" id="form3Example3" className="form-control" placeholder="Name" name="Customer_Name" value={cus.name}
                     onChange={ (e)=>{dispatch({type: 'update', field: 'name', val: e.target.value })} }
->>>>>>> a2c28defad7b26239c19f7f4a838824d8042b2cf
+
                      />                
             </div>
             <div className="form-outline mb-4">

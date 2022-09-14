@@ -9,17 +9,15 @@ import DashboardAdmin from './components/DashboardAdmin/DashboardAdmin';
 import DashboardCompany from './components/DashboardCompany/DashboardCompany';
 import DashboardCustomer from './components/DashboardCustomer/DashboardCustomer';
 import ListedCompany from './components/Admin/ListedCompany';
+import AddDeliveryBoy from './components/Company/AddDeliveryBoy';
 
 
 function App() { 
 
   return (
    <div className="App" >
-<<<<<<< HEAD
-   {/* <Router>
-=======
+   
    <Router>
->>>>>>> 065f58233f23ebfa69749d883602c20cf6256a09
         <Routes>
           <Route path="/"  element={<Home/>} />
           <Route path="/login"  element={<Login/>} />
@@ -28,18 +26,13 @@ function App() {
           <Route path="/register"  element={<Register/>} />
           <Route path="/adminpanel"  element={<DashboardAdmin/>} />
           <Route path="/companypanel"  element={<DashboardCompany/>} />
-          <Route path="/customerpanel"  element={<DashboardCustomer/>} />   
-          <Route path="/listedCompanay"     element={ <ListedCompany/> }  /> 
+          <Route path="/customerpanel"  element={<DashboardCustomer/>} />          
         </Routes>
-<<<<<<< HEAD
-  </Router>*/}
-  <CustomerReg/>
 
-  
-
-=======
   </Router>
->>>>>>> 065f58233f23ebfa69749d883602c20cf6256a09
+   
+  
+  
    </div>
   );
 }
