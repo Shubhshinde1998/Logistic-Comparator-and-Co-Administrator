@@ -9,6 +9,8 @@ import javax.persistence.Table;
 
 import org.springframework.beans.factory.annotation.Value;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="users")
 public class User {
@@ -16,6 +18,7 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int User_Id;
+	
     
     @Column(nullable = false, length = 100,name="user_password")
     private String User_Password;
@@ -52,11 +55,11 @@ public class User {
 	public void setUser_Id(int user_Id) {
 		User_Id = user_Id;
 	}
-
+	
 	public String getUser_Password() {
 		return User_Password;
 	}
-
+	
 	public void setUser_Password(String user_Password) {
 		User_Password = user_Password;
 	}

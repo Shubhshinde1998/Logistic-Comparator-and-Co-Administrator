@@ -28,7 +28,8 @@ function App() {
           <Route path="/register"  element={<Register/>} />
           <Route path="/adminpanel"  element={<DashboardAdmin/>} />
           <Route path="/companypanel"  element={<DashboardCompany/>} />
-          <Route path="/customerpanel"  element={<DashboardCustomer/>} />          
+          <Route path="/customerpanel"  element={<DashboardCustomer/>} />   
+          <Route path="/listedCompanay"     element={ <ListedCompany/> }  /> 
         </Routes>
 <<<<<<< HEAD
   </Router>*/}

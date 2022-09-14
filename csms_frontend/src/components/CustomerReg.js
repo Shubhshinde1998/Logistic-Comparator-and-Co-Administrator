@@ -1,6 +1,7 @@
    
 import React from "react";
 import {useState, useReducer} from 'react';
+import { useNavigate } from 'react-router-dom';
 import "../styles/Registration.css";
 const init = {
     
@@ -27,7 +28,7 @@ let CustomerReg =() =>
     const [cus, dispatch] = useReducer(reducer, init);
     const[agree,setAgree]=useState(false);
     const[book,setBook]=useState({});
-   
+    const navigate = useNavigate();
     const sendData = (e) => {    
         e.preventDefault();
         if(agree)
@@ -41,7 +42,8 @@ let CustomerReg =() =>
                     user:{         
                         user_Password : cus.password,
                         user_Role : cus.role,
-                        user_Username : cus.name
+                        user_Username : cus.name,
+                        user_Status:"false"
                      },
                     customer_Name : cus.name,
                     customer_Emailid : cus.email,
@@ -56,7 +58,7 @@ let CustomerReg =() =>
         .then(resp => (resp.ok ? resp : Promise.reject(resp)))
         .then(resp => resp.json())
         .then(data => setBook(data))   
-        alert("successfull");
+        navigate('/login');
     
         }
         else{

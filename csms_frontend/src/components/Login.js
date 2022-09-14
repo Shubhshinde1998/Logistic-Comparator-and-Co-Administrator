@@ -30,8 +30,8 @@ let Login = () => {
                     "content-type":"application/json"
                 },
                 body: JSON.stringify({
-                    user_Username: user.user_username,
-                    user_Password: user.user_password
+                    username: user.user_username,
+                    password: user.user_password
                 })
     
             }
@@ -73,14 +73,16 @@ let Login = () => {
             <div className="form-outline mb-4">
             <label className="form-label" for="form2Example1">Enter Username</label>
             <input type="text" id="form2Example1" className="form-control" name="name" value={user.user_username}
-                onChange={ (e)=>{dispatch({type: 'update', field: 'user_username', val: e.target.value })} } />
-            
+                onChange={ (e)=>{dispatch({type: 'update', field: 'user_username', val: e.target.value })} } required/>
+            <div class="invalid-feedback">
+        Please choose a username.
+      </div>
             </div>
-
+            
             <div className="form-outline mb-4">
             <label className="form-label" for="form2Example2">Password</label>
                 <input type="password" id="form2Example2" className="form-control"  name="pwd" value={user.user_password}
-                onChange={ (e)=>{dispatch({type: 'update', field: 'user_password', val: e.target.value })} }/>
+                onChange={ (e)=>{dispatch({type: 'update', field: 'user_password', val: e.target.value })} }required/>
                
             </div>
                
