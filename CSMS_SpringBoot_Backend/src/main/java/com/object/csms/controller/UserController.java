@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.object.csms.entity.User;
+import com.object.csms.requestbean.LoginRequest;
 import com.object.csms.service.UserService;
 
 @RestController
@@ -35,9 +36,9 @@ public class UserController {
 	}
 	
 	@PostMapping(value="/login")
-	public User checkLogin(@RequestBody User users)
+	public User checkLogin(@RequestBody LoginRequest users)
 	{		
-		return services.checkLogin(users.getUser_Username(), users.getUser_Password());
+		return services.checkLogin(users.getUsername(), users.getPassword());
 	}
 	  
 	@RequestMapping("/user/{id}")  

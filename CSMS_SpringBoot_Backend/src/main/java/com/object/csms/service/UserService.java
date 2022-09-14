@@ -3,7 +3,6 @@ package com.object.csms.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.object.csms.entity.User;
-import com.object.csms.repository.CompanyRepository;
 import com.object.csms.repository.UserRepository;
 
 @Service
@@ -11,7 +10,6 @@ public class UserService {
 
 	@Autowired
 	UserRepository repo;
-	CompanyRepository crepo;
 	public Iterable<User> listAll() {
         return this.repo.findAll();
     }

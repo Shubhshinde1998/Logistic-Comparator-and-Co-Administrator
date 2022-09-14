@@ -66,9 +66,7 @@ const Dashboard = () => {
         
         <div>
          
-                <Routes>
-                <Route  path="/overview"element={<ListedCompany/>}></Route>
-                </Routes>
+        <ListedCompany/>
                     
         </div>
         

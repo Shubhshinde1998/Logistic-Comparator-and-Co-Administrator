@@ -19,23 +19,23 @@ public class Company {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int Company_Id;
 	
-	@Column(name="company_name")
+	@Column(name="company_name",nullable=false)
 	private String Company_Name;
 	
-	@Column(name="company_emailid")
+	@Column(name="company_emailid",nullable=false)
 	private String Company_Emailid;
 	
-	@Column(name="company_city")
+	@Column(name="company_city",nullable=false)
 	private String Company_City;
 	
-	@Column(name="company_pincode")
+	@Column(name="company_pincode",nullable=false)
 	private int Company_Pincode;
 	
-	@Column(name="company_contactno")
+	@Column(name="company_contactno",nullable=false)
 	private int Company_Contactno;	
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="User_Id", referencedColumnName = "User_Id")
+	@JoinColumn(name="User_Id", referencedColumnName = "User_Id",nullable=false)
 	private User user;
 	
 	
