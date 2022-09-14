@@ -10,6 +10,11 @@ export default function ListedCompany() {
         .then(data=>setCompany(data))
        },[])
 
+       /*deleteEmployee(id){
+        EmployeeService.deleteEmployee(id).then(res =>{
+            this.setState({employees:this.state.employees.filter(employee=> employee.id!=id)})
+        } );
+       }*/
     return (
         
         <div className="row ">
@@ -40,14 +45,14 @@ export default function ListedCompany() {
                             <td >{v.company_City}</td>
                             <td >{v.company_Pincode}</td>
                             <td><button className='btn btn-success'>Accept</button></td>
-                            <td><button className='btn btn-danger'>Delete</button></td>
+                           { /*<td><button className='btn btn-danger' onClick={() => v.deleteEmployee(v.company_Id)}>Delete</button></td>*/}
                         </tr>
                         )
                     })
                 }
                 </tbody>
             </table>
-                </div>
+            </div>
             </div>
             
         </div>

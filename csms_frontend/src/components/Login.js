@@ -1,7 +1,6 @@
-import {useReducer, useState} from 'react';
+import {useReducer, useState,useEffect} from 'react';
 import "../styles/Login.css";
 import { useNavigate } from 'react-router-dom';
-import AddDeliveryBoy from './Company/AddDeliveryBoy';
 
 const init = {
     user_username:"",
@@ -20,9 +19,9 @@ const reducer = (state,action) => {
 let Login = () => {
 
     const [user, dispatch] = useReducer(reducer, init);
-    const[book,setBook]=useState({});
     const navigate = useNavigate();
 
+   
     const sendData = (e) => {        
             e.preventDefault();
             const reqData = {
@@ -41,27 +40,29 @@ let Login = () => {
         .then(resp => (resp.ok ? resp : Promise.reject(resp)))
         .then(resp => resp.text())
         .then(data => {
+            
             const json=JSON.parse(data);
+            
             if(!json.error){
-                if(json.user_Role=='1')
-                {
-                    //this.setState({admin:json});
-                    //localStorage.setItem("logeduser",JSON.stringify(this.state.admin));
-                    //mystore.dispatch({type:"logeduser"})
+                if(json.user_Role==1)
+                {      
+                    localStorage.setItem("admin",data)    
                     navigate('/adminpanel');
                 }
-                else if(json.user_Role==2)
+                else if(json.user.user_Role==2)
                 {
+                    localStorage.setItem("company",data)
                     navigate('/companypanel');
                 }
-                else if(json.user_Role==3)
+                else if(json.user.user_Role==3)
                 {
+                    localStorage.setItem("customer",data)
                     navigate('/customerpanel');
                 }
             }
             else
             {
-                this.setState({loginerror:"invalid"});
+                alert("invalid");
             }
         })            
         
@@ -75,9 +76,7 @@ let Login = () => {
             <label className="form-label" for="form2Example1">Enter Username</label>
             <input type="text" id="form2Example1" className="form-control" name="name" value={user.user_username}
                 onChange={ (e)=>{dispatch({type: 'update', field: 'user_username', val: e.target.value })} } required/>
-            <div class="invalid-feedback">
-        Please choose a username.
-      </div>
+            
             </div>
             
             <div className="form-outline mb-4">
@@ -96,11 +95,10 @@ let Login = () => {
                 <div className="text-center">
                 <p>Create a New Account <a href="/register">Register</a></p>
                 </div>
+
             </form>   
-            
-           {/* 
-           <p>{this.state.loginerror}</p>
-           <p>Welcome{JSON.parse(localStorage.getItem("logeduser")).user_Username}</p>*/}
+        
+
         </div>
     )
 

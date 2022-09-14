@@ -56,8 +56,12 @@ let CompanyReg =() =>
         fetch("http://localhost:8080/companyregister",reqData)
         .then(resp => (resp.ok ? resp : Promise.reject(resp)))
         .then(resp => resp.json())
-        .then(data => setBook(data))   
-        navigate('/login');
+        .then(data =>{ 
+            if(data>0)
+            {
+                navigate('/login');
+            }
+        })          
     
         }
         else{
