@@ -95,7 +95,10 @@ let Login = () => {
                 <div className="text-center">
                 <p>Create a New Account <a href="/register">Register</a></p>
                 </div>
-            </form>    
+
+            </form>   
+        
+
         </div>
     )
 

@@ -1,3 +1,4 @@
+   
 import React from "react";
 import {useState, useReducer} from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -72,6 +73,7 @@ let CustomerReg =() =>
             <div className="form-outline mb-4">
                 <input type="text" id="form3Example3" className="form-control" placeholder="Name" name="Customer_Name" value={cus.name}
                     onChange={ (e)=>{dispatch({type: 'update', field: 'name', val: e.target.value })} }
+
                      />                
             </div>
             <div className="form-outline mb-4">
