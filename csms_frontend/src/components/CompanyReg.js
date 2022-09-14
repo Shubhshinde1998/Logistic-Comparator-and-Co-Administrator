@@ -2,6 +2,7 @@
 import React from "react";
 import {useState, useReducer} from 'react';
 import "../styles/Registration.css";
+import { useNavigate } from 'react-router-dom';
 const init = {
     
    company_name: "",
@@ -27,7 +28,7 @@ let CompanyReg =() =>
     const [com, dispatch] = useReducer(reducer, init);
     const[agree,setAgree]=useState(false);
     const[book,setBook]=useState({});
-   
+    const navigate = useNavigate();
     const sendData = (e) => {    
         e.preventDefault();
         if(agree)
@@ -41,7 +42,8 @@ let CompanyReg =() =>
                     user:{         
                         user_Password: com.password,
                         user_Role: com.role,
-                        user_Username: com.company_name
+                        user_Username: com.company_name,
+                        user_Status:"false"
                      },
                     company_Name: com.company_name,
                     company_Emailid: com.company_email,
@@ -54,8 +56,12 @@ let CompanyReg =() =>
         fetch("http://localhost:8080/companyregister",reqData)
         .then(resp => (resp.ok ? resp : Promise.reject(resp)))
         .then(resp => resp.json())
-        .then(data => setBook(data))   
-        alert("successfull");
+        .then(data =>{ 
+            if(data>0)
+            {
+                navigate('/login');
+            }
+        })          
     
         }
         else{

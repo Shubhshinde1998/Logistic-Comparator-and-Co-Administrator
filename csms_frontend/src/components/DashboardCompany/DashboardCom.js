@@ -1,20 +1,21 @@
-import {useEffect,useState} from 'react';
-import { Route, Routes } from 'react-router-dom';
-import CompanyReg from '../CompanyReg';
+import React from 'react'
+import { useEffect, useState } from "react";
+import ListCustomer from '../Company/ListCustomer';
+import ListVehicle from '../Company/ListVehicles';
 
-const Dashboard = () => {
+export default function DashboardCompany() {
 
- 
-   useEffect(() => {
-    fetch("http://localhost:8080/getallcompany")
-    .then(resp=>resp.json())
-    .then(data=>setCustomer(data))
-   },[])
-   const [customer,setCustomer] = useState([]);
+    const [customer,setCustomer] = useState([]);
 
+    useEffect(()=>
+    {
+        fetch("http://localhost:8080/getallcustomer")
+        .then(resp=>resp.json())
+        .then(data=>setCustomer(data))
+    },[]);
 
-    return (
-    <div className="col main pt-5 mt-3">
+    return(
+        <div className="col main pt-5 mt-3">
         <div className="alert alert-warning fade collapse" role="alert" id="myAlert">
             <button type="button" className="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">×</span>
@@ -68,55 +69,14 @@ const Dashboard = () => {
                 </div>
             </div>
         </div>
-    <div>
-        <Routes>
-            <Route path='/overview' element={<CompanyReg/>}></Route>
-        </Routes>
         
-    </div>
-       
-        <div className="row ">
-            <div className="">
-              <h5 className="mt-3 mb-3 text-secondary">
-               Check More Records of Customer
-              </h5>
-        <div className="table-responsive">                        
-            <table className="table table-striped">
-            <thead className="thead-light">
-                <tr>
-                    <th scope="col">Name</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Contact No.</th>
-                    <th scope="col">City</th>
-                    <th scope="col">Pincode</th>
-                </tr>
-            </thead>
-            <tbody>
-            {                    
-                customer.map((v)=>
-                {
-                    return(                        
-                        <tr scope="row">
-                            <td >{v.company_Name}</td>
-                            <td >{v.company_Emailid}</td>
-                            <td >{v.company_Contactno}</td>
-                            <td >{v.company_City}</td>
-                            <td >{v.company_Pincode}</td>
-                            <td><button className='btn btn-success'>Accept</button></td>
-                            <td><button className='btn btn-danger'>Delete</button></td>
-                        </tr>
-                        )
-                    })
-                }
-                </tbody>
-            </table>
-                </div>
-            </div>
-            
+        <div>
+       <ListCustomer/>
+       <ListVehicle/>
+                    
         </div>
- 
+        
+        
     </div>
     )
 }
- 
-export default Dashboard

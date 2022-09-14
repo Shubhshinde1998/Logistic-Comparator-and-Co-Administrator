@@ -1,7 +1,7 @@
 import React from 'react'
 import { useEffect, useState } from "react";
 
-export default function DashboardCompany() {
+export default function DashboardCustomer() {
 
     const [customer,setCustomer] = useState([]);
 
@@ -13,8 +13,8 @@ export default function DashboardCompany() {
     },[]);
 
     return(
-    <div>
-        <h1>DashboardCompany</h1>
+    <div className="col main pt-5 mt-3">
+        <h1>DashboardCustomer</h1>
 
             <table className="table table-striped" style={{Color:"white",textAlign:"left",margin:"50px"}}>
             <thead>

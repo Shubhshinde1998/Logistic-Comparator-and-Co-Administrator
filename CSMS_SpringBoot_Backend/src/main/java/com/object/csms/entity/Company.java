@@ -10,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+
 @Entity
 @Table(name="company")
 public class Company {
@@ -18,24 +19,25 @@ public class Company {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int Company_Id;
 	
-	@Column(name="company_name")
+	@Column(name="company_name",nullable=false)
 	private String Company_Name;
 	
-	@Column(name="company_emailid")
+	@Column(name="company_emailid",nullable=false)
 	private String Company_Emailid;
 	
-	@Column(name="company_city")
+	@Column(name="company_city",nullable=false)
 	private String Company_City;
 	
-	@Column(name="company_pincode")
+	@Column(name="company_pincode",nullable=false)
 	private int Company_Pincode;
 	
-	@Column(name="company_contactno")
+	@Column(name="company_contactno",nullable=false)
 	private int Company_Contactno;	
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="User_Id", referencedColumnName = "User_Id")
+	@JoinColumn(name="User_Id", referencedColumnName = "User_Id",nullable=false)
 	private User user;
+	
 	
 	public Company() {
 		super();
@@ -84,7 +86,7 @@ public class Company {
 	}
 	public int getCompany_Contactno() {
 		return Company_Contactno;
-	}
+	} 
 	public void setCompany_Contactno(int company_Contact) {
 		Company_Contactno = company_Contact;
 	}
@@ -94,5 +96,6 @@ public class Company {
 	public void setUser(User user) {
 		this.user = user;
 	}
+	
 	
 }

@@ -1,9 +1,9 @@
 package com.object.csms.controller;
 
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletResponse;
+import java.io.Console;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.object.csms.entity.User;
+import com.object.csms.requestbean.LoginRequest;
 import com.object.csms.service.UserService;
 
 @RestController
@@ -33,47 +34,37 @@ public class UserController {
 	}
 	 
 	@PostMapping(value = "/save")
-	private int saveUser(@RequestBody User user)  
+	public int saveUser(@RequestBody User user)  
 	{  
 		services.saveOrUpdate(user);  
 		return  user.getUser_Id();  
 	}
 	
 	@PostMapping(value="/login")
-	public ResponseEntity<User> loginUser(@RequestBody User users,HttpServletResponse res)
-	{
-		
-		User temp = services.getUserByName(users.getUser_Username());
-		if(temp.getUser_Username().equalsIgnoreCase(users.getUser_Username())&& temp.getUser_Password().equalsIgnoreCase(users.getUser_Password()))
-		{
-			Cookie cookie = new Cookie("username",temp.getUser_Username());
-					res.addCookie(cookie);
-			User resp = new User(temp.getUser_Id(), temp.getUser_Role(), temp.getUser_Username());
-	
-			return new ResponseEntity<User>(resp,(HttpStatus.OK));
-		}
-		else
-			return new ResponseEntity<User>(HttpStatus.BAD_REQUEST);
+	public Object checkLogin(@RequestBody LoginRequest users)
+	{	
+		return services.checkLogin(users.getUsername(), users.getPassword());
 	}
 	  
 	@RequestMapping("/user/{id}")  
-	private User getUsers(@PathVariable(name = "id") int userid)  
+	public User getUsers(@PathVariable(name = "id") int userid)  
 	{  
 		return services.getUserById(userid) ;
 	}  
 	    
 	@PutMapping("/update/{id}")	 
-    private User update(@RequestBody User users,@PathVariable int id)  
+    public User update(@RequestBody User users,@PathVariable int id)  
     {  
 		users.setUser_Id(id);
 		services.saveOrUpdate(users); 
 		return users;  
     }  
 	 
-	@DeleteMapping("/delete/{id}")  
-	private void deleteUser(@PathVariable("id") int id)  
+	@DeleteMapping("/{id}/delete")  
+	public ResponseEntity<HttpStatus> deleteUser(@PathVariable("id") int id)  
 	{  
 		services.delete(id);  
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}  
 	
 }

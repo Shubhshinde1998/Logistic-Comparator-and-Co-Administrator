@@ -27,7 +27,7 @@ public class CompanyController {
 		return services.listAll();    
 	}
 	
-		@PostMapping(value = "/companyregister")
+	@PostMapping(value = "/companyregister")
 	private int saveCompany (@RequestBody Company company)  
 	{  
 		services.saveOrUpdate(company);  
@@ -49,7 +49,7 @@ public class CompanyController {
 		return company;  
     }  
 	 
-	@DeleteMapping("/deletecompany/{id}")  
+	@DeleteMapping("/{id}/deletecompany")  
 	private void deleteCompany(@PathVariable("id") int id)  
 	{  
 		services.delete(id);  

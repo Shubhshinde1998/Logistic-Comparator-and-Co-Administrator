@@ -4,26 +4,28 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.object.csms.entity.Delivery_Boy;
 import com.object.csms.entity.Vehicles_Details;
+import com.object.csms.repository.Delivery_BoyRepository;
 import com.object.csms.repository.VehicleRepository;
 
 @Service
-public class VehicleService {
-
+public class Delivery_BoyService {
 	@Autowired
-	VehicleRepository repo;
+	Delivery_BoyRepository repo;
 	
-	public Iterable<Vehicles_Details> listAll() 
+	public Iterable<Delivery_Boy> listAll() 
 	{
         return this.repo.findAll();
     }
 	
-	public void saveOrUpdate(Vehicles_Details vehicle)  
+	public void saveOrUpdate(Delivery_Boy Delivery)  
 	{  
-		repo.save(vehicle); 		
+		repo.save(Delivery); 		
 	}
 	
-	public Vehicles_Details getVehicleById(int id)  
+	public Delivery_Boy getDelivery_BoyById(int id)  
 	{  
 		return repo.findById(id).get();  
 	}	
@@ -33,9 +35,8 @@ public class VehicleService {
 		repo.deleteById(id);  
 	}
 
-	public List<Vehicles_Details> getVehicleByCompany_Id(int id) {
+	public List<Delivery_Boy> getDelivery_BoyByCompany_Id(int id) {
 		
 		return repo.findByCompany_Id(id);
 	}
-	
 }

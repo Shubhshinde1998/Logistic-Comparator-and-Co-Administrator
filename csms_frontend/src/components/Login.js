@@ -1,4 +1,4 @@
-import {useReducer, useState} from 'react';
+import {useReducer, useState,useEffect} from 'react';
 import "../styles/Login.css";
 import { useNavigate } from 'react-router-dom';
 
@@ -19,9 +19,9 @@ const reducer = (state,action) => {
 let Login = () => {
 
     const [user, dispatch] = useReducer(reducer, init);
-    const[book,setBook]=useState({});
     const navigate = useNavigate();
 
+   
     const sendData = (e) => {        
             e.preventDefault();
             const reqData = {
@@ -30,24 +30,42 @@ let Login = () => {
                     "content-type":"application/json"
                 },
                 body: JSON.stringify({
-                    user_Username: user.user_username,
-                    user_Password: user.user_password
+                    username: user.user_username,
+                    password: user.user_password
                 })
     
             }
                        
         fetch("http://localhost:8080/login",reqData)
         .then(resp => (resp.ok ? resp : Promise.reject(resp)))
-        .then(resp => resp.json())
-        .then(data => setBook(data))            
+        .then(resp => resp.text())
+        .then(data => {
+            
+            const json=JSON.parse(data);
+            
+            if(!json.error){
+                if(json.user_Role==1)
+                {      
+                    localStorage.setItem("admin",data)    
+                    navigate('/adminpanel');
+                }
+                else if(json.user.user_Role==2)
+                {
+                    localStorage.setItem("company",data)
+                    navigate('/companypanel');
+                }
+                else if(json.user.user_Role==3)
+                {
+                    localStorage.setItem("customer",data)
+                    navigate('/customerpanel');
+                }
+            }
+            else
+            {
+                alert("invalid");
+            }
+        })            
         
-            if(book.user_Role===1)
-                navigate('/adminpanel');
-            else if(book.user_Role===2)
-                navigate('/companypanel');
-            else if(book.user_Role===3)
-                navigate('/customerpanel');
-                    
     }
     
     return (
@@ -57,14 +75,14 @@ let Login = () => {
             <div className="form-outline mb-4">
             <label className="form-label" for="form2Example1">Enter Username</label>
             <input type="text" id="form2Example1" className="form-control" name="name" value={user.user_username}
-                onChange={ (e)=>{dispatch({type: 'update', field: 'user_username', val: e.target.value })} } />
+                onChange={ (e)=>{dispatch({type: 'update', field: 'user_username', val: e.target.value })} } required/>
             
             </div>
-
+            
             <div className="form-outline mb-4">
             <label className="form-label" for="form2Example2">Password</label>
                 <input type="password" id="form2Example2" className="form-control"  name="pwd" value={user.user_password}
-                onChange={ (e)=>{dispatch({type: 'update', field: 'user_password', val: e.target.value })} }/>
+                onChange={ (e)=>{dispatch({type: 'update', field: 'user_password', val: e.target.value })} }required/>
                
             </div>
                
@@ -78,8 +96,6 @@ let Login = () => {
                 <p>Create a New Account <a href="/register">Register</a></p>
                 </div>
             </form>    
-            
-           
         </div>
     )
 
