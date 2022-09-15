@@ -36,7 +36,7 @@ public class UserController {
 	@PostMapping(value = "/save")
 	public int saveUser(@RequestBody User user)  
 	{  
-		services.saveOrUpdate(user);  
+		services.saveOrUpdate(user);
 		return  user.getUser_Id();  
 	}
 	

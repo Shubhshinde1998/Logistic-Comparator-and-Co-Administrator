@@ -16,12 +16,6 @@ import com.object.csms.service.CustomerService;
 
 
 @RestController
-
-
-
-
-
-
 @CrossOrigin(origins="*")
 public class CustomerController {
 	@Autowired
@@ -54,9 +48,9 @@ public class CustomerController {
 		return customer;  
     }  
 	 
-	@DeleteMapping("/deletecustomer/{id}")  
+	@DeleteMapping("{id}/deletecustomer")  
 	private void deleteCustomer(@PathVariable("id") int id)  
 	{  
-		services.delete(id);  
+		services.delete(id);
 	}  
 }

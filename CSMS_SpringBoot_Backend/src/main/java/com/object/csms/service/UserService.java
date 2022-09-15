@@ -46,7 +46,7 @@ public class UserService {
 			Optional<Company> com = comrepo.findByUser_Id(uobj.getUser_Id());
 			if(com.isPresent())
 			{
-				com.get().getUser().setUser_Password(null);
+				com.get().getUser().setUserPassword(null);
 				return com;
 			}
 			else
@@ -58,7 +58,7 @@ public class UserService {
 			Optional<Customer> cus = cusrepo.findByUser_Id(uobj.getUser_Id());
 			if(cus.isPresent())
 			{
-				cus.get().getUser().setUser_Password(null);
+				cus.get().getUser().setUserPassword(null);
 				return cus;
 			}
 			else

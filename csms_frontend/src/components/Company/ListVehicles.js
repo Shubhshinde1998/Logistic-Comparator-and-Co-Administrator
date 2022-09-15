@@ -2,12 +2,28 @@ import React from 'react'
 import {useEffect,useState} from 'react';
 
 export default function ListVehicle() {
-    const [company,setCompany] = useState([]);  
+    const [vehicle,setVehicle] = useState([]);  
    
-    useEffect(() => {
-        fetch("http://localhost:8080/4/getvehicledetails")
+    
+    const handleDelete = (id) => {
+        fetch(`http://localhost:8080/${id}/deletevehicle`, {method: 'DELETE'})
+        .then(function(response) {
+            if(response.status === 200) {
+               alert("vehicle deleted succesfully");
+               getVehicle();
+             };
+            })          
+    }
+
+    const getVehicle = () =>{
+        let com= (JSON.parse(localStorage.getItem("company")).company_Id)
+        fetch("http://localhost:8080/"+com+"/getvehicledetails")
         .then(resp=>resp.json())
-        .then(data=>setCompany(data))
+        .then(data=>setVehicle(data))
+
+    }
+    useEffect(() => {
+        getVehicle();
        },[])
 
     return (        
@@ -18,17 +34,18 @@ export default function ListVehicle() {
             <thead className="thead-light">
                 <tr>
                     <th scope="col">Name</th>
+                    <th scope="col">Actions</th>
                 </tr>
             </thead>
             <tbody>
             {                    
-                company.map((v)=>
+                vehicle.map((v)=>
                 {
                     return(                        
                         <tr scope="row">
                             <td >{v.vehicles_details_no}</td>
-                            <td><button className='btn btn-success'>Accept</button></td>
-                            <td><button className='btn btn-danger'>Delete</button></td>
+                            <td><button className='btn btn-success'>Accept</button>
+                            <button className='btn btn-danger'onClick={() => { handleDelete(v.vehicles_details_id)}}>Delete</button></td>
                         </tr>
                         )
                     })

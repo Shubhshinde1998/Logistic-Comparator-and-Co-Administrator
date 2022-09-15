@@ -50,7 +50,7 @@ public class VehicleController {
 		return services.getVehicleById(id) ;
 	}  
 
-	@DeleteMapping("/deletevehicle/{id}")  
+	@DeleteMapping("/{id}/deletevehicle")  
 	private void deleteVehicle(@PathVariable("id") int id)  
 	{  
 		services.delete(id);

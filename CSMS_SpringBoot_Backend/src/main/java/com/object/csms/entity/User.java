@@ -6,10 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
 import org.springframework.beans.factory.annotation.Value;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="users")
@@ -19,9 +17,9 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int User_Id;
 	
-    
+   
     @Column(nullable = false, length = 100,name="user_password")
-    private String User_Password;
+    private String userPassword;
      
     @Column(nullable = false,name="user_role")
     private int User_Role;
@@ -33,10 +31,10 @@ public class User {
     @Column(length=100, nullable = false, name="user_username")
     private String User_Username;
 
-	public User(int user_Id, String user_Password, int user_Role, String user_Status,String user_Username) {
+	public User(int user_Id, String userPassword, int user_Role, String user_Status,String user_Username) {
 		super();
 		User_Id = user_Id;
-		User_Password = user_Password;
+		this.userPassword = userPassword;
 		User_Role = user_Role;
 		User_Status = user_Status;
 		User_Username = user_Username;
@@ -56,12 +54,12 @@ public class User {
 		User_Id = user_Id;
 	}
 	
-	public String getUser_Password() {
-		return User_Password;
+	public String getUserPassword() {
+		return userPassword;
 	}
 	
-	public void setUser_Password(String user_Password) {
-		User_Password = user_Password;
+	public void setUserPassword(String user_Password) {
+		userPassword = user_Password;
 	}
 
 	public int getUser_Role() {
@@ -90,7 +88,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [User_Id=" + User_Id + ", User_Password=" + User_Password + ", User_Role=" + User_Role
+		return "User [User_Id=" + User_Id + ", User_Password=" + userPassword + ", User_Role=" + User_Role
 				+ ", User_Status=" + User_Status + ", User_Username=" + User_Username + "]";
 	}
     

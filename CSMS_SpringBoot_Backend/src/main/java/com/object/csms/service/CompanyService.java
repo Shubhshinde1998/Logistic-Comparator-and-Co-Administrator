@@ -42,7 +42,7 @@ public class CompanyService {
 	 
 	public void delete(int id)  
 	{  
-		repo.deleteById(id);  
+		 repo.deleteById(id);  
 	}
 	
 }

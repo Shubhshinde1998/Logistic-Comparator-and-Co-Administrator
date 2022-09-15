@@ -13,5 +13,5 @@ public interface VehicleRepository extends JpaRepository<Vehicles_Details, Integ
 	@Query("select d from Vehicles_Details d where company_id=:id")
 	List<Vehicles_Details> findByCompany_Id(int id);
 
-
+	public void deleteById(int id);
 }

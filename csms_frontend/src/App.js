@@ -8,8 +8,6 @@ import Register from './components/Register';
 import DashboardAdmin from './components/DashboardAdmin/DashboardAdmin';
 import DashboardCompany from './components/DashboardCompany/DashboardCompany';
 import DashboardCustomer from './components/DashboardCustomer/DashboardCustomer';
-import ListedCompany from './components/Admin/ListedCompany';
-import AddDeliveryBoy from './components/Company/AddDeliveryBoy';
 
 
 function App() { 
