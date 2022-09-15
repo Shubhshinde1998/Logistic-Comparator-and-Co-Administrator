@@ -31,11 +31,11 @@ public class DeliveryBoyController {
 	@GetMapping("/{id}/getdeliverydetails")
 	public List<DeliveryBoy> getDeliveryDetails(@PathVariable(name="id")int id)
 	{
-		List<DeliveryBoy> resp = services.getDelivery_BoyByCompany_Id(id);
+		List<DeliveryBoy> resp = services.getDeliveryBoyByCompanyId(id);
 		return resp;
 	}
 	
-	@PostMapping(value = "/deliveryboyregister")
+	@PostMapping("/deliveryboyregister")
 	private int saveVehicle (@RequestBody DeliveryBoy delivery)  
 	{  
 		services.saveOrUpdate(delivery);  
@@ -48,7 +48,7 @@ public class DeliveryBoyController {
 		return services.getDeliveryBoyById(id);
 	}  
 
-	@DeleteMapping("/deletedeliveryboy/{id}")  
+	@DeleteMapping("/{id}/deletedeliveryboy")  
 	private void deleteDelivery_Boy(@PathVariable("id") int id)  
 	{  
 		services.delete(id);

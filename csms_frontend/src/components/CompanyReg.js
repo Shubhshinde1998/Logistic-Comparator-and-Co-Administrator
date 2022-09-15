@@ -29,7 +29,7 @@ let CompanyReg =() =>
     const[agree,setAgree]=useState(false);
     const navigate = useNavigate();
     const sendData = (e) => {    
-        e.preventDefault();
+       e.preventDefault();
         if(agree)
         {
             const reqData = {
@@ -40,27 +40,23 @@ let CompanyReg =() =>
                 body: JSON.stringify({
                     user:{         
                         userPassword: com.password,
-                        user_Role: com.role,
-                        user_Username: com.company_name,
-                        user_Status:"false"
+                        userRole: com.role,
+                        userUsername: com.company_name,
+                        userStatus:"false"
                      },
-                    company_Name: com.company_name,
-                    company_Emailid: com.company_email,
-                    company_City: com.city,
-                    company_Pincode: com.pincode,
-                    company_Contactno: com.contact
+                    companyName: com.company_name,
+                    companyEmail: com.company_email,
+                    companyCity: com.city,
+                    companyPincode: com.pincode,
+                    companyContactNo: com.contact
                 })    
             }
             
         fetch("http://localhost:8080/companyregister",reqData)
-        .then(resp => {if(resp.status===201){
-        alert("successful")
-        navigate('/login')}
-    else{alert("failed")}    
+        .then(resp => {if(resp.status===201){            
+            navigate('/login')}
+        else{alert("failed")}    
     })
-       
-           
-    
         }
         else{
             alert("accept terms and condition")

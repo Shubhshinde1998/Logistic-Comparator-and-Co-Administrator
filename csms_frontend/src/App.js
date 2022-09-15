@@ -12,19 +12,20 @@ import DashboardCustomer from './components/DashboardCustomer/DashboardCustomer'
 
 function App() { 
 
+ 
   return (
    <div className="App" >
    
    <Router>
         <Routes>
-          <Route path="/"  element={<Home/>} />
+          <Route exact path="/"  element={<Home/>} />
           <Route path="/login"  element={<Login/>} />
           <Route path="/company"  element={<CompanyReg/>} />
           <Route path="/customer"  element={<CustomerReg/>} />
           <Route path="/register"  element={<Register/>} />
           <Route path="/adminpanel"  element={<DashboardAdmin/>} />
           <Route path="/companypanel"  element={<DashboardCompany/>} />
-          <Route path="/customerpanel"  element={<DashboardCustomer/>} />          
+          <Route path="/customerpanel"  element={<DashboardCustomer/>} />      
         </Routes>
 
   </Router>

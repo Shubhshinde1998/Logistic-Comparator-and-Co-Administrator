@@ -33,7 +33,7 @@ public class DeliveryBoyService {
 		repo.deleteById(id);  
 	}
 
-	public List<DeliveryBoy> getDelivery_BoyByCompany_Id(int id) {
+	public List<DeliveryBoy> getDeliveryBoyByCompanyId(int id) {
 		
 		return repo.findByCompanyId(id);
 	}
