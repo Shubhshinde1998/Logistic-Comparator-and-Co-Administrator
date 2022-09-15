@@ -40,10 +40,10 @@ public class UserService {
 	public Object checkLogin(String username,String password)
 	{
 		Optional<User> u = repo.checkLogin(username, password);	
-		if(u.isPresent() && u.get().getUser_Role()==2)
+		if(u.isPresent() && u.get().getUserRole()==2)
 		{
 			User uobj = u.get();
-			Optional<Company> com = comrepo.findByUser_Id(uobj.getUser_Id());
+			Optional<Company> com = comrepo.findByUserId(uobj.getUserId());
 			if(com.isPresent())
 			{
 				com.get().getUser().setUserPassword(null);
@@ -52,10 +52,10 @@ public class UserService {
 			else
 				return null;
 		}
-		else if(u.isPresent() && u.get().getUser_Role()==3)
+		else if(u.isPresent() && u.get().getUserRole()==3)
 		{
 			User uobj = u.get();
-			Optional<Customer> cus = cusrepo.findByUser_Id(uobj.getUser_Id());
+			Optional<Customer> cus = cusrepo.findByUserId(uobj.getUserId());
 			if(cus.isPresent())
 			{
 				cus.get().getUser().setUserPassword(null);

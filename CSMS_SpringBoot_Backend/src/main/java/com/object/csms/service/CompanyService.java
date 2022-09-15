@@ -1,20 +1,24 @@
 package com.object.csms.service;
-
-import java.util.List;
-import java.util.Optional;
+import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.object.csms.entity.Company;
-import com.object.csms.entity.User;
 import com.object.csms.repository.CompanyRepository;
+import com.object.csms.repository.DeliveryBoyRepository;
+import com.object.csms.repository.VehicleRepository;
 
 @Service
 public class CompanyService {
 
 	@Autowired
 	CompanyRepository repo;
+	
+	@Autowired
+	VehicleRepository vrepo;
+	
+	@Autowired
+	DeliveryBoyRepository drepo;
 	
 	public Iterable<Company> listAll() {
         return this.repo.findAll();
@@ -39,10 +43,13 @@ public class CompanyService {
 	{  
 		repo.save(company);  
 	}  
-	 
+	
+	@Transactional
 	public void delete(int id)  
 	{  
-		 repo.deleteById(id);  
+		drepo.deleteByCompanyId(id);
+		vrepo.deleteByCompanyId(id);
+		repo.deleteById(id);  
 	}
 	
 }

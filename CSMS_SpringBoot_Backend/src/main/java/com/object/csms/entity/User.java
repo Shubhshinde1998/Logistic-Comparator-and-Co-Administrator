@@ -15,82 +15,74 @@ public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int User_Id;
+	private int userId;
 	
    
     @Column(nullable = false, length = 100,name="user_password")
     private String userPassword;
      
     @Column(nullable = false,name="user_role")
-    private int User_Role;
+    private int userRole;
      
     @Column(length = 20, name="user_status")
     @Value("false")
-    private String User_Status;
+    private String userStatus;
     
     @Column(length=100, nullable = false, name="user_username")
-    private String User_Username;
-
-	public User(int user_Id, String userPassword, int user_Role, String user_Status,String user_Username) {
-		super();
-		User_Id = user_Id;
-		this.userPassword = userPassword;
-		User_Role = user_Role;
-		User_Status = user_Status;
-		User_Username = user_Username;
-	}
-
+    private String userUsername;
 
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public int getUser_Id() {
-		return User_Id;
+	public User(int userId, String userPassword, int userRole, String userStatus, String userUsername) {
+		super();
+		this.userId = userId;
+		this.userPassword = userPassword;
+		this.userRole = userRole;
+		this.userStatus = userStatus;
+		this.userUsername = userUsername;
 	}
 
-	public void setUser_Id(int user_Id) {
-		User_Id = user_Id;
+	public int getUserId() {
+		return userId;
 	}
-	
+
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+
 	public String getUserPassword() {
 		return userPassword;
 	}
-	
-	public void setUserPassword(String user_Password) {
-		userPassword = user_Password;
+
+	public void setUserPassword(String userPassword) {
+		this.userPassword = userPassword;
 	}
 
-	public int getUser_Role() {
-		return User_Role;
+	public int getUserRole() {
+		return userRole;
 	}
 
-	public void setUser_Role(int user_Role) {
-		User_Role = user_Role;
+	public void setUserRole(int userRole) {
+		this.userRole = userRole;
 	}
 
-	public String getUser_Status() {
-		return User_Status;
+	public String getUserStatus() {
+		return userStatus;
 	}
 
-	public void setUser_Status(String user_Status) {
-		User_Status = user_Status;
+	public void setUserStatus(String userStatus) {
+		this.userStatus = userStatus;
 	}
 
-	public String getUser_Username() {
-		return User_Username;
+	public String getUserUsername() {
+		return userUsername;
 	}
 
-	public void setUser_Username(String user_Username) {
-		User_Username = user_Username;
+	public void setUserUsername(String userUsername) {
+		this.userUsername = userUsername;
 	}
 
-	@Override
-	public String toString() {
-		return "User [User_Id=" + User_Id + ", User_Password=" + userPassword + ", User_Role=" + User_Role
-				+ ", User_Status=" + User_Status + ", User_Username=" + User_Username + "]";
-	}
-    
-    
 }

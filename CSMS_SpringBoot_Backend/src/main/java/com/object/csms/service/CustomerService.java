@@ -2,15 +2,7 @@ package com.object.csms.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.object.csms.entity.Company;
 import com.object.csms.entity.Customer;
-
-
-
-
-import com.object.csms.repository.CompanyRepository;
-
 import com.object.csms.repository.CustomerRepository;
 @Service
 public class CustomerService {

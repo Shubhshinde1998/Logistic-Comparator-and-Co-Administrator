@@ -12,7 +12,7 @@ import com.object.csms.entity.Company;
 public interface CompanyRepository extends CrudRepository<Company, Integer> {
 
 	@Query("select d from Company d where User_Id=:id")
-	public Optional<Company> findByUser_Id(int id);
+	public Optional<Company> findByUserId(int id);
 	
 	@Modifying
 	//@Query(value="DELETE from Company c where c.Company_Id =:id")

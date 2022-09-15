@@ -17,85 +17,98 @@ public class Company {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int Company_Id;
+	private int companyId;
 	
 	@Column(name="company_name",nullable=false)
-	private String Company_Name;
+	private String companyName;
 	
 	@Column(name="company_emailid",nullable=false)
-	private String Company_Emailid;
+	private String companyEmail;
 	
 	@Column(name="company_city",nullable=false)
-	private String Company_City;
+	private String companyCity;
 	
 	@Column(name="company_pincode",nullable=false)
-	private int Company_Pincode;
+	private int companyPincode;
 	
 	@Column(name="company_contactno",nullable=false)
-	private int Company_Contactno;	
+	private int companyContactNo;	
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="User_Id", referencedColumnName = "User_Id",nullable=false)
+	@JoinColumn(name="user_Id", referencedColumnName = "userId",nullable=false)
 	private User user;
-	
 	
 	public Company() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Company(int company_Id, String company_Name, String company_Emailid, String company_City, int company_Pincode,
-			int company_Contactno, User user) {
+
+	public Company(int companyId, String companyName, String companyEmail, String companyCity, int companyPincode,
+			int companyContactNo, User user) {
 		super();
-		Company_Id = company_Id;
-		Company_Name = company_Name;
-		Company_Emailid = company_Emailid;
-		Company_City = company_City;
-		Company_Pincode = company_Pincode;
-		Company_Contactno = company_Contactno;
+		this.companyId = companyId;
+		this.companyName = companyName;
+		this.companyEmail = companyEmail;
+		this.companyCity = companyCity;
+		this.companyPincode = companyPincode;
+		this.companyContactNo = companyContactNo;
 		this.user = user;
 	}
-	public int getCompany_Id() {
-		return Company_Id;
+
+	public int getCompanyId() {
+		return companyId;
 	}
-	public void setCompany_Id(int company_Id) {
-		Company_Id = company_Id;
+
+	public void setCompanyId(int companyId) {
+		this.companyId = companyId;
 	}
-	public String getCompany_Name() {
-		return Company_Name;
+
+	public String getCompanyName() {
+		return companyName;
 	}
-	public void setCompany_Name(String company_Name) {
-		Company_Name = company_Name;
+
+	public void setCompanyName(String companyName) {
+		this.companyName = companyName;
 	}
-	public String getCompany_Emailid() {
-		return Company_Emailid;
+
+	public String getCompanyEmail() {
+		return companyEmail;
 	}
-	public void setCompany_Emailid(String company_Email) {
-		Company_Emailid = company_Email;
+
+	public void setCompanyEmail(String companyEmail) {
+		this.companyEmail = companyEmail;
 	}
-	public String getCompany_City() {
-		return Company_City;
+
+	public String getCompanyCity() {
+		return companyCity;
 	}
-	public void setCompany_City(String company_City) {
-		Company_City = company_City;
+
+	public void setCompanyCity(String companyCity) {
+		this.companyCity = companyCity;
 	}
-	public int getCompany_Pincode() {
-		return Company_Pincode;
+
+	public int getCompanyPincode() {
+		return companyPincode;
 	}
-	public void setCompany_Pincode(int company_Pincode) {
-		Company_Pincode = company_Pincode;
+
+	public void setCompanyPincode(int companyPincode) {
+		this.companyPincode = companyPincode;
 	}
-	public int getCompany_Contactno() {
-		return Company_Contactno;
-	} 
-	public void setCompany_Contactno(int company_Contact) {
-		Company_Contactno = company_Contact;
+
+	public int getCompanyContactNo() {
+		return companyContactNo;
 	}
+
+	public void setCompanyContactNo(int companyContactNo) {
+		this.companyContactNo = companyContactNo;
+	}
+
 	public User getUser() {
 		return user;
 	}
+
 	public void setUser(User user) {
 		this.user = user;
 	}
-	
 	
 }

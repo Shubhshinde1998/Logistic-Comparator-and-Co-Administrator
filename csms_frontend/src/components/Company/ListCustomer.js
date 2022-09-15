@@ -32,11 +32,11 @@ export default function ListCustomer() {
                 {
                     return(                        
                         <tr scope="row">
-                            <td >{v.customer_Name}</td>
-                            <td >{v.customer_Emailid}</td>
-                            <td >{v.customer_Contactno}</td>
-                            <td >{v.customer_City}</td>
-                            <td >{v.customer_Pincode}</td>
+                            <td >{v.customerName}</td>
+                            <td >{v.customerEmail}</td>
+                            <td >{v.customerContactNo}</td>
+                            <td >{v.customerCity}</td>
+                            <td >{v.customerPincode}</td>
                         </tr>
                         )
                     })

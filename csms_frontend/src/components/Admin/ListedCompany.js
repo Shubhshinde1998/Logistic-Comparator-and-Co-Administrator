@@ -48,13 +48,13 @@ export default function ListedCompany() {
                 {
                     return(                        
                         <tr scope="row">
-                            <td >{v.company_Name}</td>
-                            <td >{v.company_Emailid}</td>
-                            <td >{v.company_Contactno}</td>
-                            <td >{v.company_City}</td>
-                            <td >{v.company_Pincode}</td>
+                            <td >{v.companyName}</td>
+                            <td >{v.companyEmail}</td>
+                            <td >{v.companyContactNo}</td>
+                            <td >{v.companyCity}</td>
+                            <td >{v.companyPincode}</td>
                             <td><button className='btn btn-success'>Accept</button>
-                            <button className='btn btn-danger' onClick={() => { handleDelete(v.company_Id)}}>Delete</button></td>
+                            <button className='btn btn-danger' onClick={() => { handleDelete(v.companyId)}}>Delete</button></td>
                         </tr>
                         )
                     })

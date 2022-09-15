@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
-import com.object.csms.entity.Vehicles_Details;
+import com.object.csms.entity.VehicleDetails;
 import com.object.csms.service.VehicleService;
 
 @RestController
@@ -24,28 +24,28 @@ public class VehicleController {
 	VehicleService services;
 	
 	@GetMapping("/getallvehicle")
-	public Iterable<Vehicles_Details> getVehicle()
+	public Iterable<VehicleDetails> getVehicle()
 	{
-		Iterable<Vehicles_Details> vehi = services.listAll();
+		Iterable<VehicleDetails> vehi = services.listAll();
 		return vehi;    
 	}
 	
 	@GetMapping("/{id}/getvehicledetails")
-	public List<Vehicles_Details> getVehicleDetails(@PathVariable(name="id")int id)
+	public List<VehicleDetails> getVehicleDetails(@PathVariable(name="id")int id)
 	{
-		List<Vehicles_Details> resp = services.getVehicleByCompany_Id(id);
+		List<VehicleDetails> resp = services.getVehicleByCompanyId(id);
 		return resp;
 	}
 	
-	@PostMapping(value = "/vehicleregister")
-	private int saveVehicle (@RequestBody Vehicles_Details vehicle)  
+	@PostMapping("/vehicleregister")
+	private int saveVehicle (@RequestBody VehicleDetails vehicle)  
 	{  
 		services.saveOrUpdate(vehicle);  
-		return  vehicle.getVehicles_details_id();
+		return  vehicle.getVehicleDetailsId();
 	}
 	
 	@RequestMapping("/vehicle/{id}")  
-	private Vehicles_Details getVehicle(@PathVariable(name = "id") int id)  
+	private VehicleDetails getVehicle(@PathVariable(name = "id") int id)  
 	{  
 		return services.getVehicleById(id) ;
 	}  

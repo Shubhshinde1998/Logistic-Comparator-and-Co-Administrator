@@ -14,81 +14,96 @@ import javax.persistence.Table;
 public class Customer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int Customer_Id;
+	private int customerId;
 	
 	@Column(name="customer_name")
-	private String Customer_Name;
+	private String customerName;
 	
 	@Column(name="customer_emailid")
-	private String Customer_Emailid;
+	private String customerEmail;
 	
 	@Column(name="customer_city")
-	private String Customer_City;
+	private String customerCity;
 	
 	@Column(name="customer_pincode")
-	private int Customer_Pincode;
+	private int customerPincode;
 	
 	@Column(name="customer_contactno")
-	private int Customer_Contactno;	
+	private int customerContactNo;	
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="User_Id", referencedColumnName = "User_Id")
+	@JoinColumn(name="user_Id", referencedColumnName = "userId")
 	private User user;
 	
 	public Customer() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Customer(int customer_Id, String customer_Name, String customer_Emailid, String customer_City, int customer_Pincode,
-			int customer_Contactno, User user) {
+
+	public Customer(int customerId, String customerName, String customerEmail, String customerCity, int customerPincode,
+			int customerContactNo, User user) {
 		super();
-		Customer_Id = customer_Id;
-		Customer_Name = customer_Name;
-		Customer_Emailid = customer_Emailid;
-		Customer_City = customer_City;
-		Customer_Pincode = customer_Pincode;
-		Customer_Contactno = customer_Contactno;
+		this.customerId = customerId;
+		this.customerName = customerName;
+		this.customerEmail = customerEmail;
+		this.customerCity = customerCity;
+		this.customerPincode = customerPincode;
+		this.customerContactNo = customerContactNo;
 		this.user = user;
 	}
-	public int getCustomer_Id() {
-		return Customer_Id;
+
+	public int getCustomerId() {
+		return customerId;
 	}
-	public void setCustomer_Id(int customer_Id) {
-		Customer_Id = customer_Id;
+
+	public void setCustomerId(int customerId) {
+		this.customerId = customerId;
 	}
-	public String getCustomer_Name() {
-		return Customer_Name;
+
+	public String getCustomerName() {
+		return customerName;
 	}
-	public void setCustomer_Name(String customer_Name) {
-		Customer_Name = customer_Name;
+
+	public void setCustomerName(String customerName) {
+		this.customerName = customerName;
 	}
-	public String getCustomer_Emailid() {
-		return Customer_Emailid;
+
+	public String getCustomerEmail() {
+		return customerEmail;
 	}
-	public void setCustomer_Emailid(String customer_Emailid) {
-		Customer_Emailid = customer_Emailid;
+
+	public void setCustomerEmail(String customerEmail) {
+		this.customerEmail = customerEmail;
 	}
-	public String getCustomer_City() {
-		return Customer_City;
+
+	public String getCustomerCity() {
+		return customerCity;
 	}
-	public void setCustomer_City(String customer_City) {
-		Customer_City = customer_City;
+
+	public void setCustomerCity(String customerCity) {
+		this.customerCity = customerCity;
 	}
-	public int getCustomer_Pincode() {
-		return Customer_Pincode;
+
+	public int getCustomerPincode() {
+		return customerPincode;
 	}
-	public void setCustomer_Pincode(int customer_Pincode) {
-		Customer_Pincode = customer_Pincode;
+
+	public void setCustomerPincode(int customerPincode) {
+		this.customerPincode = customerPincode;
 	}
-	public int getCustomer_Contactno() {
-		return Customer_Contactno;
+
+	public int getCustomerContactNo() {
+		return customerContactNo;
 	}
-	public void setCustomer_Contactno(int customer_Contactno) {
-		Customer_Contactno = customer_Contactno;
+
+	public void setCustomerContactNo(int customerContactNo) {
+		this.customerContactNo = customerContactNo;
 	}
+
 	public User getUser() {
 		return user;
 	}
+
 	public void setUser(User user) {
 		this.user = user;
 	}

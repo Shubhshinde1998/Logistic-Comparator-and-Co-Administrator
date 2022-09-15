@@ -5,14 +5,6 @@ import ListVehicle from '../Company/ListVehicles';
 
 export default function DashboardCompany() {
 
-    const [customer,setCustomer] = useState([]);
-
-    useEffect(()=>
-    {
-        fetch("http://localhost:8080/getallcustomer")
-        .then(resp=>resp.json())
-        .then(data=>setCustomer(data))
-    },[]);
 
     return(
         <div className="col main pt-5 mt-3">

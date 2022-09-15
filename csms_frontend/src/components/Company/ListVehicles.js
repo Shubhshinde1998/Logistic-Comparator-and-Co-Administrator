@@ -16,7 +16,7 @@ export default function ListVehicle() {
     }
 
     const getVehicle = () =>{
-        let com= (JSON.parse(localStorage.getItem("company")).company_Id)
+        let com= (JSON.parse(localStorage.getItem("company")).companyId)
         fetch("http://localhost:8080/"+com+"/getvehicledetails")
         .then(resp=>resp.json())
         .then(data=>setVehicle(data))
@@ -43,9 +43,9 @@ export default function ListVehicle() {
                 {
                     return(                        
                         <tr scope="row">
-                            <td >{v.vehicles_details_no}</td>
+                            <td >{v.vehiclesDetailsNo}</td>
                             <td><button className='btn btn-success'>Accept</button>
-                            <button className='btn btn-danger'onClick={() => { handleDelete(v.vehicles_details_id)}}>Delete</button></td>
+                            <button className='btn btn-danger'onClick={() => { handleDelete(v.vehicleDetailsId)}}>Delete</button></td>
                         </tr>
                         )
                     })

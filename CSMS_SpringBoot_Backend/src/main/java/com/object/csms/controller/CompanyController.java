@@ -2,7 +2,6 @@ package com.object.csms.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -19,6 +18,7 @@ import com.object.csms.service.CompanyService;
 
 @RestController
 @CrossOrigin(origins="*")
+
 public class CompanyController {
 
 	@Autowired
@@ -47,7 +47,7 @@ public class CompanyController {
 	@PutMapping("/updatecompany/{id}")	 
     private Company update(@RequestBody Company company,@PathVariable int id)  
     {  
-		company.setCompany_Id(id);
+		company.setCompanyId(id);
 		services.saveOrUpdate(company); 
 		return company;  
     }  

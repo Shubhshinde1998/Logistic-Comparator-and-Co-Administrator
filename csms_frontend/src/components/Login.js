@@ -44,17 +44,17 @@ let Login = () => {
             const json=JSON.parse(data);
             
             if(!json.error){
-                if(json.user_Role===1)
+                if(json.userRole===1)
                 {      
                     localStorage.setItem("admin",data)    
                     navigate('/adminpanel');
                 }
-                else if(json.user.user_Role===2)
+                else if(json.user.userRole===2)
                 {
                     localStorage.setItem("company",data)
                     navigate('/companypanel');
                 }
-                else if(json.user.user_Role===3)
+                else if(json.user.userRole===3)
                 {
                     localStorage.setItem("customer",data)
                     navigate('/customerpanel');
