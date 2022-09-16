@@ -9,7 +9,7 @@ const SidebarCustomer = () => {
                 <li className="nav-item mb-2"><a className="nav-link text-secondary" href="#"><i className="fas fa-file-export font-weight-bold"></i><span className="ml-3">Pending Request</span></a></li>
                 <li className="nav-item mb-2"><a className="nav-link text-secondary" href="#"><i className="fas fa-tablet-alt font-weight-bold"></i><span className="ml-3">Feedback</span></a></li>
                 <li className="nav-item mb-2"><a className="nav-link text-secondary" href="#"><i className="fas fa-atom font-weight-bold"></i> <span className="ml-3">Complaint</span></a></li>
-                <li className="nav-item mb-2"><a className="nav-link text-secondary" href="#"><i className="far fa-folder font-weight-bold"></i> <span className="ml-3">Logout</span></a></li>
+                <li className="nav-item mb-2"><a className="nav-link text-secondary" href="/login" onClick={()=>{localStorage.removeItem("customer")}}><i className="far fa-folder font-weight-bold"></i> <span className="ml-3">Logout</span></a></li>
             </ul>
        </div>
     )
