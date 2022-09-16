@@ -1,5 +1,7 @@
 import React from 'react'
 import { useEffect, useState } from "react";
+import Complaint from '../Customer/Complaint';
+import Feedback from '../Customer/Feedback';
 
 export default function DashboardCustomer() {
 
@@ -42,6 +44,8 @@ export default function DashboardCustomer() {
                 }
                 </tbody>
             </table>
+            <Feedback/>
+            <Complaint/>
         </div>
     )
 }
