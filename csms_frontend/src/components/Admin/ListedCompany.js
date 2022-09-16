@@ -4,18 +4,27 @@ import {useEffect,useState} from 'react';
 export default function ListedCompany() {
     const [company,setCompany] = useState([]);  
    
-    useEffect(() => {
+   
+    const handleDelete = (id) => {
+        fetch(`http://localhost:8080/${id}/deletecompany`, {method: 'DELETE'})
+        .then(function(response) {
+            if(response.status === 200) {
+               alert("company delete succesfully");
+               getCompany();
+             };
+            })          
+    }
+  
+    const getCompany = () =>{
         fetch("http://localhost:8080/getallcompany")
         .then(resp=>resp.json())
         .then(data=>setCompany(data))
+    }
+    useEffect(() => {        
+        getCompany();
        },[])
 
-       /*deleteEmployee(id){
-        EmployeeService.deleteEmployee(id).then(res =>{
-            this.setState({employees:this.state.employees.filter(employee=> employee.id!=id)})
-        } );
-       }*/
-    return (
+        return (
         
         <div className="row ">
             <div className="">
@@ -39,13 +48,13 @@ export default function ListedCompany() {
                 {
                     return(                        
                         <tr scope="row">
-                            <td >{v.company_Name}</td>
-                            <td >{v.company_Emailid}</td>
-                            <td >{v.company_Contactno}</td>
-                            <td >{v.company_City}</td>
-                            <td >{v.company_Pincode}</td>
-                            <td><button className='btn btn-success'>Accept</button></td>
-                           { /*<td><button className='btn btn-danger' onClick={() => v.deleteEmployee(v.company_Id)}>Delete</button></td>*/}
+                            <td >{v.companyName}</td>
+                            <td >{v.companyEmail}</td>
+                            <td >{v.companyContactNo}</td>
+                            <td >{v.companyCity}</td>
+                            <td >{v.companyPincode}</td>
+                            <td><button className='btn btn-success'>Accept</button>
+                            <button className='btn btn-danger' onClick={() => { handleDelete(v.companyId)}}>Delete</button></td>
                         </tr>
                         )
                     })

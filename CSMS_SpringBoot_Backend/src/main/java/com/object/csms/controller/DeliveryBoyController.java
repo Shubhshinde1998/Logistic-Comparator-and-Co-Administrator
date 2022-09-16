@@ -12,45 +12,43 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.object.csms.entity.Delivery_Boy;
-import com.object.csms.entity.Vehicles_Details;
-import com.object.csms.service.Delivery_BoyService;
-import com.object.csms.service.VehicleService;
+import com.object.csms.entity.DeliveryBoy;
+import com.object.csms.service.DeliveryBoyService;
 
 @RestController
 @CrossOrigin(origins="*")
-public class Delivery_BoyController {
+public class DeliveryBoyController {
 	@Autowired
-	Delivery_BoyService services;
+	DeliveryBoyService services;
 	
 	@GetMapping("/getalldeliveryboy")
-	public Iterable<Delivery_Boy> getDelivery_Boy()
+	public Iterable<DeliveryBoy> getDelivery_Boy()
 	{
-		Iterable<Delivery_Boy> deli = services.listAll();
+		Iterable<DeliveryBoy> deli = services.listAll();
 		return deli;    
 	}
 	
 	@GetMapping("/{id}/getdeliverydetails")
-	public List<Delivery_Boy> getDeliveryDetails(@PathVariable(name="id")int id)
+	public List<DeliveryBoy> getDeliveryDetails(@PathVariable(name="id")int id)
 	{
-		List<Delivery_Boy> resp = services.getDelivery_BoyByCompany_Id(id);
+		List<DeliveryBoy> resp = services.getDeliveryBoyByCompanyId(id);
 		return resp;
 	}
 	
-	@PostMapping(value = "/deliveryboyregister")
-	private int saveVehicle (@RequestBody Delivery_Boy delivery)  
+	@PostMapping("/deliveryboyregister")
+	private int saveVehicle (@RequestBody DeliveryBoy delivery)  
 	{  
 		services.saveOrUpdate(delivery);  
-		return delivery.getDelivery_boy_id();
+		return delivery.getDeliveryBoyId();
 	}
 	
 	@RequestMapping("/deliveryboy/{id}")  
-	private Delivery_Boy  getDelivery_Boy(@PathVariable(name = "id") int id)  
+	private DeliveryBoy  getDelivery_Boy(@PathVariable(name = "id") int id)  
 	{  
-		return services.getDelivery_BoyById(id);
+		return services.getDeliveryBoyById(id);
 	}  
 
-	@DeleteMapping("/deletedeliveryboy/{id}")  
+	@DeleteMapping("/{id}/deletedeliveryboy")  
 	private void deleteDelivery_Boy(@PathVariable("id") int id)  
 	{  
 		services.delete(id);

@@ -1,4 +1,4 @@
-import {useReducer, useState,useEffect} from 'react';
+import {useReducer} from 'react';
 import "../styles/Login.css";
 import { useNavigate } from 'react-router-dom';
 
@@ -44,17 +44,17 @@ let Login = () => {
             const json=JSON.parse(data);
             
             if(!json.error){
-                if(json.user_Role==1)
+                if(json.userRole===1)
                 {      
                     localStorage.setItem("admin",data)    
                     navigate('/adminpanel');
                 }
-                else if(json.user.user_Role==2)
+                else if(json.user.userRole===2)
                 {
                     localStorage.setItem("company",data)
                     navigate('/companypanel');
                 }
-                else if(json.user.user_Role==3)
+                else if(json.user.userRole===3)
                 {
                     localStorage.setItem("customer",data)
                     navigate('/customerpanel');
@@ -87,7 +87,7 @@ let Login = () => {
             </div>
                
                 <input type="submit" className="btn btn-primary btn-block mb-4" value="Submit" 
-                onClick={ (e)=> {sendData(e)} }
+                onClick={ (e)=> {sendData(e)}}
                 />
                 <input type="reset" value="Clear" className="btn btn-primary btn-block mb-4"
                 onClick={ ()=>{dispatch({type: 'clear'})} }

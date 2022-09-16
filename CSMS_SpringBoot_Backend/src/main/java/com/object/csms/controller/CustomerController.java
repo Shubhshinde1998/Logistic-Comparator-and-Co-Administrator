@@ -16,12 +16,6 @@ import com.object.csms.service.CustomerService;
 
 
 @RestController
-
-
-
-
-
-
 @CrossOrigin(origins="*")
 public class CustomerController {
 	@Autowired
@@ -37,7 +31,7 @@ public class CustomerController {
 	private int saveCustomer (@RequestBody Customer customer)  
 	{  
 		services.saveOrUpdate(customer);  
-		return  customer.getCustomer_Id();
+		return  customer.getCustomerId();
 	}
 	
 	@RequestMapping("/customer/{id}")  
@@ -49,14 +43,14 @@ public class CustomerController {
 	@PutMapping("/updatecustomer/{id}")	 
     private Customer update(@RequestBody Customer customer,@PathVariable int id)  
     {  
-		customer.setCustomer_Id(id);
+		customer.setCustomerId(id);
 		services.saveOrUpdate(customer); 
 		return customer;  
     }  
 	 
-	@DeleteMapping("/deletecustomer/{id}")  
+	@DeleteMapping("{id}/deletecustomer")  
 	private void deleteCustomer(@PathVariable("id") int id)  
 	{  
-		services.delete(id);  
+		services.delete(id);
 	}  
 }
