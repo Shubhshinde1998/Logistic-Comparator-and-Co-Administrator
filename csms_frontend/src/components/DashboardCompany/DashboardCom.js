@@ -4,6 +4,7 @@ import ListCustomer from '../Company/ListCustomer';
 import ListDeliveryBoy from '../Company/ListDeliveryBoy';
 import ListVehicle from '../Company/ListVehicles';
 import AddVehicle from '../Company/AddVehicle';
+import ListCategoryPrice from '../Company/ListCategoryPrice';
 
 export default function DashboardCompany() {
 
@@ -60,12 +61,14 @@ export default function DashboardCompany() {
         
         <div>
             <hr/>
-       <ListCustomer/>
+       {/*<ListCustomer/>*/}
        <hr/>
        <ListDeliveryBoy/>
        <hr/>
        <ListVehicle/>     
        <hr/> 
+       <ListCategoryPrice/>
+       <hr/>
        <AddDeliveryBoy/>
        <hr/>
        <AddVehicle/>

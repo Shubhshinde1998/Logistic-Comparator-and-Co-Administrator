@@ -30,7 +30,7 @@ public class CompanyController {
 		return services.listAll();    
 	}
 	
-	@PostMapping(value = "/companyregister")
+	@PostMapping("/companyregister")
 	private ResponseEntity<Company> saveCompany (@RequestBody Company company)  
 	{  
 		services.saveOrUpdate(company);

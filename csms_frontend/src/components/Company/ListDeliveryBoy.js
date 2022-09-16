@@ -3,7 +3,7 @@ import {useEffect,useState} from 'react';
 
 export default function ListDeliveryBoy() {
     const [delivery,setDelivery] = useState([]);  
-   
+
     
     const handleDelete = (id) => {
         fetch(`http://localhost:8080/${id}/deletedeliveryboy`, {method: 'DELETE'})
@@ -20,7 +20,6 @@ export default function ListDeliveryBoy() {
         fetch("http://localhost:8080/"+com+"/getdeliverydetails")
         .then(resp=>resp.json())
         .then(data=>setDelivery(data))
-
     }
     useEffect(() => {
         getDeliveryBoy();
