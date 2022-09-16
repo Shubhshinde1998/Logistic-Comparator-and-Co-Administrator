@@ -81,7 +81,7 @@ let AddDeliveryBoy =() =>
                     />                
             </div>
             <div className="form-outline mb-4">
-                <input type="number" id="form3Example7" className="form-control" placeholder="age"name="Age" value={com.age}
+                <input type="number" id="form3Example7" className="form-control" placeholder="Age"name="Age" value={com.age}
                     onChange={ (e)=>{dispatch({type: 'update', field: 'age', val: e.target.value })} }
                     />                
             </div>
