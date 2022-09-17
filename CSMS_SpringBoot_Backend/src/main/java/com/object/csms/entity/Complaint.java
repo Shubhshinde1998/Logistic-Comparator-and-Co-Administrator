@@ -17,21 +17,19 @@ public class Complaint {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int complaintId;
 	
-	
-	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="complaint_description", referencedColumnName = "complaint_description",nullable=false)
-	private Category complaintDescription;
+	@Column (name="complaint_description",nullable=false)
+	private String complaintDescription;
+
 	
 	@Column (name="complaint_status",nullable=false)
-	private int complaintStatus;
+	private String complaintStatus;
 
 	public Complaint() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Complaint(int complaintId, int customerId, Category complaintDescription, int complaintStatus) {
+	public Complaint(int complaintId, int customerId, String complaintDescription, String complaintStatus) {
 		super();
 		this.complaintId = complaintId;
 		this.complaintDescription = complaintDescription;
@@ -48,19 +46,19 @@ public class Complaint {
 
 
 
-	public Category getComplaintDescription() {
+	public String getComplaintDescription() {
 		return complaintDescription;
 	}
 
-	public void setComplaintDescription(Category complaintDescription) {
+	public void setComplaintDescription(String complaintDescription) {
 		this.complaintDescription = complaintDescription;
 	}
 
-	public int getComplaintStatus() {
+	public String getComplaintStatus() {
 		return complaintStatus;
 	}
 
-	public void setComplaintStatus(int complaintStatus) {
+	public void setComplaintStatus(String complaintStatus) {
 		this.complaintStatus = complaintStatus;
 	}
 

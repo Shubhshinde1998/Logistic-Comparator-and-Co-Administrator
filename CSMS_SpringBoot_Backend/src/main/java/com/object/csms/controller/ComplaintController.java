@@ -33,7 +33,7 @@ public class ComplaintController {
 	@PutMapping("/updatecomplaint/{id}")
 	public Complaint updateComplaint(@RequestBody Complaint update,@PathVariable(name="id") int id )
 	{
-		update.setComplaintStatus(id);
+		update.setComplaintId(id);
 		services.updateComplaintStatus(update);
 		return update;
 	}
