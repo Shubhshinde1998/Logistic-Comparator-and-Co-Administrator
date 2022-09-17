@@ -28,12 +28,7 @@ function App() {
           <Route path="/companypanel"  element={<DashboardCompany/>} />
           <Route path="/customerpanel"  element={<DashboardCustomer/>} />      
         </Routes>
-    
-
-  </Router>
-   <AddDeliveryBoy/>
-  
-  
+  </Router>  
    </div>
   );
 }

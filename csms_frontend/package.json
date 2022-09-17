@@ -15,11 +15,8 @@
     "react-redux": "^8.0.2",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
-<<<<<<< HEAD
     "reactjs-popup": "^2.0.5",
-=======
     "react-toastify": "^9.0.8",
->>>>>>> 36c50a4aa50a31dc7e52fd05ac492a7c2d14956f
     "web-vitals": "^2.1.4"
   },
   "scripts": {

@@ -15,13 +15,8 @@ import javax.persistence.Table;
 public class Complaint {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int complaintId;
+	private int complaintId;	
 	
-	
-	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="complaint_description", referencedColumnName = "complaint_description",nullable=false)
-	private Category complaintDescription;
 	
 	@Column (name="complaint_status",nullable=false)
 	private int complaintStatus;

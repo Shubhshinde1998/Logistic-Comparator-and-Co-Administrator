@@ -44,12 +44,11 @@ export default function DashboardCustomer() {
                 }
                 </tbody>
             </table>
-<<<<<<< HEAD
-            
-=======
+
+
             <Feedback/>
             <Complaint/>
->>>>>>> 36c50a4aa50a31dc7e52fd05ac492a7c2d14956f
+
         </div>
     )
 }

@@ -1,6 +1,5 @@
 import React from 'react'
 import AddDeliveryBoy from '../Company/AddDeliveryBoy';
-import ListCustomer from '../Company/ListCustomer';
 import ListDeliveryBoy from '../Company/ListDeliveryBoy';
 import ListVehicle from '../Company/ListVehicles';
 import AddVehicle from '../Company/AddVehicle';
@@ -68,6 +67,7 @@ export default function DashboardCompany() {
        <ListVehicle/>     
        <hr/> 
        <ListCategoryPrice/>
+       <hr/>
        <AddDeliveryBoy/>
        <hr/>
        <AddVehicle/>
