@@ -43,9 +43,17 @@ export default function DashboardCustomer() {
                     })
                 }
                 </tbody>
+
             </table> */}
+
+            
+
+            
+
+
             <Feedback/>
             <Complaint/>
+
         </div>
     )
 }

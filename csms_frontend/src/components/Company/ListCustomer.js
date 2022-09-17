@@ -14,6 +14,7 @@ export default function ListCustomer() {
 
     return(
     <div className="col main pt-5 mt-3">
+        <h3>Customer List</h3>
       <table className="table table-striped">
             <thead>
                 <tr>

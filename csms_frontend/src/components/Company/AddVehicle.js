@@ -26,8 +26,7 @@ export default function AddVehicle() {
                 headers: {
                     "content-type":"application/json"
                 },
-                body: JSON.stringify({
-                   
+                body: JSON.stringify({                   
                     vehiclesDetailsNo: com.vehicleno,
                     companyId: company                    
                 })    

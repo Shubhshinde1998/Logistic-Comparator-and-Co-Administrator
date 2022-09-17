@@ -28,6 +28,7 @@ export default function ListVehicle() {
 
     return (        
         <div className="row ">
+            <h3>Vehicle List</h3>
             <div className="">
             <div className="table-responsive">                        
             <table className="table table-striped">
