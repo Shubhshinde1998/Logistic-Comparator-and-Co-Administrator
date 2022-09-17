@@ -1,4 +1,5 @@
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from './components/Home';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import CompanyReg from './components/CompanyReg';
@@ -27,9 +28,10 @@ function App() {
           <Route path="/companypanel"  element={<DashboardCompany/>} />
           <Route path="/customerpanel"  element={<DashboardCustomer/>} />      
         </Routes>
+    
 
   </Router>
-   
+   <AddDeliveryBoy/>
   
   
    </div>
