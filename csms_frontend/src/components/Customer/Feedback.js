@@ -16,7 +16,7 @@ const reducer = (state,action) => {
 
 export default function Feedback() {
     const [cus, dispatch] = useReducer(reducer, init);
-    
+
     let customerName= (JSON.parse(localStorage.getItem("customer")).customerName)
     
     const sendData = (e) => {    
@@ -35,13 +35,12 @@ export default function Feedback() {
                 })    
             }
             
-        fetch("http://localhost:8080/feedback",reqData)
+        fetch("http://localhost:8080/feedbackregister",reqData)
         .then(function(response) {
             if(response.status === 200) {
                alert("Feedback send succesfully");
              }
-             else
-                alert("unable to add vehicle")
+             
             }) 
        
     }
