@@ -35,7 +35,7 @@ export default function Complaint() {
             }
 
             
-        fetch("http://localhost:8080/feedback",reqData)
+        fetch("http://localhost:8080/updatecomplaint/{id}",reqData)
         .then(function(response) {
             if(response.status === 200) {
                alert("Complaint send succesfully");
