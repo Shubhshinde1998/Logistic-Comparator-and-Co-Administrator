@@ -2,6 +2,7 @@ import React from 'react'
 import { useEffect, useState } from "react";
 import Complaint from '../Customer/Complaint';
 import Feedback from '../Customer/Feedback';
+import Orders from '../Customer/Orders';
 
 export default function DashboardCustomer() {
 
@@ -53,6 +54,7 @@ export default function DashboardCustomer() {
 
             <Feedback/>
             <Complaint/>
+            <Orders/>
 
         </div>
     )

@@ -16,7 +16,7 @@ const reducer = (state,action) => {
 
 export default function Feedback() {
     const [cus, dispatch] = useReducer(reducer, init);
-    
+
     let customerName= (JSON.parse(localStorage.getItem("customer")).customerName)
     
     const sendData = (e) => {    
@@ -42,6 +42,7 @@ export default function Feedback() {
              }
              else
                 alert("unable to add Feedback");
+
             }) 
        
     }
