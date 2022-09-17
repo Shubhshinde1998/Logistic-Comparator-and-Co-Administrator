@@ -31,6 +31,10 @@ public class UserService {
 	{  
 		repo.save(users); 		
 	}
+	public Optional<User> getById(int id)
+	{
+		return repo.findById(id);
+	}
 	
 	public User getUserById(int id)  
 	{  

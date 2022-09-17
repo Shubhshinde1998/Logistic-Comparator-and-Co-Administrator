@@ -18,23 +18,25 @@ public class Complaint {
 	private int complaintId;
 	
 	
+	@Column (name="complaint_description",nullable=false)
+	private String complaintDescription;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="complaint_description", referencedColumnName = "complaint_description",nullable=false)
-	private Category complaintDescription;
+	@Column(name="customer_id",nullable=false)
+	private int customerId;
 	
 	@Column (name="complaint_status",nullable=false)
-	private int complaintStatus;
+	private String complaintStatus;
 
 	public Complaint() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Complaint(int complaintId, int customerId, Category complaintDescription, int complaintStatus) {
+	public Complaint(int complaintId, String complaintDescription, int customerId, String complaintStatus) {
 		super();
 		this.complaintId = complaintId;
 		this.complaintDescription = complaintDescription;
+		this.customerId = customerId;
 		this.complaintStatus = complaintStatus;
 	}
 
@@ -46,24 +48,31 @@ public class Complaint {
 		this.complaintId = complaintId;
 	}
 
-
-
-	public Category getComplaintDescription() {
+	public String getComplaintDescription() {
 		return complaintDescription;
 	}
 
-	public void setComplaintDescription(Category complaintDescription) {
+	public void setComplaintDescription(String complaintDescription) {
 		this.complaintDescription = complaintDescription;
 	}
 
-	public int getComplaintStatus() {
+	public int getCustomerId() {
+		return customerId;
+	}
+
+	public void setCustomerId(int customerId) {
+		this.customerId = customerId;
+	}
+
+	public String getComplaintStatus() {
 		return complaintStatus;
 	}
 
-	public void setComplaintStatus(int complaintStatus) {
+	public void setComplaintStatus(String complaintStatus) {
 		this.complaintStatus = complaintStatus;
 	}
 
+	
 	
 	
 }

@@ -60,15 +60,14 @@ export default function DashboardCompany() {
         </div>
         
         <div>
-            <hr/>
+       
        {/*<ListCustomer/>*/}
-       <hr/>
+  
        <ListDeliveryBoy/>
        <hr/>
        <ListVehicle/>     
        <hr/> 
        <ListCategoryPrice/>
-       <hr/>
        <AddDeliveryBoy/>
        <hr/>
        <AddVehicle/>

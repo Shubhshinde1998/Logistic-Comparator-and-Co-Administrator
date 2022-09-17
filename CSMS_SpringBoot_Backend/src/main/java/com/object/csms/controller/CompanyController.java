@@ -1,5 +1,8 @@
 package com.object.csms.controller;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,6 +33,12 @@ public class CompanyController {
 		return services.listAll();    
 	}
 	
+	@GetMapping("pendingcompany")
+	public List<Company> getCompanyByStatus()
+	{
+		return services.findByUserId();
+	}
+	
 	@PostMapping("/companyregister")
 	private ResponseEntity<Company> saveCompany (@RequestBody Company company)  
 	{  
@@ -50,7 +59,13 @@ public class CompanyController {
 		company.setCompanyId(id);
 		services.saveOrUpdate(company); 
 		return company;  
-    }  
+    } 
+	
+	@PutMapping("/approve/{id}")
+	public Optional<Company> approved(@PathVariable int id)
+	{
+		return services.approved(id);
+	}
 	 
 	@DeleteMapping("/{id}/deletecompany")  
 	private void deleteCompany(@PathVariable("id") int id)  

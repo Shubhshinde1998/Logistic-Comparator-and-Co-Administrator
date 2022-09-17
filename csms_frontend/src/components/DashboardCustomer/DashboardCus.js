@@ -2,6 +2,7 @@ import React from 'react'
 import { useEffect, useState } from "react";
 import Complaint from '../Customer/Complaint';
 import Feedback from '../Customer/Feedback';
+import Orders from '../Customer/Orders';
 
 export default function DashboardCustomer() {
 
@@ -16,7 +17,7 @@ export default function DashboardCustomer() {
 
     return(
     <div className="col main pt-5 mt-3">
-
+{/*
             <table className="table table-striped" style={{Color:"white",textAlign:"left",margin:"50px"}}>
             <thead>
                 <tr>
@@ -43,9 +44,18 @@ export default function DashboardCustomer() {
                     })
                 }
                 </tbody>
-            </table>
+
+            </table> */}
+
+            
+
+            
+
+
             <Feedback/>
             <Complaint/>
+            <Orders/>
+
         </div>
     )
 }

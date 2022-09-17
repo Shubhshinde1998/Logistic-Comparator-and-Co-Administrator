@@ -50,6 +50,7 @@ export default function ListCategoryPrice() {
     return (        
         <div className="row ">
             <div className="">
+                <h3>Category Price</h3>
             <div className="table-responsive">                        
             <table className="table table-striped">
             <thead className="thead-light">

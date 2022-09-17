@@ -30,7 +30,7 @@ export default function Feedback() {
                 },
                 body: JSON.stringify({
                    
-                    vehiclesDetailsNo: cus.feedback,
+                    feedbackDiscription: cus.feedback,
                     customerId: customer                    
                 })    
             }
@@ -40,7 +40,9 @@ export default function Feedback() {
             if(response.status === 200) {
                alert("Feedback send succesfully");
              }
-             
+             else
+                alert("unable to add Feedback");
+
             }) 
        
     }
@@ -57,7 +59,7 @@ export default function Feedback() {
                 </div>   
         
         <form className="formreg">
-        <h6>Feedback:</h6>            
+        <h6>Feedback:</h6>           
         <div className="form-outline mb-4">
             <input type="textarea" id="form3Example4" className="form-control" placeholder=" Write your feedback here" name="feedback" value={cus.feedback}
                 onChange={ (e)=>{dispatch({type: 'update', field: 'feedback', val: e.target.value })} }

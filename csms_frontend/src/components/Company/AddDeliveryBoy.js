@@ -83,14 +83,14 @@ let AddDeliveryBoy =() =>
             </div>
             
             <div className="form-outline mb-4">
-<<<<<<< HEAD
+
                 <input type="number" id="form3Example6" className="form-control" placeholder="Emailid"name="Email" value={com.emailid}
                     onChange={ (e)=>{dispatch({type: 'update', field: 'emailid', val: e.target.value })} }
                     />                
             </div>
             <div className="form-outline mb-4">
-=======
->>>>>>> 5b7fc9553e2b0f24e9c24bfca874484d74459803
+
+
                 <input type="number" id="form3Example7" className="form-control" placeholder="Age"name="Age" value={com.age}
                     onChange={ (e)=>{dispatch({type: 'update', field: 'age', val: e.target.value })} }
                     />                
