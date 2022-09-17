@@ -27,7 +27,6 @@ let CustomerReg =() =>
     
     const [cus, dispatch] = useReducer(reducer, init);
     const[agree,setAgree]=useState(false);
-    const[book,setBook]=useState({});
     const navigate = useNavigate();
     const sendData = (e) => {    
         e.preventDefault();
@@ -40,26 +39,25 @@ let CustomerReg =() =>
                 },
                 body: JSON.stringify({
                     user:{         
-                        user_Password : cus.password,
-                        user_Role : cus.role,
-                        user_Username : cus.name,
-                        user_Status:"false"
+                        userPassword : cus.password,
+                        userRole : cus.role,
+                        userUsername : cus.name,
+                        userStatus:"false"
                      },
-                    customer_Name : cus.name,
-                    customer_Emailid : cus.email,
-                    customer_City : cus.city,
-                    customer_Pincode : cus.pincode,
-                    customer_Contactno : cus.contact
+                    customerName : cus.name,
+                    customerEmail : cus.email,
+                    customerCity : cus.city,
+                    customerPincode : cus.pincode,
+                    customerContactNo : cus.contact
 
                 })    
             }
             
         fetch("http://localhost:8080/customerregister",reqData)
-        .then(resp => (resp.ok ? resp : Promise.reject(resp)))
-        .then(resp => resp.json())
-        .then(data => setBook(data))   
-        navigate('/login');
-    
+        .then(resp => {if(resp.status===200){            
+            navigate('/login')}
+        else{alert("failed")}    
+    })
         }
         else{
             alert("accept terms and condition")
@@ -71,14 +69,13 @@ let CustomerReg =() =>
             <form className="formreg">
 
             <div className="form-outline mb-4">
-                <input type="text" id="form3Example3" className="form-control" placeholder="Name" name="Customer_Name" value={cus.name}
+                <input type="text" id="form3Example3" className="form-control" placeholder="Name" name="CustomerName" value={cus.name}
                     onChange={ (e)=>{dispatch({type: 'update', field: 'name', val: e.target.value })} }
-
                      />                
             </div>
             <div className="form-outline mb-4">
                 <input type="email" id="form3Example4" className="form-control" placeholder="Email"name="email" value={cus.email}
-                    onChange={ (e)=>{dispatch({type: 'update', field: ' email', val: e.target.value })} }
+                    onChange={ (e)=>{dispatch({type: 'update', field: 'email', val: e.target.value })} }
                     />                
             </div>
             <div className="form-outline mb-4">

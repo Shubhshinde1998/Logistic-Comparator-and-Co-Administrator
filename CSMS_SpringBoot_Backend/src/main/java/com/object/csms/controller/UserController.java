@@ -1,9 +1,5 @@
 package com.object.csms.controller;
-
-import java.io.Console;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -33,14 +29,14 @@ public class UserController {
 		return services.listAll();    
 	}
 	 
-	@PostMapping(value = "/save")
+	@PostMapping("/save")
 	public int saveUser(@RequestBody User user)  
 	{  
-		services.saveOrUpdate(user);  
-		return  user.getUser_Id();  
+		services.saveOrUpdate(user);
+		return  user.getUserId();  
 	}
 	
-	@PostMapping(value="/login")
+	@PostMapping("/login")
 	public Object checkLogin(@RequestBody LoginRequest users)
 	{	
 		return services.checkLogin(users.getUsername(), users.getPassword());
@@ -55,7 +51,7 @@ public class UserController {
 	@PutMapping("/update/{id}")	 
     public User update(@RequestBody User users,@PathVariable int id)  
     {  
-		users.setUser_Id(id);
+		users.setUserId(id);
 		services.saveOrUpdate(users); 
 		return users;  
     }  

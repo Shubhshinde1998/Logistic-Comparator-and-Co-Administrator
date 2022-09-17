@@ -2,23 +2,22 @@
 import React from "react";
 import {useState, useReducer} from 'react';
 import "../../styles/Registration.css";
-import { useNavigate } from 'react-router-dom';
-const init = {
-    
-   
+
+const init = {      
    name:"",
    contactno:"",
-   emailid:"",
+   email:"",
    age:"",
-   licence:"",
-    
+   licence:"",    
     agree:false
 }
+
 const reducer = (state,action) => {
     switch(action.type){
         case 'update':
             return { ...state, [action.field]: action.val}; 
-            case 'clear':return init   
+        case 'clear':
+            return init   
     }
 }
 
@@ -27,10 +26,10 @@ let AddDeliveryBoy =() =>
     
     const [com, dispatch] = useReducer(reducer, init);
     const[agree,setAgree]=useState(false);
-    const[book,setBook]=useState({});
-    const navigate = useNavigate();
+   
     const sendData = (e) => {    
-        e.preventDefault();
+        //e.preventDefault();
+        let company= (JSON.parse(localStorage.getItem("company")).companyId)
         if(agree)
         {
             const reqData = {
@@ -40,20 +39,24 @@ let AddDeliveryBoy =() =>
                 },
                 body: JSON.stringify({
                    
-                    Name: com.name,
-                    Emailid: com.email,
-                    Contact: com.contactno,
-                    Age: com.age,
-                    License: com.license
+                    deliveryBoyName: com.name,
+                    deliveryBoyEmail: com.email,
+                    deliveryBoyContactNo: com.contactno,
+                    deliveryBoyAge: com.age,
+                    deliveryBoyLicense: com.licence,
+                    companyId: company                    
                 })    
             }
             
-        fetch("http://localhost:8080/adddeliveryboy",reqData)
-        .then(resp => (resp.ok ? resp : Promise.reject(resp)))
-        .then(resp => resp.json())
-        .then(data => setBook(data))   
-        navigate('/company');
-    
+        fetch("http://localhost:8080/deliveryboyregister",reqData)
+        .then(function(response) {
+            if(response.status === 200) {
+               alert("Delivery Boy added succesfully");
+             }
+             else
+                alert("unable to add deliveryboy")
+            }) 
+
         }
         else{
             alert("accept terms and condition")
@@ -61,32 +64,39 @@ let AddDeliveryBoy =() =>
     }
     return(
         <div className="register">
-            <h1>Registration Form</h1>
-            <form className="formreg">
-
-            
+            <h1>Add Delivery Boy</h1>
+            <form className="formreg">            
             <div className="form-outline mb-4">
-                <input type="email" id="form3Example4" className="form-control" placeholder="Name" name="Name" value={com.name}
+                <input type="text" id="form3Example4" className="form-control" placeholder="Name" name="Name" value={com.name}
                     onChange={ (e)=>{dispatch({type: 'update', field: 'name', val: e.target.value })} }
                     />                
             </div>
             <div className="form-outline mb-4">
-                <input type="text" id="form3Example5" className="form-control" placeholder="Contactno" name="Contact" value={com.contactno}
-                    onChange={ (e)=>{dispatch({type: 'update', field: 'contactno', val: e.target.value })} }
+                <input type="email" id="form3Example6" className="form-control" placeholder="Email Id"name="Email" value={com.email}
+                    onChange={ (e)=>{dispatch({type: 'update', field: 'email', val: e.target.value })} }
                     />                
             </div>
             <div className="form-outline mb-4">
+                <input type="number" id="form3Example5" className="form-control" placeholder="Contact No" name="Contact" value={com.contactno}
+                    onChange={ (e)=>{dispatch({type: 'update', field: 'contactno', val: e.target.value })} }
+                    />                
+            </div>
+            
+            <div className="form-outline mb-4">
+<<<<<<< HEAD
                 <input type="number" id="form3Example6" className="form-control" placeholder="Emailid"name="Email" value={com.emailid}
                     onChange={ (e)=>{dispatch({type: 'update', field: 'emailid', val: e.target.value })} }
                     />                
             </div>
             <div className="form-outline mb-4">
+=======
+>>>>>>> 5b7fc9553e2b0f24e9c24bfca874484d74459803
                 <input type="number" id="form3Example7" className="form-control" placeholder="Age"name="Age" value={com.age}
                     onChange={ (e)=>{dispatch({type: 'update', field: 'age', val: e.target.value })} }
                     />                
             </div>
             <div className="form-outline mb-4">
-                <input type="password" id="form3Example8" className="form-control" placeholder="Licence" name="Licence" value={com.licence}
+                <input type="number" id="form3Example8" className="form-control" placeholder="Licence No." name="Licence" value={com.licence}
                     onChange={ (e)=>{dispatch({type: 'update', field: 'licence', val: e.target.value })} }
                     />                
             </div>
@@ -97,9 +107,6 @@ let AddDeliveryBoy =() =>
             </div>
             <button type="submit" id="btn1"className="btn btn-primary btn-block mb-4" value="Submit" 
                 onClick = { (e)=>{ sendData(e) } }>Submit</button>
-            <div className="text-center">
-                <p>Already Have Account? <a href="/login">Login</a></p>
-                </div>
             </form>
             
         </div>

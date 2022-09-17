@@ -5,8 +5,8 @@ import "../styles/Registration.css";
 import { useNavigate } from 'react-router-dom';
 const init = {
     
-   company_name: "",
-   company_email:"",
+   company_name: null,
+   company_email:null,
     city:"",
     pincode:"",
     contact:"",
@@ -27,10 +27,9 @@ let CompanyReg =() =>
     
     const [com, dispatch] = useReducer(reducer, init);
     const[agree,setAgree]=useState(false);
-    const[book,setBook]=useState({});
     const navigate = useNavigate();
     const sendData = (e) => {    
-        e.preventDefault();
+       e.preventDefault();
         if(agree)
         {
             const reqData = {
@@ -40,29 +39,24 @@ let CompanyReg =() =>
                 },
                 body: JSON.stringify({
                     user:{         
-                        user_Password: com.password,
-                        user_Role: com.role,
-                        user_Username: com.company_name,
-                        user_Status:"false"
+                        userPassword: com.password,
+                        userRole: com.role,
+                        userUsername: com.company_name,
+                        userStatus:"false"
                      },
-                    company_Name: com.company_name,
-                    company_Emailid: com.company_email,
-                    company_City: com.city,
-                    company_Pincode: com.pincode,
-                    company_Contactno: com.contact
+                    companyName: com.company_name,
+                    companyEmail: com.company_email,
+                    companyCity: com.city,
+                    companyPincode: com.pincode,
+                    companyContactNo: com.contact
                 })    
             }
             
         fetch("http://localhost:8080/companyregister",reqData)
-        .then(resp => (resp.ok ? resp : Promise.reject(resp)))
-        .then(resp => resp.json())
-        .then(data =>{ 
-            if(data>0)
-            {
-                navigate('/login');
-            }
-        })          
-    
+        .then(resp => {if(resp.status===201){            
+            navigate('/login')}
+        else{alert("failed")}    
+    })
         }
         else{
             alert("accept terms and condition")
@@ -75,7 +69,7 @@ let CompanyReg =() =>
 
             <div className="form-outline mb-4">
                 <input type="text" id="form3Example3" className="form-control" placeholder="Name"name="Company_Name" value={com.company_name}
-                    onChange={ (e)=>{dispatch({type: 'update', field: 'company_name', val: e.target.value })} }
+                    onChange={ (e)=>{dispatch({type: 'update', field: 'company_name', val: e.target.value ,require:true})} }
                      />                
             </div>
             <div className="form-outline mb-4">

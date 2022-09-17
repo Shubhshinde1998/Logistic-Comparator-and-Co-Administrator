@@ -14,7 +14,6 @@ export default function DashboardCustomer() {
 
     return(
     <div className="col main pt-5 mt-3">
-        <h1>DashboardCustomer</h1>
 
             <table className="table table-striped" style={{Color:"white",textAlign:"left",margin:"50px"}}>
             <thead>

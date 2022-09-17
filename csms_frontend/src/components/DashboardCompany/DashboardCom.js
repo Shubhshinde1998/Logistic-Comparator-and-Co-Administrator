@@ -1,28 +1,17 @@
 import React from 'react'
-import { useEffect, useState } from "react";
+import AddDeliveryBoy from '../Company/AddDeliveryBoy';
 import ListCustomer from '../Company/ListCustomer';
+import ListDeliveryBoy from '../Company/ListDeliveryBoy';
 import ListVehicle from '../Company/ListVehicles';
+import AddVehicle from '../Company/AddVehicle';
+import ListCategoryPrice from '../Company/ListCategoryPrice';
 
 export default function DashboardCompany() {
 
-    const [customer,setCustomer] = useState([]);
-
-    useEffect(()=>
-    {
-        fetch("http://localhost:8080/getallcustomer")
-        .then(resp=>resp.json())
-        .then(data=>setCustomer(data))
-    },[]);
 
     return(
         <div className="col main pt-5 mt-3">
-        <div className="alert alert-warning fade collapse" role="alert" id="myAlert">
-            <button type="button" className="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">×</span>
-                <span className="sr-only">Close</span>
-            </button>
-            <strong>Data and Records</strong> Learn more about employee
-        </div>
+    
         <div className="row mb-3">
             <div className="col-xl-3 col-sm-6 py-2">
                 <div className="card bg-success text-white h-100">
@@ -71,9 +60,19 @@ export default function DashboardCompany() {
         </div>
         
         <div>
-       <ListCustomer/>
-       <ListVehicle/>
-                    
+            <hr/>
+       {/*<ListCustomer/>*/}
+       <hr/>
+       <ListDeliveryBoy/>
+       <hr/>
+       <ListVehicle/>     
+       <hr/> 
+       <ListCategoryPrice/>
+       <hr/>
+       <AddDeliveryBoy/>
+       <hr/>
+       <AddVehicle/>
+       <hr/>              
         </div>
         
         
