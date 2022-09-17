@@ -1,13 +1,10 @@
 package com.object.csms.entity;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -17,19 +14,25 @@ public class Complaint {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int complaintId;	
 	
+	@Column (name="complaint_description",nullable=false)
+	private String complaintDescription;
+	
+	@Column(name="customer_id",nullable=false)
+	private int customerId;
 	
 	@Column (name="complaint_status",nullable=false)
-	private int complaintStatus;
+	private String complaintStatus;
 
 	public Complaint() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Complaint(int complaintId, int customerId, Category complaintDescription, int complaintStatus) {
+	public Complaint(int complaintId, String complaintDescription, int customerId, String complaintStatus) {
 		super();
 		this.complaintId = complaintId;
 		this.complaintDescription = complaintDescription;
+		this.customerId = customerId;
 		this.complaintStatus = complaintStatus;
 	}
 
@@ -41,24 +44,31 @@ public class Complaint {
 		this.complaintId = complaintId;
 	}
 
-
-
-	public Category getComplaintDescription() {
+	public String getComplaintDescription() {
 		return complaintDescription;
 	}
 
-	public void setComplaintDescription(Category complaintDescription) {
+	public void setComplaintDescription(String complaintDescription) {
 		this.complaintDescription = complaintDescription;
 	}
 
-	public int getComplaintStatus() {
+	public int getCustomerId() {
+		return customerId;
+	}
+
+	public void setCustomerId(int customerId) {
+		this.customerId = customerId;
+	}
+
+	public String getComplaintStatus() {
 		return complaintStatus;
 	}
 
-	public void setComplaintStatus(int complaintStatus) {
+	public void setComplaintStatus(String complaintStatus) {
 		this.complaintStatus = complaintStatus;
 	}
 
+	
 	
 	
 }
