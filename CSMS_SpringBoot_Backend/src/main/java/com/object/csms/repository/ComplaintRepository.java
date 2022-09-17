@@ -11,5 +11,5 @@ import com.object.csms.entity.Complaint;
 @Repository
 public interface ComplaintRepository extends JpaRepository<Complaint, Integer>{
 
-	public List<Complaint> getByComplaintId(int id);
+	//public List<Complaint> getByComplaintId(int id);
 }

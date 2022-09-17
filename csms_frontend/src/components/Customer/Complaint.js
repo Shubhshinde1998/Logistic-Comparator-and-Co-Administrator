@@ -20,8 +20,9 @@ export default function Complaint() {
     let customerName= (JSON.parse(localStorage.getItem("customer")).customerName)
     const sendData = (e) => {    
         //e.preventDefault();
-        let customer= (JSON.parse(localStorage.getItem("customer")).customerId)
-        
+        console.log(e);
+        let customerId= (JSON.parse(localStorage.getItem("customer")).customerId)
+        console.log(customerId);
             const reqData = {
                 method: "POST",
                 headers: {
@@ -29,17 +30,20 @@ export default function Complaint() {
                 },
                 body: JSON.stringify({
                    
-                    vehiclesDetailsNo: cus.feedback,
-                    customerId: customer                    
+                    complaintDescription: cus.complaint,
+                    customerId: customerId  ,
+                    complaintStatus: 0                 
                 })    
             }
-
             
-        fetch("http://localhost:8080/updatecomplaint/{id}",reqData)
+            
+        fetch("http://localhost:8080/complaintregister",reqData)
         .then(function(response) {
             if(response.status === 200) {
                alert("Complaint send succesfully");
              }
+             else
+             alert("unable to register complaint");
              
             }) 
        
@@ -52,7 +56,7 @@ export default function Complaint() {
        <h6>Customer Name:</h6>
             <div className="form-outline mb-4">
             <input type="text" id="form3Example4" className="form-control"  name="complaint" readOnly={true} value={customerName}
-                onChange={ (e)=>{dispatch({type: 'update', field: 'complaint', val: e.target.value })} }
+                
                 />                
                 </div>   
                 <h6>Complaint:</h6>         
