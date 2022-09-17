@@ -42,8 +42,8 @@ public class UserController {
 		return services.checkLogin(users.getUsername(), users.getPassword());
 	}
 	  
-	@RequestMapping("/user/{id}")  
-	public User getUsers(@PathVariable(name = "id") int userid)  
+	@GetMapping("/user/{id}")  
+	public User getUsers(@PathVariable("id") int userid)  
 	{  
 		return services.getUserById(userid) ;
 	}  

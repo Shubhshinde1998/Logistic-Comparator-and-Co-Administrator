@@ -2,6 +2,7 @@ import {useReducer} from 'react';
 import "../styles/Login.css";
 import { useNavigate } from 'react-router-dom';
 
+
 const init = {
     user_username:"",
     user_password:""
@@ -117,9 +118,7 @@ let Login = () => {
                 <p>Create a New Account <a href="/register">Register</a></p>
                 </div>
 
-            </form>   
-        
-
+            </form> 
         </div>
     )
 

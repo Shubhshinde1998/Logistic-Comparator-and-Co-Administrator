@@ -1,7 +1,7 @@
 import React from 'react'
 import {useEffect,useState} from 'react';
 
-export default function ListedCompany() {
+export default function PendingCompany() {
     const [company,setCompany] = useState([]);  
    
    
@@ -14,9 +14,20 @@ export default function ListedCompany() {
              };
             })          
     }
+
+    const handleApproved = (id) =>{
+        fetch(`http://localhost:8080/approve/${id}`, {method: 'PUT'})
+        .then(function(response) {
+            if(response.status === 200) {
+               alert("company is Approved");
+               getCompany();
+             };
+            })   
+
+    }
   
     const getCompany = () =>{
-        fetch("http://localhost:8080/getallcompany")
+        fetch("http://localhost:8080/pendingcompany")
         .then(resp=>resp.json())
         .then(data=>setCompany(data))
     }
@@ -24,9 +35,10 @@ export default function ListedCompany() {
         getCompany();
        },[])
 
-        return (        
+        return (
+        
         <div className="row ">
-            <h3>All Company List</h3>
+            <h3>Pending Company</h3>
             <div className="">
         <div className="table-responsive">                        
             <table className="table table-striped">
@@ -51,7 +63,8 @@ export default function ListedCompany() {
                             <td >{v.companyContactNo}</td>
                             <td >{v.companyCity}</td>
                             <td >{v.companyPincode}</td>
-                            <td><button className='btn btn-danger' onClick={() => { handleDelete(v.companyId)}}>Delete</button></td>
+                            <td><button className='btn btn-success' onClick={() => { handleApproved(v.companyId)}}>Approve</button>
+                            <button className='btn btn-danger' onClick={() => { handleDelete(v.companyId)}}>Delete</button></td>
                         </tr>
                         )
                     })

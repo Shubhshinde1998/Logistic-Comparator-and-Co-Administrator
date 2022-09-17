@@ -1,18 +1,13 @@
 
 import ListedCompany from '../Admin/ListedCompany';
+import PendingCompany from '../Admin/PendingCompany';
 
 
 const Dashboard = () => {
 
     return (
     <div className="col main pt-5 mt-3">
-        <div className="alert alert-warning fade collapse" role="alert" id="myAlert">
-            <button type="button" className="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">×</span>
-                <span className="sr-only">Close</span>
-            </button>
-            <strong>Data and Records</strong> Learn more about employee
-        </div>
+        {/* 
         <div className="row mb-3">
             <div className="col-xl-3 col-sm-6 py-2">
                 <div className="card bg-success text-white h-100">
@@ -58,10 +53,12 @@ const Dashboard = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </div>*/}
         
         <div>         
-        <ListedCompany/>                    
+        <ListedCompany/> 
+        <hr/>
+        <PendingCompany/>                   
         </div>
         
         
