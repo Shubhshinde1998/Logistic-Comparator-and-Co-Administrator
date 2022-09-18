@@ -1,11 +1,11 @@
-import {useReducer} from 'react';
+import {useReducer,useEffect,useState} from 'react';
 import "../styles/Login.css";
 import { useNavigate } from 'react-router-dom';
 
 
 const init = {
-    user_username:"",
-    user_password:""
+    user_username:null,
+    user_password:null
 }
 
 const reducer = (state,action) => {
@@ -21,32 +21,37 @@ let Login = () => {
 
     const [user, dispatch] = useReducer(reducer, init);
     const navigate = useNavigate();
-    //const [formError, setFormError] = useState({});
+    const [formErrors, setFormErrors] = useState({});
+    const [isSubmit, setIsSubmit] = useState(false);
 
-   /* const validate = (user) => {
-        console.log("in validate");
-        console.log(user);
+    useEffect(() => {
+
+        if (Object.keys(formErrors).length === 0 && isSubmit) {
+          console.log(user);
+        }
+      }, [formErrors]);
+
+    const validate = (values) => {
         const errors = {};
-        if (!user.username) {
+        if (!values.user_username) {
           errors.username = "Username is required!";
         }        
-        if (!user.password) {
+        if (!values.user_password) {
           errors.password = "Password is required";
-        } else if (user.password.length < 4) {
-          errors.password = "Password must be more than 4 characters";
-        } else if (user.password.length > 10) {
-          errors.password = "Password cannot exceed more than 10 characters";
-        }
-        setFormError(errors);
+        } 
         return errors;
-      };*/
+      };
+
+      const handleSubmit = (e) => {
+        e.preventDefault();
+        setFormErrors(validate(user));
+        setIsSubmit(true);
+        sendData(e);
+      };
+      
     const sendData = (e) => {        
             e.preventDefault();
-           // console.log(e);
-          // console.log("in sendata");
-       // if(validate(e)>0)
-        //{
-            console.log("validate is true");
+
             const reqData = {
                 method: "POST",
                 headers: {
@@ -73,8 +78,16 @@ let Login = () => {
                 }
                 else if(json.user.userRole===2)
                 {
+                    console.log("in role");
+                    if(json.user.userStatus==="true")
+                    {
                     localStorage.setItem("company",data)
                     navigate('/companypanel');
+                    }
+                    else{
+                        alert("Your request is pending, Please wait !!!");
+                        navigate("/login");
+                    }
                 }
                 else if(json.user.userRole===3)
                 {
@@ -86,8 +99,7 @@ let Login = () => {
             {
                 alert("invalid");
             }
-        }) 
-    //}           
+        })          
     }
    
     
@@ -99,17 +111,17 @@ let Login = () => {
             <label className="form-label" for="form2Example1">Enter Username</label>
             <input type="text" id="form2Example1" className="form-control" name="name" value={user.user_username}
                 onChange={ (e)=>{dispatch({type: 'update', field: 'user_username', val: e.target.value })} } required/>
-            {/*<p className="text-danger">{formError.username}</p>*/}
-            </div>            
+            <p className="text-danger">{formErrors.username}</p>   
+            </div>                     
             <div className="form-outline mb-4">
             <label className="form-label" for="form2Example2">Password</label>
                 <input type="password" id="form2Example2" className="form-control"  name="pwd" value={user.user_password}
                 onChange={ (e)=>{dispatch({type: 'update', field: 'user_password', val: e.target.value })} }required/>
-            {/*<p className="text-danger">{formError.password}</p>*/}
+            <p className="text-danger">{formErrors.password}</p>
             </div>
-               
+           
                 <input type="submit" className="btn btn-primary btn-block mb-4" value="Submit" 
-                onClick={ (e)=> {sendData(e)}}
+                onClick={ (e)=> {handleSubmit(e)}}
                 />
                 <input type="reset" value="Clear" className="btn btn-primary btn-block mb-4"
                 onClick={ ()=>{dispatch({type: 'clear'})} }

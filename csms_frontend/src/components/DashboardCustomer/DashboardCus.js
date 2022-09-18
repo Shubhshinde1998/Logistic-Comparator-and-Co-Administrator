@@ -4,7 +4,7 @@ import Complaint from '../Customer/Complaint';
 import Feedback from '../Customer/Feedback';
 import Orders from '../Customer/Orders';
 
-export default function DashboardCustomer() {
+export default function DashboardCus() {
 
     const [customer,setCustomer] = useState([]);
 
@@ -44,17 +44,13 @@ export default function DashboardCustomer() {
                     })
                 }
                 </tbody>
-
-            </table>
-
-
             </table> */}
-
-
-
             <Feedback/>
+            <hr/>
             <Complaint/>
+            <hr/>
             <Orders/>
+            <hr/>
 
         </div>
     )

@@ -5,7 +5,7 @@ import ListVehicle from '../Company/ListVehicles';
 import AddVehicle from '../Company/AddVehicle';
 import ListCategoryPrice from '../Company/ListCategoryPrice';
 
-export default function DashboardCompany() {
+export default function DashboardCom() {
 
 
     return(

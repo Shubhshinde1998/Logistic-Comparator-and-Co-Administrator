@@ -19,7 +19,7 @@ public class DeliveryBoy {
 	private String deliveryBoyName;
 	
 	@Column(name="delivery_boy_contactno",nullable=false)
-	private String deliveryBoyContactNo;
+	private double deliveryBoyContactNo;
 	
 	@Column(name="delivery_boy_emailid",nullable=false)
 	private String deliveryBoyEmail;
@@ -38,7 +38,7 @@ public class DeliveryBoy {
 		// TODO Auto-generated constructor stub
 	}
 
-	public DeliveryBoy(int deliveryBoyId, String deliveryBoyName, String deliveryBoyContactNo, String deliveryBoyEmail,
+	public DeliveryBoy(int deliveryBoyId, String deliveryBoyName, double deliveryBoyContactNo, String deliveryBoyEmail,
 			int deliveryBoyAge, int deliveryBoyLicense, int companyId) {
 		super();
 		this.deliveryBoyId = deliveryBoyId;
@@ -66,11 +66,11 @@ public class DeliveryBoy {
 		this.deliveryBoyName = deliveryBoyName;
 	}
 
-	public String getDeliveryBoyContactNo() {
+	public double getDeliveryBoyContactNo() {
 		return deliveryBoyContactNo;
 	}
 
-	public void setDeliveryBoyContactNo(String deliveryBoyContactNo) {
+	public void setDeliveryBoyContactNo(double deliveryBoyContactNo) {
 		this.deliveryBoyContactNo = deliveryBoyContactNo;
 	}
 

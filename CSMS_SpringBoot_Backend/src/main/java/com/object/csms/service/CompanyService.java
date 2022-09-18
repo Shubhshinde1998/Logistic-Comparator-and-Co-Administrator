@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.object.csms.entity.Company;
 import com.object.csms.entity.User;
+import com.object.csms.repository.CategoryPriceRepository;
 import com.object.csms.repository.CompanyRepository;
 import com.object.csms.repository.DeliveryBoyRepository;
 import com.object.csms.repository.UserRepository;
@@ -29,6 +30,9 @@ public class CompanyService {
 	@Autowired
 	UserRepository urepo;
 	
+	@Autowired
+	CategoryPriceRepository crepo;
+	
 	UserService uservice;
 	
 	public Iterable<Company> listAll() {
@@ -36,7 +40,7 @@ public class CompanyService {
     }
 
 	public void saveOrUpdate(Company company)  
-	{  
+	{ 
 		repo.save(company); 		
 	}
 	
