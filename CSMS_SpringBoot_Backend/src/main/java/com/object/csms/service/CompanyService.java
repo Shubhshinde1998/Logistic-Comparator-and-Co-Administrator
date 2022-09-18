@@ -83,6 +83,22 @@ public class CompanyService {
 		}
 		return c;
 	}
+	@Transactional
+	public List<Company> findByStatus() {
+		String state="true";
+		int role =2;
+		List<User> u = urepo.findByStatus(state,role);
+		List<Company> c = new ArrayList<Company>();
+		for(User list : u) {
+			int id = list.getUserId();
+			Company cs =repo.findByUserIdd(id);
+		 	if(cs!=null) {
+			c.add(cs);
+			}
+		 	
+		}
+		return c;
+	}
 	/*public List<Company> findPendingCompany()
 	{
 		return repo.findPendingCompany();

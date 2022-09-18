@@ -32,8 +32,13 @@ public class CompanyController {
 	{
 		return services.listAll();    
 	}
+	@GetMapping("/approvedcompany")
+	public List<Company> getCompanyApproved()
+	{
+		return services.findByStatus();
+	}
 	
-	@GetMapping("pendingcompany")
+	@GetMapping("/pendingcompany")
 	public List<Company> getCompanyByStatus()
 	{
 		return services.findByUserId();

@@ -22,7 +22,7 @@ export default function PendingCompany() {
                alert("company is Approved");
                getCompany();
              };
-            })   
+        })   
 
     }
   

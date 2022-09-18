@@ -16,7 +16,7 @@ export default function ListedCompany() {
     }
   
     const getCompany = () =>{
-        fetch("http://localhost:8080/getallcompany")
+        fetch("http://localhost:8080/approvedcompany")
         .then(resp=>resp.json())
         .then(data=>setCompany(data))
     }

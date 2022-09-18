@@ -34,7 +34,7 @@ export default function ListCategoryPrice() {
         let com= (JSON.parse(localStorage.getItem("company")).companyId)
         fetch("http://localhost:8080/"+com+"/getprice")
         .then(resp=>resp.json())
-        .then(data=>setPrice(data))     
+        .then(data=>setPrice(data))    
         
     }
 
