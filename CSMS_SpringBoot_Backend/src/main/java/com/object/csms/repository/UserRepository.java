@@ -12,5 +12,9 @@ public interface UserRepository extends CrudRepository<User, Integer> {
 
 	@Query("select d from User d where userUsername = :username and userPassword = :password")
 	public Optional<User> checkLogin(String username,String password);
+	
+	
+	@Query("select d from User d where userStatus =:state and userRole=:role")
+	public List<User> findByStatus(String state,int role);
 
 }

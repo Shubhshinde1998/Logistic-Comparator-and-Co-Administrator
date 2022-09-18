@@ -33,7 +33,7 @@ public class FeedbackController {
 		return services.getfeedback(id);
 	}
 	@PostMapping("/feedbackregister")
-	private int saveVehicle (@RequestBody Feedback feedback)  
+	private int savefeedback (@RequestBody Feedback feedback)  
 	{  
 		services.saveOrUpdate(feedback);  
 		return feedback.getFeedbackId();
