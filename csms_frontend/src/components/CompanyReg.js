@@ -3,6 +3,7 @@ import React from "react";
 import {useState, useReducer,useEffect} from 'react';
 import "../styles/Registration.css";
 import { useNavigate } from 'react-router-dom';
+
 const init = {
     
    company_name: null,
@@ -18,7 +19,7 @@ const reducer = (state,action) => {
     switch(action.type){
         case 'update':
             return { ...state, [action.field]: action.val}; 
-            case 'clear':return init   
+        case 'clear':return init   
     }
 }
 

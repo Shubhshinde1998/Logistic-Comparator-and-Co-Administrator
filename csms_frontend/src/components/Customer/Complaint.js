@@ -74,7 +74,7 @@ export default function Complaint() {
 
     return (
         <div className="register">
-        <h1>Complaint</h1>
+        <h1>Complaint Form</h1>
         <form className="formreg">
        <h6>Customer Name:</h6>
             <div className="form-outline mb-4">
