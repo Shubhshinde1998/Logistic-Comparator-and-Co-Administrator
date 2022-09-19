@@ -3,7 +3,7 @@ import ListedCompany from '../Admin/ListedCompany';
 import PendingCompany from '../Admin/PendingCompany';
 
 
-const Dashboard = () => {
+const DashboardAd = () => {
 
     return (
     <div className="col main pt-5 mt-3">
@@ -59,11 +59,10 @@ const Dashboard = () => {
         <ListedCompany/> 
         <hr/>
         <PendingCompany/>                   
-        </div>
-        
+        </div>      
         
     </div>
     )
 }
  
-export default Dashboard
+export default DashboardAd

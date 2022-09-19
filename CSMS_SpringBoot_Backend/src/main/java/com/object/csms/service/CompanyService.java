@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.object.csms.entity.Company;
 import com.object.csms.entity.User;
+import com.object.csms.repository.CategoryPriceRepository;
 import com.object.csms.repository.CompanyRepository;
 import com.object.csms.repository.DeliveryBoyRepository;
 import com.object.csms.repository.UserRepository;
@@ -29,6 +30,9 @@ public class CompanyService {
 	@Autowired
 	UserRepository urepo;
 	
+	@Autowired
+	CategoryPriceRepository crepo;
+	
 	UserService uservice;
 	
 	public Iterable<Company> listAll() {
@@ -36,7 +40,7 @@ public class CompanyService {
     }
 
 	public void saveOrUpdate(Company company)  
-	{  
+	{ 
 		repo.save(company); 		
 	}
 	
@@ -66,6 +70,22 @@ public class CompanyService {
 	@Transactional
 	public List<Company> findByUserId() {
 		String state="false";
+		int role =2;
+		List<User> u = urepo.findByStatus(state,role);
+		List<Company> c = new ArrayList<Company>();
+		for(User list : u) {
+			int id = list.getUserId();
+			Company cs =repo.findByUserIdd(id);
+		 	if(cs!=null) {
+			c.add(cs);
+			}
+		 	
+		}
+		return c;
+	}
+	@Transactional
+	public List<Company> findByStatus() {
+		String state="true";
 		int role =2;
 		List<User> u = urepo.findByStatus(state,role);
 		List<Company> c = new ArrayList<Company>();
