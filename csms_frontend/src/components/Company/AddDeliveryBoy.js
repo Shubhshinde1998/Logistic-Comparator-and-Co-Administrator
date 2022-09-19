@@ -82,12 +82,7 @@ let AddDeliveryBoy =() =>
                     />                
             </div>
             
-            <div className="form-outline mb-4">
-
-                <input type="number" id="form3Example6" className="form-control" placeholder="Emailid"name="Email" value={com.emailid}
-                    onChange={ (e)=>{dispatch({type: 'update', field: 'emailid', val: e.target.value })} }
-                    />                
-            </div>
+            
             <div className="form-outline mb-4">
 
 
