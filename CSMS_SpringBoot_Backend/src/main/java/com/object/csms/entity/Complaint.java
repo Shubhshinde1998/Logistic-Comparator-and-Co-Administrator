@@ -1,13 +1,10 @@
 package com.object.csms.entity;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -15,14 +12,24 @@ import javax.persistence.Table;
 public class Complaint {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+<<<<<<< HEAD
 	private int complaintId;
 	
+
+=======
+	private int complaintId;	
 	
+>>>>>>> 8c62eec2210fe3ea38bee99369c3f28864264daf
 	@Column (name="complaint_description",nullable=false)
 	private String complaintDescription;
+
+
+	
+	
 	
 	@Column(name="customer_id",nullable=false)
 	private int customerId;
+
 	
 	@Column (name="complaint_status",nullable=false)
 	private String complaintStatus;
@@ -32,7 +39,11 @@ public class Complaint {
 		// TODO Auto-generated constructor stub
 	}
 
+
+	
+
 	public Complaint(int complaintId, String complaintDescription, int customerId, String complaintStatus) {
+
 		super();
 		this.complaintId = complaintId;
 		this.complaintDescription = complaintDescription;
@@ -48,6 +59,7 @@ public class Complaint {
 		this.complaintId = complaintId;
 	}
 
+
 	public String getComplaintDescription() {
 		return complaintDescription;
 	}
@@ -56,6 +68,8 @@ public class Complaint {
 		this.complaintDescription = complaintDescription;
 	}
 
+
+
 	public int getCustomerId() {
 		return customerId;
 	}
@@ -63,6 +77,7 @@ public class Complaint {
 	public void setCustomerId(int customerId) {
 		this.customerId = customerId;
 	}
+
 
 	public String getComplaintStatus() {
 		return complaintStatus;

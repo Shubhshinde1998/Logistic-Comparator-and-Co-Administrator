@@ -10,7 +10,6 @@ export default function ListCategoryPrice() {
     const update = (e) =>
     {
       let c = e;
-      console.log(c);
         const reqData =(c) = {
             method: "PUT",
             headers: {
@@ -25,9 +24,6 @@ export default function ListCategoryPrice() {
                  companyId : c.companyId                
             })    
         }
-        console.log(e.categoryPrice);
-        console.log(e.categoryId);
-        console.log(e.categoryName);
         fetch("http://localhost:8080/updateprice/"+e.categoryPricingId, reqData)
         .then(resp => resp.json())
         .then(data => {
@@ -38,7 +34,7 @@ export default function ListCategoryPrice() {
         let com= (JSON.parse(localStorage.getItem("company")).companyId)
         fetch("http://localhost:8080/"+com+"/getprice")
         .then(resp=>resp.json())
-        .then(data=>setPrice(data))      
+        .then(data=>setPrice(data))    
         
     }
 
@@ -67,10 +63,6 @@ export default function ListCategoryPrice() {
                     return(                        
                         <tr scope="row">
                             <td >{v.category.categoryName}</td>
-                           {/* {isTag ? (<td>{v.categoryPrice}</td>) 
-                            :(<input type="number" className="form-control" onChange={ ()=>{this.setPrice(this.target.value); update(v)}} value={v.categoryPrice}/>)
-                            }               
-                            <td><button className='btn btn-success' onClick={()=>setTag(false)}>Update</button></td>*/} 
                             <td>{v.categoryPrice}</td>
                             <td><button className='btn btn-success' onClick={()=>{setTag(true); setNewValue(v)}}>Update</button></td>
                         </tr>
@@ -80,10 +72,10 @@ export default function ListCategoryPrice() {
                 </tbody>
             </table>
             </div>
-            {isTag ? (<div><input type="number" className="form-control" onChange={ (e)=>{setNewPrice(e.target.value)}} value={newPrice}/><button className='btn btn-success' onClick={()=>{setTag(false); update(newValue)}}>Submit</button></div>)
+            {isTag ? (<div><input type="number" className="form-control" onChange={ (e)=>{setNewPrice(e.target.value)}} value={newPrice}/>
+            <button className='btn btn-success' onClick={()=>{setTag(false); update(newValue)}}>Submit</button></div>)
             : ""}
-            </div>
-            
+            </div>            
         </div>
   )
 }

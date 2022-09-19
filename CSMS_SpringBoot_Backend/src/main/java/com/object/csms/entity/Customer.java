@@ -29,7 +29,7 @@ public class Customer {
 	private int customerPincode;
 	
 	@Column(name="customer_contactno")
-	private int customerContactNo;	
+	private double customerContactNo;	
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="user_Id", referencedColumnName = "userId")
@@ -92,7 +92,7 @@ public class Customer {
 		this.customerPincode = customerPincode;
 	}
 
-	public int getCustomerContactNo() {
+	public double getCustomerContactNo() {
 		return customerContactNo;
 	}
 

@@ -2,9 +2,9 @@ import React from 'react'
 import { useEffect, useState } from "react";
 import Complaint from '../Customer/Complaint';
 import Feedback from '../Customer/Feedback';
-import Orders from '../Customer/Orders';
+import OrderForm from '../Customer/OrderForm';
 
-export default function DashboardCustomer() {
+export default function DashboardCus() {
 
     const [customer,setCustomer] = useState([]);
 
@@ -44,17 +44,13 @@ export default function DashboardCustomer() {
                     })
                 }
                 </tbody>
-
             </table> */}
-
-            
-
-            
-
-
             <Feedback/>
+            <hr/>
             <Complaint/>
-            <Orders/>
+            <hr/>
+            <OrderForm/>
+            <hr/>
 
         </div>
     )

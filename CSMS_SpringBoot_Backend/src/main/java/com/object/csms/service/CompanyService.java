@@ -1,14 +1,17 @@
 package com.object.csms.service;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.object.csms.entity.Category;
+import com.object.csms.entity.CategoryPrice;
 import com.object.csms.entity.Company;
 import com.object.csms.entity.User;
+import com.object.csms.repository.CategoryPriceRepository;
+import com.object.csms.repository.CategoryRepository;
 import com.object.csms.repository.CompanyRepository;
 import com.object.csms.repository.DeliveryBoyRepository;
 import com.object.csms.repository.UserRepository;
@@ -29,6 +32,12 @@ public class CompanyService {
 	@Autowired
 	UserRepository urepo;
 	
+	@Autowired
+	CategoryPriceRepository crepo;
+	
+	@Autowired
+	CategoryRepository crrepo;
+	
 	UserService uservice;
 	
 	public Iterable<Company> listAll() {
@@ -36,7 +45,7 @@ public class CompanyService {
     }
 
 	public void saveOrUpdate(Company company)  
-	{  
+	{ 
 		repo.save(company); 		
 	}
 	
@@ -44,11 +53,6 @@ public class CompanyService {
 	{  
 		return repo.findById(id).get();  
 	}
-	
-	/*public Optional<Company> findByUser_Id(User u)
-	{
-		return repo.findByUser_Id(u);
-	}*/
 	
 	public void update(Company company, int id)  
 	{  
@@ -60,29 +64,22 @@ public class CompanyService {
 	{  
 		drepo.deleteByCompanyId(id);
 		vrepo.deleteByCompanyId(id);
+		crepo.deleteByCompanyId(id);
 		repo.deleteById(id);  
 	}
 	
 	@Transactional
-	public List<Company> findByUserId() {
-		String state="false";
-		int role =2;
-		List<User> u = urepo.findByStatus(state,role);
-		List<Company> c = new ArrayList<Company>();
-		for(User list : u) {
-			int id = list.getUserId();
-			Company cs =repo.findByUserIdd(id);
-		 	if(cs!=null) {
-			c.add(cs);
-			}
-		 	
-		}
-		return c;
-	}
-	/*public List<Company> findPendingCompany()
+	public List<Company> findByUserId() 
 	{
 		return repo.findPendingCompany();
-	}*/
+	}
+	@Transactional
+	public List<Company> findByStatus() 
+	{
+
+		return repo.findApprovedCompany();
+	}
+
 	@Transactional
 	public Optional<Company> approved(int id) {
 		
@@ -91,6 +88,13 @@ public class CompanyService {
 		Optional<User> u = urepo.findById(userid);
 		u.get().setUserStatus("true");
 		
+		int price=0;
+		List<Category> category = crrepo.findAll();
+		for(int i=0;i<5;i++)
+		{
+			CategoryPrice categoryprice = new CategoryPrice(price, category.get(i), id);
+			crepo.save(categoryprice);
+		}		
 		return c;
 	}
 	

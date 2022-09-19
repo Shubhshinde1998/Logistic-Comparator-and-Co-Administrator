@@ -32,7 +32,7 @@ public class Company {
 	private int companyPincode;
 	
 	@Column(name="company_contactno",nullable=false)
-	private int companyContactNo;	
+	private double companyContactNo;	
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="user_Id", referencedColumnName = "userId",nullable=false)
@@ -95,7 +95,7 @@ public class Company {
 		this.companyPincode = companyPincode;
 	}
 
-	public int getCompanyContactNo() {
+	public double getCompanyContactNo() {
 		return companyContactNo;
 	}
 

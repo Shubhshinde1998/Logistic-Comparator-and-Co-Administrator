@@ -10,8 +10,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.DynamicUpdate;
-
 @Entity
 @Table(name="category_pricing")
 public class CategoryPrice {
@@ -38,6 +36,14 @@ public class CategoryPrice {
 	public CategoryPrice(int categoryPricingId, int categoryPrice, Category category, int companyId) {
 		super();
 		this.categoryPricingId = categoryPricingId;
+		this.categoryPrice = categoryPrice;
+		this.category = category;
+		this.companyId = companyId;
+	}
+	
+
+	public CategoryPrice(int categoryPrice, Category category, int companyId) {
+		super();
 		this.categoryPrice = categoryPrice;
 		this.category = category;
 		this.companyId = companyId;

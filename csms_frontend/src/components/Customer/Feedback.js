@@ -1,9 +1,9 @@
 import React from "react";
-import {useState, useReducer} from 'react';
+import {useState, useReducer,useEffect} from 'react';
 import "../../styles/Registration.css";
 
 const init = {      
-  feedback:""
+  feedback:null
 }
 const reducer = (state,action) => {
     switch(action.type){
@@ -16,9 +16,32 @@ const reducer = (state,action) => {
 
 export default function Feedback() {
     const [cus, dispatch] = useReducer(reducer, init);
+    const [formErrors, setFormErrors] = useState({});
+    const [isSubmit, setIsSubmit] = useState(false);
 
     let customerName= (JSON.parse(localStorage.getItem("customer")).customerName)
     
+    useEffect(() => {
+
+        if (Object.keys(formErrors).length === 0 && isSubmit) {
+          console.log(cus);
+        }
+      }, [formErrors]);
+      const validate = (values) => {
+        const errors = {};
+        if (!values.feedback) {
+          errors.feedback = "Field is required!";
+        }         
+        return errors;
+      };
+
+      const handleSubmit = (e) => {
+        e.preventDefault();
+        setFormErrors(validate(cus));
+        setIsSubmit(true);
+        sendData(e);
+      };
+
     const sendData = (e) => {    
         //e.preventDefault();
         let customer= (JSON.parse(localStorage.getItem("customer")).customerId)
@@ -42,7 +65,6 @@ export default function Feedback() {
              }
              else
                 alert("unable to add Feedback");
-
             }) 
        
     }
@@ -51,6 +73,7 @@ export default function Feedback() {
         
         <div className="register">
             <h1>Feedback Form </h1>
+            <form className="formreg">
             <h6>Customer Name:</h6>
             <div className="form-outline mb-4">
             <input type="text" id="form3Example4" className="form-control"  name="feedback" readOnly={true} value={customerName}
@@ -58,16 +81,17 @@ export default function Feedback() {
                 />                
                 </div>   
         
-        <form className="formreg">
+        
         <h6>Feedback:</h6>           
         <div className="form-outline mb-4">
             <input type="textarea" id="form3Example4" className="form-control" placeholder=" Write your feedback here" name="feedback" value={cus.feedback}
                 onChange={ (e)=>{dispatch({type: 'update', field: 'feedback', val: e.target.value })} }
-                />                
+                />
+        <p className="text-danger">{formErrors.feedback}</p>                
         </div>
         
         <button type="submit" id="btn1"className="btn btn-primary btn-block mb-4" value="Submit" 
-            onClick = { (e)=>{ sendData(e) } }>Submit</button>
+            onClick = { (e)=>{ handleSubmit(e) } }>Submit</button>
         </form>        
     </div>
   )
