@@ -18,11 +18,22 @@ export default function Feedback() {
     const [cus, dispatch] = useReducer(reducer, init);
     const [formErrors, setFormErrors] = useState({});
     const [isSubmit, setIsSubmit] = useState(false);
-
+    const [company,setCompany] = useState([]); 
+    const [valueCompany, setValueCompany] = useState(0);
     let customerName= (JSON.parse(localStorage.getItem("customer")).customerName)
     
-    useEffect(() => {
+    const getCompany = () =>{
+      fetch("http://localhost:8080/approvedcompany")
+      .then(resp=>resp.json())
+      .then(data=>setCompany(data))
+   }
 
+    const handleCompanyChange =  (e) => {
+      setValueCompany(e.target.value);
+      
+    };
+    useEffect(() => {
+      getCompany();
         if (Object.keys(formErrors).length === 0 && isSubmit) {
           console.log(cus);
         }
@@ -54,7 +65,8 @@ export default function Feedback() {
                 body: JSON.stringify({
                    
                     feedbackDiscription: cus.feedback,
-                    customerId: customer                    
+                    customerId: customer,
+                    companyId: valueCompany                
                 })    
             }
             
@@ -79,8 +91,20 @@ export default function Feedback() {
             <input type="text" id="form3Example4" className="form-control"  name="feedback" readOnly={true} value={customerName}
                 onChange={ (e)=>{dispatch({type: 'update', field: 'feedback', val: e.target.value })} }
                 />                
-                </div>   
-        
+                </div>  
+
+
+        <div className="form-outline mb-4">
+            <lable>Select Company:</lable>
+            <select id="companyname" name="companyname" className="form-control" value={valueCompany} onChange={handleCompanyChange}>
+               <option value="">Company Names :</option>
+               {company.map((company) => (
+               <option value={company.companyId}>{company.companyName}</option>
+               ))}
+            </select>
+            <p>{`You selected ${valueCompany}`}</p>      
+         </div>
+
         
         <h6>Feedback:</h6>           
         <div className="form-outline mb-4">

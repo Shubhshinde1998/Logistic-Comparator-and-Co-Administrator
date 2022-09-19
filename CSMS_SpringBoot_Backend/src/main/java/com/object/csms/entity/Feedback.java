@@ -17,26 +17,30 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Feedback {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int feedbackId;
+	private Integer feedbackId;
 	
-	@Column(name="feedback_description",nullable=false)
+	@Column(name="feedback_description")
 	private String feedbackDiscription;
 	
-	@Column(name="customer_id",nullable=false)
-	private int customerId;
+	@Column(name="customer_id")
+	private Integer customerId;
 
-	public Feedback(int feedbackId, String feedbackDiscription, int customerId) {
+	@Column(name="company_id")
+	private Integer companyId;
+
+	public Feedback(Integer feedbackId, String feedbackDiscription, Integer customerId, Integer companyId) {
 		super();
 		this.feedbackId = feedbackId;
 		this.feedbackDiscription = feedbackDiscription;
 		this.customerId = customerId;
+		this.companyId = companyId;
 	}
 
-	public int getFeedbackId() {
+	public Integer getFeedbackId() {
 		return feedbackId;
 	}
 
-	public void setFeedbackId(int feedbackId) {
+	public void setFeedbackId(Integer feedbackId) {
 		this.feedbackId = feedbackId;
 	}
 
@@ -48,17 +52,26 @@ public class Feedback {
 		this.feedbackDiscription = feedbackDiscription;
 	}
 
-	public int getCustomerId() {
+	public Integer getCustomerId() {
 		return customerId;
 	}
 
-	public void setCustomer(int customerId) {
+	public void setCustomerId(Integer customerId) {
 		this.customerId = customerId;
+	}
+
+	public Integer getCompanyId() {
+		return companyId;
+	}
+
+	public void setCompanyId(Integer companyId) {
+		this.companyId = companyId;
 	}
 
 	public Feedback() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
-     
+	
 	
 }

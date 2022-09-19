@@ -38,4 +38,16 @@ public class ComplaintService {
 	{  
 		repo.save(savecomplaint); 		
 	}
+
+	public List<Complaint> getComplaintByCompanyId(Integer id) {
+		// TODO Auto-generated method stub
+		return repo.findByCompanyId(id);
+	}
+
+	
+
+	public List<Complaint> getComplaintByCustomerId(Integer id) {
+		// TODO Auto-generated method stub
+		return repo.findByCustomerId(id);
+	}
 }

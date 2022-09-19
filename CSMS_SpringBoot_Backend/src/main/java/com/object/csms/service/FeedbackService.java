@@ -31,5 +31,14 @@ public class FeedbackService {
 	{  
 		repo.save(savefeedback); 		
 	}
+	public List<Feedback> getFeedbackByCompanyId(Integer id) {
+		// TODO Auto-generated method stub
+		return repo.findByCompanyId(id);
+	}
+	public List<Feedback> getFeedbackByCustomerId(Integer id) {
+		// TODO Auto-generated method stub
+		return repo.findByCustomerId(id);
+	}
+	
 
 }

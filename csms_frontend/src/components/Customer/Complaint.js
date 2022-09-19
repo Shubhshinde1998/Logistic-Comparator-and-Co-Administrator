@@ -18,9 +18,22 @@ export default function Complaint() {
     const [cus, dispatch] = useReducer(reducer, init);
     const [formErrors, setFormErrors] = useState({});
     const [isSubmit, setIsSubmit] = useState(false);
+    const [valueCompany, setValueCompany] = useState(0);
+    const [company,setCompany] = useState([]); 
+    
+    const getCompany = () =>{
+      fetch("http://localhost:8080/approvedcompany")
+      .then(resp=>resp.json())
+      .then(data=>setCompany(data))
+   }
+
+    const handleCompanyChange =  (e) => {
+      setValueCompany(e.target.value);
+      
+    };
 
     useEffect(() => {
-
+      getCompany();
         if (Object.keys(formErrors).length === 0 && isSubmit) {
           console.log(cus);
         }
@@ -56,7 +69,8 @@ export default function Complaint() {
                    
                     complaintDescription: cus.complaint,
                     customerId: customerId  ,
-                    complaintStatus: 0                 
+                    complaintStatus: "",
+                    companyId: valueCompany                 
                 })    
             }
             
@@ -79,9 +93,21 @@ export default function Complaint() {
        <h6>Customer Name:</h6>
             <div className="form-outline mb-4">
             <input type="text" id="form3Example4" className="form-control"  name="complaint" readOnly={true} value={customerName}
-                
-                />                
-                </div>   
+                /> 
+                </div> 
+
+
+         <div className="form-outline mb-4">
+            <lable>Select Company:</lable>
+            <select id="companyname" name="companyname" className="form-control" value={valueCompany} onChange={handleCompanyChange}>
+               <option value="">Company Names :</option>
+               {company.map((company) => (
+               <option value={company.companyId}>{company.companyName}</option>
+               ))}
+            </select>
+            <p>{`You selected ${valueCompany}`}</p>      
+         </div>
+  
                 <h6>Complaint:</h6>         
         <div className="form-outline mb-4">
             <input type="textarea" id="form3Example4" className="form-control" placeholder="Write Your Complaint Here" name="complaint"  value={cus.complaint}

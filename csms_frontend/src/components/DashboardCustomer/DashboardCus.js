@@ -2,6 +2,7 @@ import React from 'react'
 import { useEffect, useState } from "react";
 import Complaint from '../Customer/Complaint';
 import Feedback from '../Customer/Feedback';
+import ListYourFeedback from '../Customer/ListYourFeedback';
 import OrderForm from '../Customer/OrderForm';
 
 export default function DashboardCus() {
@@ -51,7 +52,7 @@ export default function DashboardCus() {
             <hr/>
             <OrderForm/>
             <hr/>
-
+            <ListYourFeedback/>
         </div>
     )
 }

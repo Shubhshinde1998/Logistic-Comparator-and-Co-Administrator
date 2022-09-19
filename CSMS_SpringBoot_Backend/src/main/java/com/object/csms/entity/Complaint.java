@@ -12,51 +12,54 @@ import javax.persistence.Table;
 public class Complaint {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-<<<<<<< HEAD
-	private int complaintId;
+
+	private Integer complaintId;
 	
 
-=======
-	private int complaintId;	
+	@Column(name="company_id")
+	private Integer companyId;
 	
->>>>>>> 8c62eec2210fe3ea38bee99369c3f28864264daf
+
 	@Column (name="complaint_description",nullable=false)
 	private String complaintDescription;
 
-
-	
-	
 	
 	@Column(name="customer_id",nullable=false)
-	private int customerId;
+	private Integer customerId;
 
 	
 	@Column (name="complaint_status",nullable=false)
 	private String complaintStatus;
 
-	public Complaint() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
 
-
-	
-
-	public Complaint(int complaintId, String complaintDescription, int customerId, String complaintStatus) {
-
+	public Complaint(Integer complaintId, Integer companyId, String complaintDescription, Integer customerId,
+			String complaintStatus) {
 		super();
 		this.complaintId = complaintId;
+		this.companyId = companyId;
 		this.complaintDescription = complaintDescription;
 		this.customerId = customerId;
 		this.complaintStatus = complaintStatus;
 	}
 
-	public int getComplaintId() {
+
+	public Integer getComplaintId() {
 		return complaintId;
 	}
 
-	public void setComplaintId(int complaintId) {
+
+	public void setComplaintId(Integer complaintId) {
 		this.complaintId = complaintId;
+	}
+
+
+	public Integer getCompanyId() {
+		return companyId;
+	}
+
+
+	public void setCompanyId(Integer companyId) {
+		this.companyId = companyId;
 	}
 
 
@@ -64,17 +67,18 @@ public class Complaint {
 		return complaintDescription;
 	}
 
+
 	public void setComplaintDescription(String complaintDescription) {
 		this.complaintDescription = complaintDescription;
 	}
 
 
-
-	public int getCustomerId() {
+	public Integer getCustomerId() {
 		return customerId;
 	}
 
-	public void setCustomerId(int customerId) {
+
+	public void setCustomerId(Integer customerId) {
 		this.customerId = customerId;
 	}
 
@@ -83,11 +87,17 @@ public class Complaint {
 		return complaintStatus;
 	}
 
+
 	public void setComplaintStatus(String complaintStatus) {
 		this.complaintStatus = complaintStatus;
 	}
 
-	
+
+	public Complaint() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	
 	
 }
