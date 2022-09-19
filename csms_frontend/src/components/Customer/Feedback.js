@@ -73,6 +73,7 @@ export default function Feedback() {
         
         <div className="register">
             <h1>Feedback Form </h1>
+            <form className="formreg">
             <h6>Customer Name:</h6>
             <div className="form-outline mb-4">
             <input type="text" id="form3Example4" className="form-control"  name="feedback" readOnly={true} value={customerName}
@@ -80,7 +81,7 @@ export default function Feedback() {
                 />                
                 </div>   
         
-        <form className="formreg">
+        
         <h6>Feedback:</h6>           
         <div className="form-outline mb-4">
             <input type="textarea" id="form3Example4" className="form-control" placeholder=" Write your feedback here" name="feedback" value={cus.feedback}
