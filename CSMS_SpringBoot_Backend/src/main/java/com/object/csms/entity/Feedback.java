@@ -19,17 +19,28 @@ public class Feedback {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer feedbackId;
 	
-	@Column(name="feedback_description",nullable=false)
+	@Column(name="feedback_description")
 	private String feedbackDiscription;
 	
+<<<<<<< HEAD
 	@Column(name="customer_id",nullable=false)
 	private Integer customerId;
 
 	public Feedback(Integer feedbackId, String feedbackDiscription, Integer customerId) {
+=======
+	@Column(name="customer_id")
+	private Integer customerId;
+
+	@Column(name="company_id")
+	private Integer companyId;
+
+	public Feedback(Integer feedbackId, String feedbackDiscription, Integer customerId, Integer companyId) {
+>>>>>>> c43cc97e3945ae9e57febbed955d4da103904304
 		super();
 		this.feedbackId = feedbackId;
 		this.feedbackDiscription = feedbackDiscription;
 		this.customerId = customerId;
+		this.companyId = companyId;
 	}
 
 	public Integer getFeedbackId() {
@@ -52,13 +63,26 @@ public class Feedback {
 		return customerId;
 	}
 
+<<<<<<< HEAD
 	public void setCustomer(Integer customerId) {
+=======
+	public void setCustomerId(Integer customerId) {
+>>>>>>> c43cc97e3945ae9e57febbed955d4da103904304
 		this.customerId = customerId;
+	}
+
+	public Integer getCompanyId() {
+		return companyId;
+	}
+
+	public void setCompanyId(Integer companyId) {
+		this.companyId = companyId;
 	}
 
 	public Feedback() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
-     
+	
 	
 }

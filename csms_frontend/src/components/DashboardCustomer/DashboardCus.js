@@ -3,6 +3,7 @@ import {Link, Route, Router, Routes} from 'react-router-dom';
 import { useEffect, useState } from "react";
 import Complaint from '../Customer/Complaint';
 import Feedback from '../Customer/Feedback';
+import ListYourFeedback from '../Customer/ListYourFeedback';
 import OrderForm from '../Customer/OrderForm';
 import OrderInvoice from '../Customer/OrderInvoice';
 
@@ -63,9 +64,13 @@ export default function DashboardCus() {
             <hr></hr>
             <OrderForm/>
             <hr/>
+<<<<<<< HEAD
          <Feedback/>
             <hr/>
             <Complaint/>
+=======
+            <ListYourFeedback/>
+>>>>>>> c43cc97e3945ae9e57febbed955d4da103904304
         </div>
     )
 }
