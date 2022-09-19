@@ -12,13 +12,13 @@ import javax.persistence.Table;
 public class Complaint {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int complaintId;	
+	private Integer complaintId;	
 	
 	@Column (name="complaint_description",nullable=false)
 	private String complaintDescription;
 	
 	@Column(name="customer_id",nullable=false)
-	private int customerId;
+	private Integer customerId;
 	
 	@Column (name="complaint_status",nullable=false)
 	private String complaintStatus;
@@ -28,7 +28,7 @@ public class Complaint {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Complaint(int complaintId, String complaintDescription, int customerId, String complaintStatus) {
+	public Complaint(Integer complaintId, String complaintDescription, Integer customerId, String complaintStatus) {
 		super();
 		this.complaintId = complaintId;
 		this.complaintDescription = complaintDescription;
@@ -36,11 +36,11 @@ public class Complaint {
 		this.complaintStatus = complaintStatus;
 	}
 
-	public int getComplaintId() {
+	public Integer getComplaintId() {
 		return complaintId;
 	}
 
-	public void setComplaintId(int complaintId) {
+	public void setComplaintId(Integer complaintId) {
 		this.complaintId = complaintId;
 	}
 
@@ -52,11 +52,11 @@ public class Complaint {
 		this.complaintDescription = complaintDescription;
 	}
 
-	public int getCustomerId() {
+	public Integer getCustomerId() {
 		return customerId;
 	}
 
-	public void setCustomerId(int customerId) {
+	public void setCustomerId(Integer customerId) {
 		this.customerId = customerId;
 	}
 

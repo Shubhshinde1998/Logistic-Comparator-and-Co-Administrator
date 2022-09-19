@@ -88,7 +88,7 @@ public class CompanyService {
 		Optional<User> u = urepo.findById(userid);
 		u.get().setUserStatus("true");
 		
-		int price=0;
+		int price=99;
 		List<Category> category = crrepo.findAll();
 		for(int i=0;i<5;i++)
 		{

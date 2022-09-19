@@ -17,26 +17,26 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Feedback {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int feedbackId;
+	private Integer feedbackId;
 	
 	@Column(name="feedback_description",nullable=false)
 	private String feedbackDiscription;
 	
 	@Column(name="customer_id",nullable=false)
-	private int customerId;
+	private Integer customerId;
 
-	public Feedback(int feedbackId, String feedbackDiscription, int customerId) {
+	public Feedback(Integer feedbackId, String feedbackDiscription, Integer customerId) {
 		super();
 		this.feedbackId = feedbackId;
 		this.feedbackDiscription = feedbackDiscription;
 		this.customerId = customerId;
 	}
 
-	public int getFeedbackId() {
+	public Integer getFeedbackId() {
 		return feedbackId;
 	}
 
-	public void setFeedbackId(int feedbackId) {
+	public void setFeedbackId(Integer feedbackId) {
 		this.feedbackId = feedbackId;
 	}
 
@@ -48,11 +48,11 @@ public class Feedback {
 		this.feedbackDiscription = feedbackDiscription;
 	}
 
-	public int getCustomerId() {
+	public Integer getCustomerId() {
 		return customerId;
 	}
 
-	public void setCustomer(int customerId) {
+	public void setCustomer(Integer customerId) {
 		this.customerId = customerId;
 	}
 

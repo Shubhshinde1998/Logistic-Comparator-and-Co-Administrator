@@ -19,7 +19,7 @@ public class DeliveryBoy {
 	private String deliveryBoyName;
 	
 	@Column(name="delivery_boy_contactno",nullable=false)
-	private double deliveryBoyContactNo;
+	private Long deliveryBoyContactNo;
 	
 	@Column(name="delivery_boy_emailid",nullable=false)
 	private String deliveryBoyEmail;
@@ -38,8 +38,8 @@ public class DeliveryBoy {
 		// TODO Auto-generated constructor stub
 	}
 
-	public DeliveryBoy(int deliveryBoyId, String deliveryBoyName, double deliveryBoyContactNo, String deliveryBoyEmail,
-			int deliveryBoyAge, int deliveryBoyLicense, int companyId) {
+	public DeliveryBoy(Integer deliveryBoyId, String deliveryBoyName, Long deliveryBoyContactNo, String deliveryBoyEmail,
+			Integer deliveryBoyAge, Integer deliveryBoyLicense, Integer companyId) {
 		super();
 		this.deliveryBoyId = deliveryBoyId;
 		this.deliveryBoyName = deliveryBoyName;
@@ -50,11 +50,11 @@ public class DeliveryBoy {
 		this.companyId = companyId;
 	}
 
-	public int getDeliveryBoyId() {
+	public Integer getDeliveryBoyId() {
 		return deliveryBoyId;
 	}
 
-	public void setDeliveryBoyId(int deliveryBoyId) {
+	public void setDeliveryBoyId(Integer deliveryBoyId) {
 		this.deliveryBoyId = deliveryBoyId;
 	}
 
@@ -66,11 +66,11 @@ public class DeliveryBoy {
 		this.deliveryBoyName = deliveryBoyName;
 	}
 
-	public double getDeliveryBoyContactNo() {
+	public Long getDeliveryBoyContactNo() {
 		return deliveryBoyContactNo;
 	}
 
-	public void setDeliveryBoyContactNo(double deliveryBoyContactNo) {
+	public void setDeliveryBoyContactNo(Long deliveryBoyContactNo) {
 		this.deliveryBoyContactNo = deliveryBoyContactNo;
 	}
 
@@ -82,27 +82,27 @@ public class DeliveryBoy {
 		this.deliveryBoyEmail = deliveryBoyEmail;
 	}
 
-	public int getDeliveryBoyAge() {
+	public Integer getDeliveryBoyAge() {
 		return deliveryBoyAge;
 	}
 
-	public void setDeliveryBoyAge(int deliveryBoyAge) {
+	public void setDeliveryBoyAge(Integer deliveryBoyAge) {
 		this.deliveryBoyAge = deliveryBoyAge;
 	}
 
-	public int getDeliveryBoyLicense() {
+	public Integer getDeliveryBoyLicense() {
 		return deliveryBoyLicense;
 	}
 
-	public void setDeliveryBoyLicense(int deliveryBoyLicense) {
+	public void setDeliveryBoyLicense(Integer deliveryBoyLicense) {
 		this.deliveryBoyLicense = deliveryBoyLicense;
 	}
 
-	public int getCompanyId() {
+	public Integer getCompanyId() {
 		return companyId;
 	}
 
-	public void setCompanyId(int companyId) {
+	public void setCompanyId(Integer companyId) {
 		this.companyId = companyId;
 	}
 

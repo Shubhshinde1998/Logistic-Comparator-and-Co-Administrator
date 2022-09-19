@@ -17,7 +17,7 @@ public class Company {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int companyId;
+	private Integer companyId;
 	
 	@Column(name="company_name",nullable=false)
 	private String companyName;
@@ -29,10 +29,10 @@ public class Company {
 	private String companyCity;
 	
 	@Column(name="company_pincode",nullable=false)
-	private int companyPincode;
+	private Integer companyPincode;
 	
 	@Column(name="company_contactno",nullable=false)
-	private double companyContactNo;	
+	private Long companyContactNo;	
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="user_Id", referencedColumnName = "userId",nullable=false)
@@ -44,7 +44,7 @@ public class Company {
 	}
 
 	public Company(int companyId, String companyName, String companyEmail, String companyCity, int companyPincode,
-			int companyContactNo, User user) {
+			Long companyContactNo, User user) {
 		super();
 		this.companyId = companyId;
 		this.companyName = companyName;
@@ -55,11 +55,11 @@ public class Company {
 		this.user = user;
 	}
 
-	public int getCompanyId() {
+	public Integer getCompanyId() {
 		return companyId;
 	}
 
-	public void setCompanyId(int companyId) {
+	public void setCompanyId(Integer companyId) {
 		this.companyId = companyId;
 	}
 
@@ -87,19 +87,19 @@ public class Company {
 		this.companyCity = companyCity;
 	}
 
-	public int getCompanyPincode() {
+	public Integer getCompanyPincode() {
 		return companyPincode;
 	}
 
-	public void setCompanyPincode(int companyPincode) {
+	public void setCompanyPincode(Integer companyPincode) {
 		this.companyPincode = companyPincode;
 	}
 
-	public double getCompanyContactNo() {
+	public Long getCompanyContactNo() {
 		return companyContactNo;
 	}
 
-	public void setCompanyContactNo(int companyContactNo) {
+	public void setCompanyContactNo(Long companyContactNo) {
 		this.companyContactNo = companyContactNo;
 	}
 

@@ -28,6 +28,7 @@ public class DeliveryBoyController {
 		return deli;    
 	}
 	
+	//Get Delivery Boy with Company Id 
 	@GetMapping("/{id}/getdeliverydetails")
 	public List<DeliveryBoy> getDeliveryDetails(@PathVariable(name="id")int id)
 	{

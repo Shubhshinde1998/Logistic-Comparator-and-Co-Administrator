@@ -17,22 +17,22 @@ public class Orders {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int courierDetailsId;
+	private Integer courierDetailsId;
 	
 	@Column(name="customer_id")
-	private int customerId;
+	private Integer customerId;
 	
 	@Column(name="company_id")
-	private int companyId;
+	private Integer companyId;
 	
 	@Column(name="delivery_boy_id")
-	private int deliveryBoyId;
+	private Integer deliveryBoyId;
 	
 	@Column(name="vehicles_details_id")
-	private int vehiclesDetailsId;
+	private Integer vehiclesDetailsId;
 	
 	@Column(name="category_pricing_id")
-	private int categoryPricingId;
+	private Integer categoryPricingId;
 	
 	@Column(name="pickupaddress")
 	private String pickupAddress;
@@ -58,7 +58,7 @@ public class Orders {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Orders(int courierDetailsId, int customerId, int companyId, int deliveryBoyId, int vehiclesDetailsId,
+	public Orders(Integer courierDetailsId, Integer customerId, Integer companyId, Integer deliveryBoyId, Integer vehiclesDetailsId,
 			int categoryPricingId, String pickupAddress, String deliveryAddress, String paymentStatus,
 			String receiverName, String trackingStatus, Date requestTime) {
 		super();
@@ -77,7 +77,7 @@ public class Orders {
 	}
 
 	
-	public Orders(int courierDetailsId, int customerId, int companyId, int categoryPricingId, String pickupAddress,
+	public Orders(Integer courierDetailsId, Integer customerId, Integer companyId, Integer categoryPricingId, String pickupAddress,
 			String deliveryAddress, String paymentStatus, String receiverName, String trackingStatus,
 			Date requestTime) {
 		super();
@@ -93,51 +93,51 @@ public class Orders {
 		this.requestTime = requestTime;
 	}
 
-	public int getCourierDetailsId() {
+	public Integer getCourierDetailsId() {
 		return courierDetailsId;
 	}
 
-	public void setCourierDetailsId(int courierDetailsId) {
+	public void setCourierDetailsId(Integer courierDetailsId) {
 		this.courierDetailsId = courierDetailsId;
 	}
 
-	public int getCustomerId() {
+	public Integer getCustomerId() {
 		return customerId;
 	}
 
-	public void setCustomerId(int customerId) {
+	public void setCustomerId(Integer customerId) {
 		this.customerId = customerId;
 	}
 
-	public int getCompanyId() {
+	public Integer getCompanyId() {
 		return companyId;
 	}
 
-	public void setCompanyId(int companyId) {
+	public void setCompanyId(Integer companyId) {
 		this.companyId = companyId;
 	}
 
-	public int getDeliveryBoyId() {
+	public Integer getDeliveryBoyId() {
 		return deliveryBoyId;
 	}
 
-	public void setDeliveryBoyId(int deliveryBoyId) {
+	public void setDeliveryBoyId(Integer deliveryBoyId) {
 		this.deliveryBoyId = deliveryBoyId;
 	}
 
-	public int getVehiclesDetailsId() {
+	public Integer getVehiclesDetailsId() {
 		return vehiclesDetailsId;
 	}
 
-	public void setVehiclesDetailsId(int vehiclesDetailsId) {
+	public void setVehiclesDetailsId(Integer vehiclesDetailsId) {
 		this.vehiclesDetailsId = vehiclesDetailsId;
 	}
 
-	public int getCategoryPricingId() {
+	public Integer getCategoryPricingId() {
 		return categoryPricingId;
 	}
 
-	public void setCategoryPricingId(int categoryPricingId) {
+	public void setCategoryPricingId(Integer categoryPricingId) {
 		this.categoryPricingId = categoryPricingId;
 	}
 

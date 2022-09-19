@@ -1,34 +1,26 @@
-import React,{useState} from "react";
-import {Modal,ModalBody,ModalHeader} from "reactstrap";
-function Payment(props) {
-    const[modal,setmodal]=useState(false);
-    
-    return(
-        <div>
-            <Modal 
-            
-            size="lg"
-            isOpen={modal}
-            toggle={() => setmodal(!modal)}         
-           
-            >
-                <ModalHeader>
-                    popup
-                </ModalHeader>
-                <ModalBody>
-                <h6>Done with your payment?</h6>           
-        <div className="form-outline mb-4">
-           <table>
-            <tr>
-                <td><button className='btn btn-primary btn-block mb-4' style={{backgroundColor:"#0b3629",color:"white"}}>YES</button></td>
-                <td><button className='btn btn-primary btn-block mb-4' style={{backgroundColor:"#0b3629",color:"white"}}>NO</button></td>
-            </tr>
-           </table>                          
+import React from "react";
+import "../styles/Payment.css";
+
+function Payment({ closeModel }) {
+  return (
+    <div className="modalBackground">
+      <div className="modalContainer">
+        <div className="titleCloseBtn">
+          <button onClick={() => { closeModel(false);}}>X</button>
         </div>
-                </ModalBody>
-            </Modal>
-   
+        <div className="title">
+          <h1>Are You Sure You Want to Continue?</h1>
         </div>
-    )
+        <div className="body">
+          <p>The next page looks amazing. Hope you want to go there!</p>
+        </div>
+        <div className="footer">
+          <button onClick={() => { closeModel(false); }} id="cancelBtn" > Cancel </button>
+          <button>Continue</button>
+        </div>
+      </div>
+    </div>
+  );
 }
+
 export default Payment;

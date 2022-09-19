@@ -1,19 +1,21 @@
 import React from 'react'
+import {Link, Route, Router, Routes} from 'react-router-dom';
 import { useEffect, useState } from "react";
 import Complaint from '../Customer/Complaint';
 import Feedback from '../Customer/Feedback';
 import OrderForm from '../Customer/OrderForm';
+import OrderInvoice from '../Customer/OrderInvoice';
 
 export default function DashboardCus() {
 
-    const [customer,setCustomer] = useState([]);
+   /* const [customer,setCustomer] = useState([]);
 
     useEffect(()=>
     {
         fetch("http://localhost:8080/getallcustomer")
         .then(resp=>resp.json())
         .then(data=>setCustomer(data))
-    },[]);
+    },[]);*/
 
     return(
     <div className="col main pt-5 mt-3">
@@ -44,14 +46,26 @@ export default function DashboardCus() {
                     })
                 }
                 </tbody>
-            </table> */}
+                
+            <hr/>
+            </table> 
+            <Link to="/orderform" element={<OrderForm/>} />
+            
             <Feedback/>
             <hr/>
             <Complaint/>
-            <hr/>
+            <Router>
+                <Routes>
+                <Route path='/orderform' element={<OrderForm/>}/> 
+                </Routes>          
+            </Router>*/}
+            <OrderInvoice/>
+            <hr></hr>
             <OrderForm/>
             <hr/>
-
+         <Feedback/>
+            <hr/>
+            <Complaint/>
         </div>
     )
 }
