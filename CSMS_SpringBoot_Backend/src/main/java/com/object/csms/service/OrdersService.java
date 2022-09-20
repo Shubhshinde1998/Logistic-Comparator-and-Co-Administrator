@@ -50,6 +50,7 @@ public class OrdersService {
 		repo.save(order);
 	}
 
+	//gives the list of order with companyId
 	@Transactional
 	public List<OrderDetails> companyOrder(int id) 
 	{
@@ -57,12 +58,19 @@ public class OrdersService {
 		List<OrderDetails> resp= new ArrayList<>();
 		for(Orders list : order)
 		{
-			Company company = companyrepo.findById(list.getCompanyId()).get();
 			Customer customer = customerrepo.findById(list.getCustomerId()).get();
 			CategoryPrice categoryprice = categorypricerepo.findById(list.getCategoryPricingId()).get();
-			resp.add( new OrderDetails(company, customer, categoryprice));	
-			
+			if(list.getDeliveryBoyId()!=null && list.getVehiclesDetailsId()!=null) 
+			{
+				DeliveryBoy deliveryBoy = deliveryboyrepo.findById(list.getDeliveryBoyId()).get();
+				VehicleDetails vehicleDetails = vehiclerepo.findById(list.getVehiclesDetailsId()).get();
+				resp.add( new OrderDetails(customer, deliveryBoy, vehicleDetails, categoryprice, list));
+			}
+			else
+				resp.add(new OrderDetails(list, customer, categoryprice));
+							
 		}
+		
 		return resp;
 	}
 	@Transactional
@@ -70,9 +78,7 @@ public class OrdersService {
 		Orders or = repo.findById(id).get();
 		or.setDeliveryBoyId(order.getDeliveryBoyId());
 		or.setVehiclesDetailsId(order.getVehiclesDetailsId());
-		or.setTrackingStatus("approved");
-		repo.save(or);
-		
+		repo.save(or);		
 		return or.getCourierDetailsId();
 	}
 	
@@ -99,5 +105,12 @@ public class OrdersService {
 				order.getPickupAddress(),order.getReceiverName(),order.getDeliveryAddress(),
 				order.getPaymentStatus(),order.getTrackingStatus(),order.getRequestTime());
 		return resp;
+	}
+
+	public int trackingStatus(OrderApproveRequest order,int id) {
+		Orders or = repo.findById(id).get();
+		or.setTrackingStatus(order.getTrackingStatus());
+		repo.save(or);
+		return or.getCourierDetailsId();
 	}
 }

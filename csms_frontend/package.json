@@ -19,6 +19,7 @@
     "react-toastify": "^9.0.8",
     "reactjs-popup": "^2.0.5",
     "reactstrap": "^9.1.4",
+    "use-force-update": "^1.0.10",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

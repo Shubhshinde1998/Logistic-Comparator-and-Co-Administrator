@@ -6,7 +6,7 @@
 .table-borderless > thead > tr > th {
     border: none;
 }
-tr > th{
+#invoicetable tr > th{
     text-align: right;
 }
 tr >td{

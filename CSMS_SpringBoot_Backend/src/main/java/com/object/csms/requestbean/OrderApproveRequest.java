@@ -24,6 +24,12 @@ public class OrderApproveRequest {
 		this.deliveryBoyId = deliveryBoyId;
 		this.vehiclesDetailsId = vehiclesDetailsId;
 	}
+	
+	public OrderApproveRequest(Integer companyId, String trackingStatus) {
+		super();
+		this.companyId = companyId;
+		this.trackingStatus = trackingStatus;
+	}
 	public Integer getCompanyId() {
 		return companyId;
 	}

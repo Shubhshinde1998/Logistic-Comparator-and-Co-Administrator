@@ -7,7 +7,7 @@ export default function OrderInvoice() {
   const getInvoice = ()=>
   {
         let customerId = (JSON.parse(localStorage.getItem("customer")).customerId)
-        fetch("http://localhost:8080/"+customerId+"/220360/invoice")
+        fetch("http://localhost:8080/"+customerId+"/220362/invoice")
         .then(resp => resp.json())
         .then(data => setInvoice(data))
   }
@@ -23,7 +23,7 @@ export default function OrderInvoice() {
         <p className="myptag my-4 mx-5" style={{fontSize: "30px"}}>Order Details</p>
         <hr/>
         <div>
-        <table className="table table-borderless">
+        <table className="table table-borderless" id='invoicetable'>
             <thead className="thead-light">
                 <tr>
                     <th scope="col"></th>

@@ -34,7 +34,7 @@ export default function ListVehicle() {
             <table className="table table-striped">
             <thead className="thead-light">
                 <tr>
-                    <th scope="col">Name</th>
+                    <th scope="col">Vehicle No.</th>
                     <th scope="col">Actions</th>
                 </tr>
             </thead>

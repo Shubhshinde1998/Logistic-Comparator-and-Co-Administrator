@@ -33,7 +33,7 @@ export default function ListYourFeedback() {
                 feedbackcus.map((v)=>
                 {
                     return(                        
-                        <tr scope="row">
+                        <tr scope="row" key={v.feedbackId}>
                             <td >{v.feedbackId}</td>
                             <td >{v.feedbackDiscription}</td>
                             <td >{v.customerId}</td>

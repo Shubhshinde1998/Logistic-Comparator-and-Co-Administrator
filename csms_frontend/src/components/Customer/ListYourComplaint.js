@@ -35,14 +35,14 @@ export default function ListYourComplaint() {
             {                    
                 complaintcus.map((v)=>
                 {
-                    return(                        
-                        <tr scope="row">
+                    return(    
+                                            
+                        <tr scope="row" key={v.complaintId}>
                             <td>{v.complaintId}</td>
                             <td >{v.companyId}</td>
                             <td >{v.complaintDescription}</td>
                             <td >{v.customerId}</td>
-                            <td >{v.complaintStatus}</td>
-                           
+                            <td >{v.complaintStatus}</td>                          
                           
                         </tr>
                         )

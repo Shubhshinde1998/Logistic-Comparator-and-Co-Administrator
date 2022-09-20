@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -45,20 +46,26 @@ public class OrdersController {
 		 return order.getCourierDetailsId();		 
 	}	
 	
+	//give list of order details with companyId except delivery boy and vehicle
 	@GetMapping("/{id}/companyorder")
 	public List<OrderDetails> companyOrder(@PathVariable(name="id") int id)
 	{
 		return services.companyOrder(id);
-	
 	}
 	
 	//Company Allocate Delivery Boy and Vehicle to Courier Order with courierDetailId
-	@PostMapping("/{id}/approveorder")
+	@PutMapping("/{id}/approveorder")
 	public int approveOrder(@RequestBody OrderApproveRequest order,@PathVariable(name="id")int id)
 	{
 		return services.approveOrder(order,id);
 	}
 	
+	//Company update Tracking Status with courierDetailId
+	@PutMapping("/{id}/trackingstatus")
+	public int trackingStatus(@RequestBody OrderApproveRequest order, @PathVariable(name="id") int id)
+	{
+		return services.trackingStatus(order,id);
+	}
 	//Order Invoice with customerId and courierDetailsId 
 	@GetMapping("/{customerid}/{orderid}/invoice")
 	public InvoiceResponse invoiceGenerate(@PathVariable(name="customerid") int customerId,@PathVariable(name="orderid") Integer orderId)

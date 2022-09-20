@@ -6,6 +6,8 @@ import AddVehicle from '../Company/AddVehicle';
 import ListCategoryPrice from '../Company/ListCategoryPrice';
 import ListFeedback from '../Company/ListFeedback';
 import ListComplaint from '../Company/ListComplaint';
+import OrderRequest from '../Company/OrderRequest';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 export default function DashboardCom() {
 
@@ -61,24 +63,17 @@ export default function DashboardCom() {
         </div>
         
         <div>
-       
-       {/*<ListCustomer/>*/}
-  
-       <ListDeliveryBoy/>
-       <hr/>
-       <ListVehicle/>     
-       <hr/> 
-       <ListCategoryPrice/>
-       <hr/>
-       <AddDeliveryBoy/>
-       <hr/>
-       <AddVehicle/>
-       <hr/> 
-       <ListFeedback/>  
-       <hr/> 
-       <ListComplaint/>        
-        </div>
-        
+            <Routes>
+                <Route path="/orders" element={<OrderRequest/>}/>
+                <Route path="/deliveryboys/*" element={<ListDeliveryBoy/>}/>
+                <Route path="/vehicles/*" element={<ListVehicle/>}/>
+                <Route path="/categoryprice" element={<ListCategoryPrice/>}/>
+                <Route path="/deliveryboys/form" element={<AddDeliveryBoy/>}/>
+                <Route path="/vehicles/form" element={<AddVehicle/>}/>
+                <Route path="/feedback" element={<ListFeedback/>}/>
+                <Route path="/complaint" element={<ListComplaint/>}/>
+            </Routes>           
+        </div>       
         
     </div>
     )

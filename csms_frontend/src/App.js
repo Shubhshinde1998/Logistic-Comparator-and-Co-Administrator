@@ -10,7 +10,6 @@ import DashboardAdmin from './components/DashboardAdmin/DashboardAdmin';
 import DashboardCompany from './components/DashboardCompany/DashboardCompany';
 import DashboardCustomer from './components/DashboardCustomer/DashboardCustomer';
 
-
 function App() { 
 
  
@@ -24,9 +23,9 @@ function App() {
           <Route path="/company"  element={<CompanyReg/>} />
           <Route path="/customer"  element={<CustomerReg/>} />
           <Route path="/register"  element={<Register/>} />
-          <Route path="/adminpanel"  element={<DashboardAdmin/>} />
-          <Route path="/companypanel"  element={<DashboardCompany/>} />
-          <Route path="/customerpanel"  element={<DashboardCustomer/>} />      
+          <Route path="/adminpanel/*"  element={<DashboardAdmin/>} />
+          <Route path="/companypanel/*"  element={<DashboardCompany/>} />
+          <Route path="/customerpanel/*"  element={<DashboardCustomer/>} />             
         </Routes>
   </Router>     
    </div>

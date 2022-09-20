@@ -99,7 +99,7 @@ export default function Feedback() {
             <select id="companyname" name="companyname" className="form-control" value={valueCompany} onChange={handleCompanyChange}>
                <option value="">Company Names :</option>
                {company.map((company) => (
-               <option value={company.companyId}>{company.companyName}</option>
+               <option key={company.companyId}value={company.companyId}>{company.companyName}</option>
                ))}
             </select>
             <p>{`You selected ${valueCompany}`}</p>      
