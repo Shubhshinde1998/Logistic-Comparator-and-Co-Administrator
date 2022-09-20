@@ -13,7 +13,7 @@ public class Category {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int categoryId;
+	private Integer categoryId;
 	
 	@Column(name="category_name")
 	private String categoryName;
@@ -24,17 +24,17 @@ public class Category {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Category(int categoryId, String categoryName) {
+	public Category(Integer categoryId, String categoryName) {
 		super();
 		this.categoryId = categoryId;
 		this.categoryName = categoryName;
 	}
 
-	public int getCategoryId() {
+	public Integer getCategoryId() {
 		return categoryId;
 	}
 
-	public void setCategoryId(int categoryId) {
+	public void setCategoryId(Integer categoryId) {
 		this.categoryId = categoryId;
 	}
 

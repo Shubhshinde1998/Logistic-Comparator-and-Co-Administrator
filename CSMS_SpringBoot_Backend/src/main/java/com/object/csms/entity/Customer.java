@@ -14,7 +14,7 @@ import javax.persistence.Table;
 public class Customer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int customerId;
+	private Integer customerId;
 	
 	@Column(name="customer_name")
 	private String customerName;
@@ -26,10 +26,10 @@ public class Customer {
 	private String customerCity;
 	
 	@Column(name="customer_pincode")
-	private int customerPincode;
+	private Integer customerPincode;
 	
 	@Column(name="customer_contactno")
-	private double customerContactNo;	
+	private Long customerContactNo;	
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="user_Id", referencedColumnName = "userId")
@@ -40,8 +40,8 @@ public class Customer {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Customer(int customerId, String customerName, String customerEmail, String customerCity, int customerPincode,
-			int customerContactNo, User user) {
+	public Customer(Integer customerId, String customerName, String customerEmail, String customerCity, Integer customerPincode,
+			Long customerContactNo, User user) {
 		super();
 		this.customerId = customerId;
 		this.customerName = customerName;
@@ -52,11 +52,11 @@ public class Customer {
 		this.user = user;
 	}
 
-	public int getCustomerId() {
+	public Integer getCustomerId() {
 		return customerId;
 	}
 
-	public void setCustomerId(int customerId) {
+	public void setCustomerId(Integer customerId) {
 		this.customerId = customerId;
 	}
 
@@ -84,19 +84,19 @@ public class Customer {
 		this.customerCity = customerCity;
 	}
 
-	public int getCustomerPincode() {
+	public Integer getCustomerPincode() {
 		return customerPincode;
 	}
 
-	public void setCustomerPincode(int customerPincode) {
+	public void setCustomerPincode(Integer customerPincode) {
 		this.customerPincode = customerPincode;
 	}
 
-	public double getCustomerContactNo() {
+	public Long getCustomerContactNo() {
 		return customerContactNo;
 	}
 
-	public void setCustomerContactNo(int customerContactNo) {
+	public void setCustomerContactNo(Long customerContactNo) {
 		this.customerContactNo = customerContactNo;
 	}
 

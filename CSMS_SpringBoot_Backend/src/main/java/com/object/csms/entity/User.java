@@ -15,20 +15,20 @@ public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int userId;
+	private Integer userId;
 	
    
-    @Column(nullable = false, length = 100,name="user_password")
+    @Column(nullable = false,name="user_password")
     private String userPassword;
      
     @Column(nullable = false,name="user_role")
-    private int userRole;
+    private Integer userRole;
      
-    @Column(length = 20, name="user_status")
+    @Column(name="user_status")
     @Value("false")
     private String userStatus;
     
-    @Column(length=100, nullable = false, name="user_username")
+    @Column(nullable = false, name="user_username")
     private String userUsername;
 
 	public User() {
@@ -36,7 +36,7 @@ public class User {
 		// TODO Auto-generated constructor stub
 	}
 
-	public User(int userId, String userPassword, int userRole, String userStatus, String userUsername) {
+	public User(Integer userId, String userPassword, Integer userRole, String userStatus, String userUsername) {
 		super();
 		this.userId = userId;
 		this.userPassword = userPassword;
@@ -45,11 +45,11 @@ public class User {
 		this.userUsername = userUsername;
 	}
 
-	public int getUserId() {
+	public Integer getUserId() {
 		return userId;
 	}
 
-	public void setUserId(int userId) {
+	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
 
@@ -61,11 +61,11 @@ public class User {
 		this.userPassword = userPassword;
 	}
 
-	public int getUserRole() {
+	public Integer getUserRole() {
 		return userRole;
 	}
 
-	public void setUserRole(int userRole) {
+	public void setUserRole(Integer userRole) {
 		this.userRole = userRole;
 	}
 

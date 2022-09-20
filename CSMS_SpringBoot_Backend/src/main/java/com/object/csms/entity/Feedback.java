@@ -22,6 +22,12 @@ public class Feedback {
 	@Column(name="feedback_description")
 	private String feedbackDiscription;
 	
+<<<<<<< HEAD
+	@Column(name="customer_id",nullable=false)
+	private Integer customerId;
+
+	public Feedback(Integer feedbackId, String feedbackDiscription, Integer customerId) {
+=======
 	@Column(name="customer_id")
 	private Integer customerId;
 
@@ -29,6 +35,7 @@ public class Feedback {
 	private Integer companyId;
 
 	public Feedback(Integer feedbackId, String feedbackDiscription, Integer customerId, Integer companyId) {
+>>>>>>> c43cc97e3945ae9e57febbed955d4da103904304
 		super();
 		this.feedbackId = feedbackId;
 		this.feedbackDiscription = feedbackDiscription;
@@ -56,7 +63,11 @@ public class Feedback {
 		return customerId;
 	}
 
+<<<<<<< HEAD
+	public void setCustomer(Integer customerId) {
+=======
 	public void setCustomerId(Integer customerId) {
+>>>>>>> c43cc97e3945ae9e57febbed955d4da103904304
 		this.customerId = customerId;
 	}
 

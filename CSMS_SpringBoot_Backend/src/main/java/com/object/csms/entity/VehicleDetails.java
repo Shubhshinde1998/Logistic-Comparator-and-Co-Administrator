@@ -13,31 +13,31 @@ public class VehicleDetails {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int vehiclesDetailsId;
+	private Integer vehiclesDetailsId;
 	
 	@Column(name="vehicles_details_no",nullable=false)
 	private String vehiclesDetailsNo;
 	
 	@Column(name="company_id",nullable=false)
-	private int companyId;
+	private Integer companyId;
 
 	public VehicleDetails() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public VehicleDetails(int vehicleDetailsId, String vehiclesDetailsNo, int companyId) {
+	public VehicleDetails(Integer vehicleDetailsId, String vehiclesDetailsNo, Integer companyId) {
 		super();
 		this.vehiclesDetailsId = vehicleDetailsId;
 		this.vehiclesDetailsNo = vehiclesDetailsNo;
 		this.companyId = companyId;
 	}
 
-	public int getVehicleDetailsId() {
+	public Integer getVehicleDetailsId() {
 		return vehiclesDetailsId;
 	}
 
-	public void setVehicleDetailsId(int vehicleDetailsId) {
+	public void setVehicleDetailsId(Integer vehicleDetailsId) {
 		this.vehiclesDetailsId = vehicleDetailsId;
 	}
 
@@ -49,11 +49,11 @@ public class VehicleDetails {
 		this.vehiclesDetailsNo = vehiclesDetailsNo;
 	}
 
-	public int getCompanyId() {
+	public Integer getCompanyId() {
 		return companyId;
 	}
 
-	public void setCompanyId(int companyId) {
+	public void setCompanyId(Integer companyId) {
 		this.companyId = companyId;
 	}
 

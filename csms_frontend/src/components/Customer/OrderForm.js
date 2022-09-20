@@ -1,13 +1,14 @@
 import React from 'react';
 import {useEffect,useState,useReducer} from 'react';
 import "../../styles/Registration.css";
-
+import Payment from '../Payment.js';
+import "../../styles/Payment.css";
 const init = {
     
    pickupaddress:null,
    receivername:null,
-   deliveryaddress:null,
-   paymentstatus:false
+   deliveryaddress:null
+   
 }
 const reducer = (state,action) => {
    switch(action.type){
@@ -27,9 +28,10 @@ export default function OrderForm() {
    const [valueCategory, setValueCategory] = useState(0);
    const [formErrors, setFormErrors] = useState({});
    const [isSubmit, setIsSubmit] = useState(false);
-
+   const [modalOpen, setModalOpen] = useState(false);
+   const [categoryPricingId,setCategoryPricingId] = useState();
 let customerName= (JSON.parse(localStorage.getItem("customer")).customerName)
-let categoryPricingId=0;
+
 
 const handleCompanyChange =  (e) => {
    setValueCompany(e.target.value);
@@ -38,7 +40,7 @@ const handleCompanyChange =  (e) => {
  const handleCategoryChange =  (e)=>{
    setValueCategory(e.target.value);
    getCategoryPrice();
- }
+ };
  const getCategoryPrice =  () =>{
 
    let com = valueCompany;
@@ -59,7 +61,7 @@ const totalPrice = ()=>{
     if(v.category.categoryId==valueCategory && v.companyId==valueCompany)
     {
        setTotalPrice(v.categoryPrice);
-       categoryPricingId = v.categoryPricingId;
+       setCategoryPricingId(v.categoryPricingId);
     }
     else{
       console.log("unable to set total price");
@@ -107,7 +109,7 @@ const handleSubmit = (e) => {
  };
 
  const sendData = (e) => {    
-   e.preventDefault();
+  // e.preventDefault();
    let customerId= (JSON.parse(localStorage.getItem("customer")).customerId)
    const requestTime = new Date();
         const reqData = {
@@ -123,11 +125,9 @@ const handleSubmit = (e) => {
             pickupAddress:orderdetails.pickupaddress,
             receiverName:orderdetails.receivername,
             deliveryAddress:orderdetails.deliveryaddress,
-            categoryPricingId:5,
-            paymentStatus:orderdetails.paymentstatus,
+            categoryPricingId:categoryPricingId,
             requestTime:requestTime,
-            vehiclesDetailsId: 14,
-            deliveryBoyId: 12
+            paymentStatus:false
             })    
         }
 
@@ -205,10 +205,12 @@ const handleSubmit = (e) => {
          <div className="form-outline mb-4">
             <lable>Total Price:</lable>
             <input type="text" id="price" name="price" className="form-control" value={totalprice} readOnly={true}/><br/>
-            {/*<button className='btn btn-primary btn-block mb-4' >Make Payment</button>*/}
-         </div>
+            {/* <button className="btn btn-primary btn-block mb-4 openModalBtn" onClick={() => { setModalOpen(true);
+        }}>Make Payment</button>
+        {modalOpen && <Payment closeModel={setModalOpen} />}*/}
+         </div>         
          <hr></hr>
-
+         
          <div className="form-outline mb-4">
             <button type="submit"  id="submit" className="btn btn-primary btn-block mb-4"
             onClick = { (e)=>{ handleSubmit(e) } }

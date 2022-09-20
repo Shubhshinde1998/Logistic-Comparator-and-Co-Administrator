@@ -16,24 +16,25 @@ public class CategoryPrice {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int categoryPricingId;
+	private Integer categoryPricingId;
 	
 	@Column(name="category_price",nullable=false)
-	private int categoryPrice;
+	private Integer categoryPrice;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="category_Id", referencedColumnName = "categoryId",nullable=false)
 	private Category category;
 	
 	@Column (name="company_id",nullable=false)
-	private int companyId;
+	private Integer companyId;
 
 	public CategoryPrice() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public CategoryPrice(int categoryPricingId, int categoryPrice, Category category, int companyId) {
+	public CategoryPrice(Integer categoryPricingId, Integer categoryPrice, Category category, Integer companyId) 
+	{
 		super();
 		this.categoryPricingId = categoryPricingId;
 		this.categoryPrice = categoryPrice;
@@ -42,26 +43,26 @@ public class CategoryPrice {
 	}
 	
 
-	public CategoryPrice(int categoryPrice, Category category, int companyId) {
+	public CategoryPrice(Integer categoryPrice, Category category, Integer companyId) {
 		super();
 		this.categoryPrice = categoryPrice;
 		this.category = category;
 		this.companyId = companyId;
 	}
 
-	public int getCategoryPricingId() {
+	public Integer getCategoryPricingId() {
 		return categoryPricingId;
 	}
 
-	public void setCategoryPricingId(int categoryPricingId) {
+	public void setCategoryPricingId(Integer categoryPricingId) {
 		this.categoryPricingId = categoryPricingId;
 	}
 
-	public int getCategoryPrice() {
+	public Integer getCategoryPrice() {
 		return categoryPrice;
 	}
 
-	public void setCategoryPrice(int categoryPrice) {
+	public void setCategoryPrice(Integer categoryPrice) {
 		this.categoryPrice = categoryPrice;
 	}
 
@@ -73,11 +74,11 @@ public class CategoryPrice {
 		this.category = category;
 	}
 
-	public int getCompanyId() {
+	public Integer getCompanyId() {
 		return companyId;
 	}
 
-	public void setCompanyId(int companyId) {
+	public void setCompanyId(Integer companyId) {
 		this.companyId = companyId;
 	}
 
