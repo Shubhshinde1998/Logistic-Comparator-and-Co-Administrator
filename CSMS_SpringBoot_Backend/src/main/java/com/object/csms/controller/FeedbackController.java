@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.object.csms.entity.DeliveryBoy;
 import com.object.csms.entity.Feedback;
 import com.object.csms.service.FeedbackService;
 
@@ -33,5 +35,18 @@ public class FeedbackController {
 		return feedback.getFeedbackId();
 	}
 	
+	@GetMapping("/{id}/getfeedbackresponse")
+	public List<Feedback> getfeedback(@PathVariable(name="id")Integer id)
+	{
+		List<Feedback> resp = services.getFeedbackByCompanyId(id);
+		return resp;
+	}
+	
+	@GetMapping("/{id}/getfeedbackcustomer")
+	public List<Feedback> getfeedbackcustomer(@PathVariable(name="id")Integer id)
+	{
+		List<Feedback> resp = services.getFeedbackByCustomerId(id);
+		return resp;
+	}
 	
 }
