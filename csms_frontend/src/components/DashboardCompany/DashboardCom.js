@@ -5,6 +5,7 @@ import ListVehicle from '../Company/ListVehicles';
 import AddVehicle from '../Company/AddVehicle';
 import ListCategoryPrice from '../Company/ListCategoryPrice';
 import ListFeedback from '../Company/ListFeedback';
+import ListComplaint from '../Company/ListComplaint';
 
 export default function DashboardCom() {
 
@@ -73,7 +74,9 @@ export default function DashboardCom() {
        <hr/>
        <AddVehicle/>
        <hr/> 
-       <ListFeedback/>            
+       <ListFeedback/>  
+       <hr/> 
+       <ListComplaint/>        
         </div>
         
         

@@ -12,42 +12,25 @@ import javax.persistence.Table;
 public class Complaint {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-
 	private Integer complaintId;	
 
 	@Column(name="company_id")
-	private Integer companyId;
-	
+	private Integer companyId;	
 
 	@Column (name="complaint_description",nullable=false)
 	private String complaintDescription;
-
 	
 	@Column(name="customer_id",nullable=false)
 	private Integer customerId;
-	
+
 	@Column (name="complaint_status",nullable=false)
 	private String complaintStatus;
-
 
 	public Complaint(Integer complaintId, Integer companyId, String complaintDescription, Integer customerId,
 			String complaintStatus) {
 		super();
 		this.complaintId = complaintId;
 		this.companyId = companyId;
-		this.complaintDescription = complaintDescription;
-		this.customerId = customerId;
-		this.complaintStatus = complaintStatus;
-	}
-
-	public Complaint() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	public Complaint(Integer complaintId, String complaintDescription, Integer customerId, String complaintStatus) {
-		super();
-		this.complaintId = complaintId;
 		this.complaintDescription = complaintDescription;
 		this.customerId = customerId;
 		this.complaintStatus = complaintStatus;
@@ -92,9 +75,10 @@ public class Complaint {
 	public void setComplaintStatus(String complaintStatus) {
 		this.complaintStatus = complaintStatus;
 	}
-	
 
-
-	
+	public Complaint() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	
 }

@@ -51,7 +51,7 @@ let AddDeliveryBoy =() =>
         }
         if (!values.contactno) {
             errors.contact = "Contact No is required";
-        }else if (values.contact.length < 6) {
+        }else if (values.contactno.length < 6) {
             errors.contact = "Contact must be more than 6 characters";}
         if (!values.licence) {
             errors.licence = "Licence No. is required";
@@ -117,9 +117,10 @@ let AddDeliveryBoy =() =>
             <div className="form-outline mb-4">
                 <input type="number" id="form3Example5" className="form-control" placeholder="Contact No" name="Contact" value={com.contactno}
                     onChange={ (e)=>{dispatch({type: 'update', field: 'contactno', val: e.target.value })} }
-                    />
+                    />                     
             <p className="text-danger">{formErrors.contact}</p>                
             </div>
+
             <div className="form-outline mb-4">
                 <input type="number" id="form3Example7" className="form-control" placeholder="Age"name="Age" value={com.age}
                     onChange={ (e)=>{dispatch({type: 'update', field: 'age', val: e.target.value })} }

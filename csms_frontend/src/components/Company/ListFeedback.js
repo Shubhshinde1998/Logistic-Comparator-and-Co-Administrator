@@ -22,13 +22,11 @@ export default function ListFeedback() {
             <div className="table-responsive">                        
             <table className="table table-striped">
             <thead className="thead-light">
-                <tr>
-                    <th scope="col">FeedbackId</th>
-                    <th scope="col">FeedbackDescription</th>
-                    <th scope="col">CustomerId</th>
-                    <th scope="col">CompanyId</th>
+            <td scope="col"><b>Feedback Id</b></td>
+                    <td scope="col"><b>Feedback Description</b></td>
+                    <td scope="col"><b>Customer Id</b></td>
+                    <td scope="col"><b>Company Id</b></td>
                     
-                </tr>
             </thead>
             <tbody>
             {                    

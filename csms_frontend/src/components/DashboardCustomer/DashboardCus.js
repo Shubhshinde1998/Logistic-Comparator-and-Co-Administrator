@@ -1,11 +1,11 @@
-import React from 'react'
-import {Link, Route, Router, Routes} from 'react-router-dom';
-import { useEffect, useState } from "react";
+import React from 'react';
 import Complaint from '../Customer/Complaint';
 import Feedback from '../Customer/Feedback';
 import ListYourFeedback from '../Customer/ListYourFeedback';
 import OrderForm from '../Customer/OrderForm';
 import OrderInvoice from '../Customer/OrderInvoice';
+import ListYourComplaint from '../Customer/ListYourComplaint';
+
 
 export default function DashboardCus() {
 
@@ -68,7 +68,10 @@ export default function DashboardCus() {
          <Feedback/>
             <hr/>
             <Complaint/>
+            <hr/>
             <ListYourFeedback/>
+            <hr/>
+            <ListYourComplaint/>
 
         </div>
     )

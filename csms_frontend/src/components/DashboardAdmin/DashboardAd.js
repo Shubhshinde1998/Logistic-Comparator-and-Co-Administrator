@@ -1,4 +1,5 @@
 
+import AllComplaint from '../Admin/AllComplaints';
 import AllFeedback from '../Admin/AllFeedback';
 import ListedCompany from '../Admin/ListedCompany';
 import PendingCompany from '../Admin/PendingCompany';
@@ -61,7 +62,9 @@ const DashboardAd = () => {
         <hr/>
         <PendingCompany/>  
         <hr/>
-        <AllFeedback/>               
+        <AllFeedback/>    
+        <hr/>
+        <AllComplaint/>           
         </div>      
         
     </div>
