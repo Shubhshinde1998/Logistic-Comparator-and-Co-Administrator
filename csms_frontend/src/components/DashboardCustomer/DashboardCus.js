@@ -6,6 +6,8 @@ import Feedback from '../Customer/Feedback';
 import ListYourFeedback from '../Customer/ListYourFeedback';
 import OrderForm from '../Customer/OrderForm';
 import OrderInvoice from '../Customer/OrderInvoice';
+import ListYourComplaint from '../Customer/ListYourComplaint';
+
 
 export default function DashboardCus() {
 
@@ -64,13 +66,15 @@ export default function DashboardCus() {
             <hr></hr>
             <OrderForm/>
             <hr/>
-<<<<<<< HEAD
+
          <Feedback/>
             <hr/>
             <Complaint/>
-=======
+
             <ListYourFeedback/>
->>>>>>> c43cc97e3945ae9e57febbed955d4da103904304
+            <ListYourComplaint/>
+         
+
         </div>
     )
 }

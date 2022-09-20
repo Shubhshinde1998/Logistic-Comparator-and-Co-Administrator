@@ -1,43 +1,48 @@
 import React from 'react'
 import {useEffect,useState} from 'react';
 
-export default function ListYourFeedback() {
-    const [feedbackcus,setFeedback] = useState([]); 
+export default function ListComplaint() {
+    const [complaint,setComplaint] = useState([]); 
 
-    const getFeedback = () =>{
-        let cus= (JSON.parse(localStorage.getItem("customer")).customerId)
-        fetch("http://localhost:8080/"+cus+"/getfeedbackcustomer")
+    const getComplaint = () =>{
+        let com= (JSON.parse(localStorage.getItem("company")).companyId)
+        fetch("http://localhost:8080/"+com+"/getcomplaintresponse")
         .then(resp=>resp.json())
-        .then(data=>setFeedback(data))
+        .then(data=>setComplaint(data))
     }
 
     useEffect(() => {
-        getFeedback();
+        getComplaint();
        },[])
 
        return (        
         <div className="row ">
-            <h3>Your Feedbacks</h3>
+            <h3>Complaints</h3>
             <div className="">
             <div className="table-responsive">                        
             <table className="table table-striped">
             <thead className="thead-light">
-                    <td scope="col"><b>Feedback Id</b></td>
-                    <td scope="col"><b>Feedback Description</b></td>
-                    <td scope="col"><b>Customer Id</b></td>
+                <tr>
+                    <td scope="col"><b>Complaint Id</b></td>
                     <td scope="col"><b>Company Id</b></td>
+                    <td scope="col"><b>Complaint Description</b></td>
+                    <td scope="col"><b>Customer Id</b></td>
+                    <td scope="col"><b>Complaint Status</b></td>
                     
+                </tr>
             </thead>
             <tbody>
             {                    
-                feedbackcus.map((v)=>
+                complaint.map((v)=>
                 {
                     return(                        
                         <tr scope="row">
-                            <td >{v.feedbackId}</td>
-                            <td >{v.feedbackDiscription}</td>
-                            <td >{v.customerId}</td>
+                            <td >{v.complaintId}</td>
                             <td >{v.companyId}</td>
+                            <td >{v.complaintDescription}</td>
+                            <td >{v.customerId}</td>
+                            <td >{v.complaintStatus}</td>
+                           
                           
                         </tr>
                         )

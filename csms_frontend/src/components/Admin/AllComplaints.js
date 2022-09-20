@@ -1,16 +1,16 @@
 import React from 'react'
 import {useEffect,useState} from 'react';
 
-export default function AllFeedback() {
-    const [feedback,setFeedback] = useState([]); 
+export default function AllComplaint() {
+    const [complaint,setComplaint] = useState([]); 
     const [valueCompany, setValueCompany] = useState(0);
     const [company,setCompany] = useState([]); 
 
-    const getFeedback = () =>{
+    const getComplaint = () =>{
      //  let com= (JSON.parse(localStorage.getItem("company")).companyId)
-        fetch("http://localhost:8080/"+valueCompany+"/getfeedbackresponse")
+        fetch("http://localhost:8080/"+valueCompany+"/getcomplaintresponse")
         .then(resp=>resp.json())
-        .then(data=>setFeedback(data))
+        .then(data=>setComplaint(data))
     }
 
     const getCompany = () =>{
@@ -22,12 +22,12 @@ export default function AllFeedback() {
 
     useEffect(() => {
         getCompany();
-        getFeedback();
+        getComplaint();
        },[])
 
        const handleCompanyChange =  (e) => {
         setValueCompany(e.target.value);
-        getFeedback();
+        getComplaint();
       };
 
        return (      
@@ -44,31 +44,33 @@ export default function AllFeedback() {
 
 
         <div className="row ">
-            <h3>Feedback</h3>
+            <h3>Compaints</h3>
             <div className="">
             <div className="table-responsive">                        
             <table className="table table-striped">
             <thead className="thead-light">
-                <tr>
-                    <td scope="col"><b>Feedback Id</b></td>
-                    <td scope="col"><b>Feedback Description</b></td>
-                    <td scope="col"><b>Customer Id</b></td>
+            <tr>
+                    <td scope="col"><b>Complaint Id</b></td>
                     <td scope="col"><b>Company Id</b></td>
+                    <td scope="col"><b>Complaint Description</b></td>
+                    <td scope="col"><b>Customer Id</b></td>
+                    <td scope="col"><b>Complaint Status</b></td>
                     
                 </tr>
             </thead>
             <tbody>
             {                    
-                feedback.map((v)=>
+                complaint.map((v)=>
                 {
                     return(                        
                         <tr scope="row">
-                            <td >{v.feedbackId}</td>
-                            <td >{v.feedbackDiscription}</td>
-                            <td >{v.customerId}</td>
+                            <td>{v.complaintId}</td>
                             <td >{v.companyId}</td>
+                            <td >{v.complaintDescription}</td>
+                            <td >{v.customerId}</td>
+                            <td >{v.complaintStatus}</td>
                            
-                        
+                          
                         </tr>
                         )
                     })
