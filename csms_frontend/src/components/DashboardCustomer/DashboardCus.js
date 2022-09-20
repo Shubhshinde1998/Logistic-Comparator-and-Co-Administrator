@@ -64,13 +64,12 @@ export default function DashboardCus() {
             <hr></hr>
             <OrderForm/>
             <hr/>
-<<<<<<< HEAD
+
          <Feedback/>
             <hr/>
             <Complaint/>
-=======
             <ListYourFeedback/>
->>>>>>> c43cc97e3945ae9e57febbed955d4da103904304
+
         </div>
     )
 }

@@ -12,13 +12,8 @@ import javax.persistence.Table;
 public class Complaint {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-<<<<<<< HEAD
-	private Integer complaintId;	
-=======
 
-	private Integer complaintId;
->>>>>>> c43cc97e3945ae9e57febbed955d4da103904304
-	
+	private Integer complaintId;	
 
 	@Column(name="company_id")
 	private Integer companyId;
@@ -30,10 +25,6 @@ public class Complaint {
 	
 	@Column(name="customer_id",nullable=false)
 	private Integer customerId;
-<<<<<<< HEAD
-=======
-
->>>>>>> c43cc97e3945ae9e57febbed955d4da103904304
 	
 	@Column (name="complaint_status",nullable=false)
 	private String complaintStatus;
@@ -49,63 +40,11 @@ public class Complaint {
 		this.complaintStatus = complaintStatus;
 	}
 
-
-	public Integer getComplaintId() {
-		return complaintId;
-	}
-
-
-	public void setComplaintId(Integer complaintId) {
-		this.complaintId = complaintId;
-	}
-
-
-	public Integer getCompanyId() {
-		return companyId;
-	}
-
-
-	public void setCompanyId(Integer companyId) {
-		this.companyId = companyId;
-	}
-
-
-	public String getComplaintDescription() {
-		return complaintDescription;
-	}
-
-
-	public void setComplaintDescription(String complaintDescription) {
-		this.complaintDescription = complaintDescription;
-	}
-
-
-	public Integer getCustomerId() {
-		return customerId;
-	}
-
-
-	public void setCustomerId(Integer customerId) {
-		this.customerId = customerId;
-	}
-
-
-	public String getComplaintStatus() {
-		return complaintStatus;
-	}
-
-
-	public void setComplaintStatus(String complaintStatus) {
-		this.complaintStatus = complaintStatus;
-	}
-
-
 	public Complaint() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-<<<<<<< HEAD
 	public Complaint(Integer complaintId, String complaintDescription, Integer customerId, String complaintStatus) {
 		super();
 		this.complaintId = complaintId;
@@ -122,6 +61,14 @@ public class Complaint {
 		this.complaintId = complaintId;
 	}
 
+	public Integer getCompanyId() {
+		return companyId;
+	}
+
+	public void setCompanyId(Integer companyId) {
+		this.companyId = companyId;
+	}
+
 	public String getComplaintDescription() {
 		return complaintDescription;
 	}
@@ -145,10 +92,9 @@ public class Complaint {
 	public void setComplaintStatus(String complaintStatus) {
 		this.complaintStatus = complaintStatus;
 	}
-
 	
-=======
->>>>>>> c43cc97e3945ae9e57febbed955d4da103904304
+
+
 	
 	
 }

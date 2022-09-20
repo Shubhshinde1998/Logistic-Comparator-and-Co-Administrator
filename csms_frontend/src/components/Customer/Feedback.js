@@ -37,7 +37,7 @@ export default function Feedback() {
         if (Object.keys(formErrors).length === 0 && isSubmit) {
           console.log(cus);
         }
-      }, [formErrors]);
+      }, [formErrors,valueCompany]);
       const validate = (values) => {
         const errors = {};
         if (!values.feedback) {

@@ -24,39 +24,35 @@ export default function OrderForm() {
    const [category,setCategory] = useState([]);
    const [price,setPrice] = useState([]);
    const [totalprice,setTotalPrice] = useState(0);   
-   const [valueCompany, setValueCompany] = useState(0);
-   const [valueCategory, setValueCategory] = useState(0);
+   const [valueCompany, setValueCompany] = useState([]);
+   const [valueCategory, setValueCategory] = useState([]);
    const [formErrors, setFormErrors] = useState({});
    const [isSubmit, setIsSubmit] = useState(false);
    const [modalOpen, setModalOpen] = useState(false);
-   const [categoryPricingId,setCategoryPricingId] = useState();
-let customerName= (JSON.parse(localStorage.getItem("customer")).customerName)
+   const [categoryPricingId,setCategoryPricingId] = useState([]);
 
+let customerName= (JSON.parse(localStorage.getItem("customer")).customerName)
+console.log(valueCompany);
 
 const handleCompanyChange =  (e) => {
    setValueCompany(e.target.value);
-   getCategoryPrice();
  };
  const handleCategoryChange =  (e)=>{
    setValueCategory(e.target.value);
-   getCategoryPrice();
- };
- const getCategoryPrice =  () =>{
+};
+ 
+const getCategoryPrice = (com) =>{
 
-   let com = valueCompany;
-   if(valueCompany!=null && valueCategory!=null)
-   {
+   console.log(" value of com "+com)
    fetch("http://localhost:8080/"+com+"/getprice")
    .then(resp=>resp.json())
    .then(data=>setPrice(data))
-   .then(totalPrice());
-   }
-   else
-   {
-      console.log("unable to fetch")
-   }
+   console.log(price)
+   
 }
-const totalPrice = ()=>{   
+
+const totalPrice = (price)=>{  
+   console.log("value of price "+price) 
    price.map((v)=>{
     if(v.category.categoryId==valueCategory && v.companyId==valueCompany)
     {
@@ -82,8 +78,9 @@ const getCompany = () =>{
 useEffect(() => {        
    getCompany();
    getCategory();
-   getCategoryPrice();
-  },[formErrors])
+   getCategoryPrice(valueCompany);
+   totalPrice(price);
+  },[formErrors,valueCompany,valueCategory])
 
 const handleSubmit = (e) => {
    e.preventDefault();
