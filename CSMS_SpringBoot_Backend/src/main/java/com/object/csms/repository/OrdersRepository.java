@@ -15,4 +15,16 @@ public interface OrdersRepository extends JpaRepository<Orders, Integer> {
 	@Query("SELECT d FROM Orders d where customerId =:id and courierDetailsId=:orderId")
 	public Orders findForInvoice(int id, Integer orderId);
 
+	//Query to select count of orders based on companyID
+	@Query("SELECT COUNT(u) FROM Orders u WHERE u.companyId=:id")
+	public int getCountOfOrders(int id);
+	
+	//Query to select count of orders based on companyID
+	@Query("SELECT COUNT(u) FROM Orders u WHERE u.trackingStatus IS NOT NULL")
+	public int getCountOfOrdersAdmin();
+
+	//Query to select count of Pending orders based on companyID
+	@Query("SELECT COUNT(u) FROM Orders u WHERE u.companyId=:id and u.trackingStatus IS NULL")
+	public int getCountOfPendingOrders(int id);
+	
 }

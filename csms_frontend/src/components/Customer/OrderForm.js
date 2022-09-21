@@ -109,6 +109,7 @@ const handleSubmit = (e) => {
   // e.preventDefault();
    let customerId= (JSON.parse(localStorage.getItem("customer")).customerId)
    const requestTime = new Date();
+   
         const reqData = {
             method: "POST",
             headers: {
@@ -124,7 +125,7 @@ const handleSubmit = (e) => {
             deliveryAddress:orderdetails.deliveryaddress,
             categoryPricingId:categoryPricingId,
             requestTime:requestTime,
-            paymentStatus:false
+            paymentStatus:true
             })    
         }
 

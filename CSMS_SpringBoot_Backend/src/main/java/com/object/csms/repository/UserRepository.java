@@ -17,4 +17,7 @@ public interface UserRepository extends CrudRepository<User, Integer> {
 	@Query("select d from User d where userStatus =:state and userRole=:role")
 	public List<User> findByStatus(String state,int role);
 
+	@Query("select count(d) from User d where d.userStatus ='false' and d.userRole=2")
+	public int getPendingCount();
+
 }

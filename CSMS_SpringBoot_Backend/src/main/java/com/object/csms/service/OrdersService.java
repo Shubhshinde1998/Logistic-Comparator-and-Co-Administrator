@@ -113,4 +113,22 @@ public class OrdersService {
 		repo.save(or);
 		return or.getCourierDetailsId();
 	}
+	
+	//get count of order based on companyId
+	public int getCountOfOrders(int companyId)
+	{
+		return repo.getCountOfOrders(companyId);
+	}
+	
+	//get count of order based on Admin
+	public int getCountOfOrdersAdmin()
+	{
+		return repo.getCountOfOrdersAdmin();
+	}
+
+	//get count of Pending order based on companyId
+	public int getCountOfPendingOrders(int id) {
+		
+		return repo.getCountOfPendingOrders(id);
+	}
 }

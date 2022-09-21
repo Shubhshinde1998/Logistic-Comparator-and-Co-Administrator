@@ -39,19 +39,12 @@ public class ComplaintController {
 		services.updateComplaintStatus(update);
 		return update;
 	}
-	//@PutMapping("/updatecomplaint/{id}")
-	//public Complaint updateComplaint(@RequestBody Complaint update,@PathVariable(name="id") int id )
-	//{
-	//	update.setComplaintStatus(id);
-	//	services.updateComplaintStatus(update);
-	//	return update;
-	//}
+
 	@PostMapping("/complaintregister")
 	private int saveComplaint (@RequestBody Complaint complaint)  
 	{  
 		services.saveOrUpdate(complaint);  
 		return complaint.getComplaintId();
-
 	}
 	
 	@GetMapping("/{id}/getcomplaintresponse")
@@ -66,6 +59,19 @@ public class ComplaintController {
 	{
 		List<Complaint> resp = services.getComplaintByCustomerId(id);
 		return resp;
+	}
+	
+	//get count of complaint based on companyId
+	@GetMapping("/{id}/getcomplaintcount")
+	public int getComplaintCount(@PathVariable(name="id")int id)
+	{
+		return services.getComplaintCount(id);
+	}
+	//get count of complaint based on Admin
+	@GetMapping("/getcomplaintcountadmin")
+	public int getComplaintCountAdmin()
+	{
+		return services.getComplaintCountAdmin();
 	}
 }
 

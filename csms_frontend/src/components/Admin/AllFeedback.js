@@ -31,6 +31,7 @@ export default function AllFeedback() {
 
        return (      
         <div className="form-outline mb-4">
+            <div style={{width:"50%",alignItems:"center"}}>
         <lable><b>Select Company:</b></lable>
         <select id="companyname" name="companyname" className="form-control" value={valueCompany} onChange={handleCompanyChange}>
            <option value="">Company Names :</option>
@@ -38,8 +39,8 @@ export default function AllFeedback() {
            <option value={company.companyId}>{company.companyName}</option>
            ))}
         </select>
-       {/* <p>{`You selected ${valueCompany}`}</p>  */}    
-     
+        </div>
+       {/* <p>{`You selected ${valueCompany}`}</p>  */}     
 
 
         <div className="row ">
@@ -52,8 +53,7 @@ export default function AllFeedback() {
                     <td scope="col"><b>Feedback Id</b></td>
                     <td scope="col"><b>Feedback Description</b></td>
                     <td scope="col"><b>Customer Id</b></td>
-                    <td scope="col"><b>Company Id</b></td>
-                    
+                    <td scope="col"><b>Company Id</b></td>                    
                 </tr>
             </thead>
             <tbody>
@@ -65,8 +65,7 @@ export default function AllFeedback() {
                             <td >{v.feedbackId}</td>
                             <td >{v.feedbackDiscription}</td>
                             <td >{v.customerId}</td>
-                            <td >{v.companyId}</td>
-                           
+                            <td >{v.companyId}</td>                       
                         
                         </tr>
                         )

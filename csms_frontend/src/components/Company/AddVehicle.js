@@ -1,5 +1,6 @@
 import React from "react";
 import {useState, useReducer,useEffect} from 'react';
+import { useNavigate } from "react-router-dom";
 import "../../styles/Registration.css";
 
 const init = {      
@@ -19,12 +20,14 @@ export default function AddVehicle() {
     const [formErrors, setFormErrors] = useState({});
     const [isSubmit, setIsSubmit] = useState(false);
     
+    const navigate = useNavigate();
     useEffect(() => {
 
         if (Object.keys(formErrors).length === 0 && isSubmit) {
           console.log(com);
         }
       }, [formErrors]);
+
       const validate = (values) => {
         const errors = {};
         if (!values.vehicleno) {
@@ -37,7 +40,10 @@ export default function AddVehicle() {
         e.preventDefault();
         setFormErrors(validate(com));
         setIsSubmit(true);
-        sendData(e);
+        if (Object.keys(formErrors).length === 0 && isSubmit) {
+          //console.log(com);
+          sendData(e);
+        }
       }; 
 
     const sendData = (e) => {    
@@ -59,6 +65,7 @@ export default function AddVehicle() {
         .then(function(response) {
             if(response.status === 200) {
                alert("Vehicle added succesfully");
+               navigate("/companypanel/vehicles")
              }
              else
                 alert("unable to add vehicle")

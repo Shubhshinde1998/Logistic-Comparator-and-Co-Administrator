@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
 import AddDeliveryBoy from '../Company/AddDeliveryBoy';
 import ListDeliveryBoy from '../Company/ListDeliveryBoy';
 import ListVehicle from '../Company/ListVehicles';
@@ -8,9 +8,48 @@ import ListFeedback from '../Company/ListFeedback';
 import ListComplaint from '../Company/ListComplaint';
 import OrderRequest from '../Company/OrderRequest';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import HomeCompany from '../Company/HomeCompany';
 
 export default function DashboardCom() {
 
+    const [orderCount,setOrderCount] = useState([]);
+    const [pendingRequest,setPendingRequest] = useState([]);
+    const [complaintCount,setComplaintCount] = useState([]);
+    const [feedbackCount,setFeedbackCount] = useState([]);
+
+    let com = (JSON.parse(localStorage.getItem("company")).companyId)
+    const getOrderCount = () =>
+    {
+        fetch("http://localhost:8080/"+com+"/getcountoforder")
+        .then(resp=>resp.json())
+        .then(data=>setOrderCount(data))
+    }
+    const getPendingCount = () =>
+    {
+        fetch("http://localhost:8080/"+com+"/getpendingcount")
+        .then(resp=>resp.json())
+        .then(data=>setPendingRequest(data))
+    }
+    const getComplaintCount = () =>
+    {
+        fetch("http://localhost:8080/"+com+"/getcomplaintcount")
+        .then(resp=>resp.json())
+        .then(data=>setComplaintCount(data))
+    }
+    const getFeedbackCount = () =>
+    {
+        fetch("http://localhost:8080/"+com+"/getfeedbackcount")
+        .then(resp=>resp.json())
+        .then(data=>setFeedbackCount(data))
+    }
+
+    useEffect(()=>
+    {
+        getOrderCount();
+        getPendingCount();
+        getComplaintCount();
+        getFeedbackCount();
+    },[orderCount,pendingRequest,complaintCount,feedbackCount])
 
     return(
         <div className="col main pt-5 mt-3">
@@ -22,8 +61,8 @@ export default function DashboardCom() {
                         <div className="rotate">
                             <i className="fa fa-user fa-4x"></i>
                         </div>
-                        <h6 className="text-uppercase">All Companies</h6>
-                        <h1 className="display-4">15</h1>
+                        <h6 className="text-uppercase">Courier Orders</h6>
+                        <h1 className="display-4">{orderCount}</h1>
                     </div>
                 </div>
             </div>
@@ -33,8 +72,8 @@ export default function DashboardCom() {
                         <div className="rotate">
                             <i className="fa fa-list fa-4x"></i>
                         </div>
-                        <h6 className="text-uppercase">Pending Request</h6>
-                        <h1 className="display-4">8</h1>
+                        <h6 className="text-uppercase">Pending Orders Request</h6>
+                        <h1 className="display-4">{pendingRequest}</h1>
                     </div>
                 </div>
             </div>
@@ -45,7 +84,7 @@ export default function DashboardCom() {
                           <i className="fab fa-twitter fa-4x"></i>
                         </div>
                         <h6 className="text-uppercase">Compaints</h6>
-                        <h1 className="display-4">4</h1>
+                        <h1 className="display-4">{complaintCount}</h1>
                     </div>
                 </div>
             </div>
@@ -56,7 +95,7 @@ export default function DashboardCom() {
                             <i className="fa fa-share fa-4x"></i>
                         </div>
                         <h6 className="text-uppercase">Feedback</h6>
-                        <h1 className="display-4">9</h1>
+                        <h1 className="display-4">{feedbackCount}</h1>
                     </div>
                 </div>
             </div>
@@ -64,6 +103,7 @@ export default function DashboardCom() {
         
         <div>
             <Routes>
+                <Route path="/home" element={<HomeCompany/>}/>
                 <Route path="/orders" element={<OrderRequest/>}/>
                 <Route path="/deliveryboys/*" element={<ListDeliveryBoy/>}/>
                 <Route path="/vehicles/*" element={<ListVehicle/>}/>

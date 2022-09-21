@@ -32,6 +32,7 @@ export default function AllComplaint() {
 
        return (      
         <div className="form-outline mb-4">
+             <div style={{width:"50%",alignItems:"center"}}>
         <lable><b>Select Company:</b></lable>
         <select id="companyname" name="companyname" className="form-control" value={valueCompany} onChange={handleCompanyChange}>
            <option value="">Company Names :</option>
@@ -39,6 +40,7 @@ export default function AllComplaint() {
            <option value={company.companyId}>{company.companyName}</option>
            ))}
         </select>
+        </div>
        {/* <p>{`You selected ${valueCompany}`}</p>  */} 
         <div className="row ">
             <h3>Compaints</h3>

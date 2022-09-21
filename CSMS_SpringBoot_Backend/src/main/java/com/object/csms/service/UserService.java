@@ -77,6 +77,12 @@ public class UserService {
 	public void delete(int id)  
 	{  
 		repo.deleteById(id);  
+	}
+
+	//get count of pending request of company for Admin
+	public int getPendingCount() {
+		// TODO Auto-generated method stub
+		return repo.getPendingCount();
 	} 
 		
 }

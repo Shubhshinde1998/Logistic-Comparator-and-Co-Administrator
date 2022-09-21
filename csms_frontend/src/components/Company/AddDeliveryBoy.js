@@ -1,5 +1,6 @@
 import React from "react";
 import {useState, useReducer,useEffect} from 'react';
+import { useNavigate } from "react-router-dom";
 import "../../styles/Registration.css";
 
 const init = {      
@@ -28,14 +29,14 @@ let AddDeliveryBoy =() =>
     const [formErrors, setFormErrors] = useState({});
     const [isSubmit, setIsSubmit] = useState(false);
 
-    useEffect(() => {
+    const navigate = useNavigate();
 
-        if (Object.keys(formErrors).length === 0 && isSubmit) {
-          console.log(com);
-        }
-      }, [formErrors]);
+    useEffect(() => {
+   // console.log(com)
+        
+    }, [formErrors]);
     
-      const validate = (values) => {
+    const validate = (values) => {
         const errors = {};
         const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
         if (!values.name) {
@@ -43,16 +44,15 @@ let AddDeliveryBoy =() =>
         }        
         if (!values.email) {
           errors.email = "Email is required";
-        } else if (!regex.test(values.company_email)) {
+        } else if (!regex.test(values.email)) {
             errors.email = "This is not a valid email format!";
           }
         if (!values.age) {
             errors.age = "Age is required";
         }
         if (!values.contactno) {
-            errors.contact = "Contact No is required";
-        }else if (values.contactno.length < 6) {
-            errors.contact = "Contact must be more than 6 characters";}
+            errors.contactno = "Contact No is required";
+        }
         if (!values.licence) {
             errors.licence = "Licence No. is required";
         }
@@ -66,7 +66,10 @@ let AddDeliveryBoy =() =>
         e.preventDefault();
         setFormErrors(validate(com));
         setIsSubmit(true);
-        sendData(e);
+        if (Object.keys(formErrors).length === 0 && isSubmit) {
+            //console.log(com);
+            sendData(e);
+          }
       };
     const sendData = (e) => {    
         //e.preventDefault();
@@ -92,6 +95,7 @@ let AddDeliveryBoy =() =>
         .then(function(response) {
             if(response.status === 200) {
                alert("Delivery Boy added succesfully");
+               navigate("/companypanel/deliveryboys")
              }
              else
                 alert("unable to add deliveryboy")
@@ -118,7 +122,7 @@ let AddDeliveryBoy =() =>
                 <input type="number" id="form3Example5" className="form-control" placeholder="Contact No" name="Contact" value={com.contactno}
                     onChange={ (e)=>{dispatch({type: 'update', field: 'contactno', val: e.target.value })} }
                     />                     
-            <p className="text-danger">{formErrors.contact}</p>                
+            <p className="text-danger">{formErrors.contactno}</p>                
             </div>
 
             <div className="form-outline mb-4">
@@ -135,7 +139,7 @@ let AddDeliveryBoy =() =>
             </div>
             <div className="form-check d-flex justify-content-center mb-4">
                 <input className="form-check-input me-2" type="checkbox"  id="form2Example33" name="agree" value={com.agree}
-                    onChange={ (e)=>{setAgree(e.target.checked)}} />
+                    onChange={ (e)=>{dispatch({type: 'update', field: 'agree', val: e.target.checked })}} />
                 <label className="form-check-label" for="form2Example33">Agree Terms and Conditions</label>
                 <p className="text-danger">{formErrors.agree}</p>
             </div>

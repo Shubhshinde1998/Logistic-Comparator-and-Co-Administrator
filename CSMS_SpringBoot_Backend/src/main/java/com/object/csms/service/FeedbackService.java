@@ -39,6 +39,16 @@ public class FeedbackService {
 		// TODO Auto-generated method stub
 		return repo.findByCustomerId(id);
 	}
+	//get count of feedback based on companyId
+	public int getFeedbackCount(int id) {
+		// TODO Auto-generated method stub
+		return repo.getFeedbackCount(id);
+	}
+	//get count of feedback based on Admin
+	public int getFeedbackCountAdmin() {
+		// TODO Auto-generated method stub
+		return repo.getFeedbackCountAdmin();
+	}
 	
 
 }

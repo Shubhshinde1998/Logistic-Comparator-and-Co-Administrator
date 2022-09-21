@@ -1,6 +1,6 @@
 import React from 'react'
 import {useEffect,useState} from 'react';
-
+import { Link } from "react-router-dom";
 export default function ListDeliveryBoy() {
     const [delivery,setDelivery] = useState([]);  
 
@@ -27,8 +27,11 @@ export default function ListDeliveryBoy() {
 
     return (        
         <div className="row ">
-            <h3>Delivery Boy</h3>
+            <h3>Delivery Boys</h3>
             <div className="">
+            <Link to="/companypanel/deliveryboys/form">
+                <button type="button" class="btn btn-primary">Add New Delivery Boy</button>
+            </Link>
             <div className="table-responsive">                        
             <table className="table table-striped">
             <thead className="thead-light">

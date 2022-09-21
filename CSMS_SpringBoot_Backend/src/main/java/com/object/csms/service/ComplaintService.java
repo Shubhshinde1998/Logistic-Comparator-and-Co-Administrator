@@ -5,9 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.object.csms.entity.CategoryPrice;
 import com.object.csms.entity.Complaint;
-import com.object.csms.entity.Feedback;
 import com.object.csms.repository.ComplaintRepository;
 
 @Service 
@@ -49,5 +47,16 @@ public class ComplaintService {
 	public List<Complaint> getComplaintByCustomerId(Integer id) {
 		// TODO Auto-generated method stub
 		return repo.findByCustomerId(id);
+	}
+
+	//get count of complaint based on companyId
+	public int getComplaintCount(int id) {
+		// TODO Auto-generated method stub
+		return repo.getComplaintCount(id);
+	}
+	//get count of complaint based on Admin
+	public int getComplaintCountAdmin() {
+		// TODO Auto-generated method stub
+		return repo.getComplaintCountAdmin();
 	}
 }

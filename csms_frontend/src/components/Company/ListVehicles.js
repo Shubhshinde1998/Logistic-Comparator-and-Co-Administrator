@@ -1,5 +1,6 @@
 import React from 'react'
 import {useEffect,useState} from 'react';
+import { Link } from "react-router-dom";
 
 export default function ListVehicle() {
     const [vehicle,setVehicle] = useState([]);  
@@ -30,6 +31,9 @@ export default function ListVehicle() {
         <div className="row ">
             <h3>Vehicle List</h3>
             <div className="">
+            <Link to="/companypanel/vehicles/form">
+                <button type="button" class="btn btn-primary">Add New Vehicle</button>
+            </Link>
             <div className="table-responsive">                        
             <table className="table table-striped">
             <thead className="thead-light">

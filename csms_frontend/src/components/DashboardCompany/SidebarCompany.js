@@ -5,7 +5,6 @@ const SidebarCompany = () => {
             <ul className="nav flex-column sticky-top pl-0 pt-5 p-2 mt-3 ">
             <li className="nav-item mb-2 mt-3"><a className="nav-link text-secondary" href="#"><h5>Welcome {(JSON.parse(localStorage.getItem("company")).companyName)}</h5></a></li>
                 <li className="nav-item mb-2"><a className="nav-link text-secondary" href="/companypanel/home">Home</a></li>
-                <li className="nav-item mb-2"><a className="nav-link text-secondary" href="/companypanel/orders">Courier Orders</a></li>
                 <li className="nav-item mb-2"><a className="nav-link text-secondary" href="/companypanel/deliveryboys">Delivery Boy</a></li>
                 <li className="nav-item mb-2"><a className="nav-link text-secondary" href="/companypanel/vehicles">Vehicles</a></li>
                 <li className="nav-item mb-2"><a className="nav-link text-secondary" href="/companypanel/categoryprice">Category Pricing</a></li>

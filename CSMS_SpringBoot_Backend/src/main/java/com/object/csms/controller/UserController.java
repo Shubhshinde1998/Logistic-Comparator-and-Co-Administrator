@@ -4,6 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,9 +24,10 @@ public class UserController {
 	UserService services;
 	
 	@GetMapping("/getall")
-	public Iterable<User> getUsers()
+	public ResponseEntity<Iterable<User>> getUsers()
 	{
-		return services.listAll();    
+		throw new RuntimeException("Test getuser runtime exception");
+		//return new ResponseEntity<>(services.listAll(),HttpStatus.OK);    
 	}
 	 
 	@PostMapping("/save")
@@ -59,7 +61,19 @@ public class UserController {
 	public ResponseEntity<HttpStatus> deleteUser(@PathVariable("id") int id)  
 	{  
 		services.delete(id);  
-		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		return new ResponseEntity<>(HttpStatus.OK);
 	}  
+	@ExceptionHandler
+	public ResponseEntity<Object> handleException (Exception e)
+	{
+		return new ResponseEntity<>("Something went wrong!!" ,HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+	
+	//get count of pending request of company for Admin
+	@GetMapping("/getpendingcount")
+	public int getPendingCount()
+	{
+		return services.getPendingCount();
+	}
 	
 }

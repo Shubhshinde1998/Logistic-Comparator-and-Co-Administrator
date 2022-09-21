@@ -49,4 +49,18 @@ public class FeedbackController {
 		return resp;
 	}
 	
+	//get count of feedback based on companyId
+	@GetMapping("/{id}/getfeedbackcount")
+	public int getFeedbackCount(@PathVariable(name="id")int id)
+	{
+		return services.getFeedbackCount(id);
+	}
+	
+	//get count of feedback based on Admin
+	@GetMapping("/getfeedbackcountadmin")
+	public int getFeedbackCountAdmin()
+	{
+		return services.getFeedbackCountAdmin();
+	}
+	
 }

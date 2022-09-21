@@ -72,4 +72,25 @@ public class OrdersController {
 	{
 		return services.invoiceGenerate(customerId, orderId);
 	}
+	
+	//get count of orders based on companyId
+	@GetMapping("/{id}/getcountoforder")
+	public int getCountOfOrders(@PathVariable(name="id")int id)
+	{
+		return services.getCountOfOrders(id);
+	}
+	
+	//get count of orders based on Admin
+	@GetMapping("/getcountoforderadmin")
+	public int getCountOfOrdersAdmin()
+	{
+		return services.getCountOfOrdersAdmin();
+	}
+	
+	//get count of Pending order based on companyId
+	@GetMapping("/{id}/getpendingcount")
+	public int getCountOfPendingOrders(@PathVariable(name="id")int id)
+	{
+		return services.getCountOfPendingOrders(id);
+	}
 }

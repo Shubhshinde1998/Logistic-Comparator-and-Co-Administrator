@@ -14,6 +14,8 @@ const reducer = (state,action) => {
             return { ...state, [action.field]: action.val};
         case 'clear' :
             return init;   
+        default :
+        return init;
     }
 }
 
@@ -74,7 +76,7 @@ let Login = () => {
                 if(json.userRole===1)
                 {      
                     localStorage.setItem("admin",data)    
-                    navigate('/adminpanel');
+                    navigate('/adminpanel/home');
                 }
                 else if(json.user.userRole===2)
                 {
@@ -82,7 +84,7 @@ let Login = () => {
                     if(json.user.userStatus==="true")
                     {
                     localStorage.setItem("company",data)
-                    navigate('/companypanel');
+                    navigate('/companypanel/home');
                     }
                     else{
                         alert("Your request is pending, Please wait !!!");
