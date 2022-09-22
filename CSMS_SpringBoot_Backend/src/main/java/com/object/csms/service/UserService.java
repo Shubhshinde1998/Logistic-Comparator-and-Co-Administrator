@@ -1,4 +1,5 @@
 package com.object.csms.service;
+import java.util.Base64;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,7 +40,8 @@ public class UserService {
 	
 	public Object checkLogin(String username,String password)
 	{
-		Optional<User> u = repo.checkLogin(username, password);	
+		String encodePassword = Base64.getEncoder().encodeToString(password.getBytes());
+		Optional<User> u = repo.checkLogin(username, encodePassword);	
 		if(u.isPresent() && u.get().getUserRole()==2)
 		{
 			User uobj = u.get();
@@ -65,7 +67,7 @@ public class UserService {
 				return null;
 		}
 		else
-			return repo.checkLogin(username, password);
+			return repo.checkLogin(username, encodePassword);
 			
 	}
 	

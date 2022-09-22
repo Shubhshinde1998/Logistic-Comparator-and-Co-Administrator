@@ -45,7 +45,9 @@ public class CompanyService {
     }
 
 	public void saveOrUpdate(Company company)  
-	{ 
+	{   String password = company.getUser().getUserPassword();
+		String encodePassword = Base64.getEncoder().encodeToString(password.getBytes());
+		company.getUser().setUserPassword(encodePassword);
 		repo.save(company); 		
 	}
 	

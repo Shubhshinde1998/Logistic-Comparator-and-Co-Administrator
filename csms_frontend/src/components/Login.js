@@ -2,7 +2,6 @@ import {useReducer,useEffect,useState} from 'react';
 import "../styles/Login.css";
 import { useNavigate } from 'react-router-dom';
 
-
 const init = {
     user_username:null,
     user_password:null
@@ -64,15 +63,17 @@ let Login = () => {
                     password: user.user_password
                 })    
             }
-                       
+           
         fetch("http://localhost:8080/login",reqData)
         .then(resp => (resp.ok ? resp : Promise.reject(resp)))
         .then(resp => resp.text())
         .then(data => {
             
+           
             const json=JSON.parse(data);
             
             if(!json.error){
+               
                 if(json.userRole===1)
                 {      
                     localStorage.setItem("admin",data)    
@@ -96,6 +97,7 @@ let Login = () => {
                     localStorage.setItem("customer",data)
                     navigate('/customerpanel');
                 }
+               
             }
             else
             {
