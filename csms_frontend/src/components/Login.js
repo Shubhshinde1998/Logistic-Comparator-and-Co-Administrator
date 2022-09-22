@@ -47,7 +47,10 @@ let Login = () => {
         e.preventDefault();
         setFormErrors(validate(user));
         setIsSubmit(true);
-        sendData(e);
+        if (Object.keys(formErrors).length === 0 && isSubmit) {
+            //console.log(com);
+            sendData(e);
+          }
       };
       
     const sendData = (e) => {        
@@ -116,7 +119,8 @@ let Login = () => {
             <input type="text" id="form2Example1" className="form-control" name="name" value={user.user_username}
                 onChange={ (e)=>{dispatch({type: 'update', field: 'user_username', val: e.target.value })} } required/>
             <p className="text-danger">{formErrors.username}</p>   
-            </div>                     
+            </div>  
+
             <div className="form-outline mb-4">
             <label className="form-label" for="form2Example2">Password</label>
                 <input type="password" id="form2Example2" className="form-control"  name="pwd" value={user.user_password}

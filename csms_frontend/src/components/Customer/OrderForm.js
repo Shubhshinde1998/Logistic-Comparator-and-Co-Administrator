@@ -30,6 +30,7 @@ export default function OrderForm() {
    const [isSubmit, setIsSubmit] = useState(false);
    const [modalOpen, setModalOpen] = useState(false);
    const [categoryPricingId,setCategoryPricingId] = useState([]);
+   const [state,setState] = useState(false);
 
 let customerName= (JSON.parse(localStorage.getItem("customer")).customerName)
 console.log(valueCompany);
@@ -86,7 +87,11 @@ const handleSubmit = (e) => {
    e.preventDefault();
    setFormErrors(validate(orderdetails));
    setIsSubmit(true);
-   sendData(e);
+   
+   if (Object.keys(formErrors).length === 0 && isSubmit) {
+      //console.log(com);
+      sendData(e);
+    }
  };
  const validate = (values) => {
    const errors = {};
@@ -99,14 +104,11 @@ const handleSubmit = (e) => {
    if (!values.deliveryaddress) {
        errors.deliveryaddress = "Delivery Address is required";
    }
-   if (!values.paymentstatus) {
-       errors.paymentstatus = "Have to make Payment!!";
-   }   
    return errors;
  };
 
  const sendData = (e) => {    
-  // e.preventDefault();
+   e.preventDefault();
    let customerId= (JSON.parse(localStorage.getItem("customer")).customerId)
    const requestTime = new Date();
    
@@ -141,6 +143,11 @@ const handleSubmit = (e) => {
      
 });
 }
+     
+    const  togglePop = () => {
+     setState(!state);
+      };
+         
 
    return (
     <div className="register">
@@ -159,7 +166,7 @@ const handleSubmit = (e) => {
                <option key={company.companyId} value={company.companyId}>{company.companyName}</option>
                ))}
             </select>
-            <p>{`You selected ${valueCompany}`}</p>      
+            
          </div>
 
          <div className="form-outline mb-4">
@@ -170,7 +177,7 @@ const handleSubmit = (e) => {
                <option value={category.categoryId}>{category.categoryName}</option>
                ))}
             </select>
-            <p>{`You selected ${valueCategory}`}</p>         
+             
          </div>
 
          <div className="form-outline mb-4">
@@ -203,10 +210,20 @@ const handleSubmit = (e) => {
          <div className="form-outline mb-4">
             <lable>Total Price:</lable>
             <input type="text" id="price" name="price" className="form-control" value={totalprice} readOnly={true}/><br/>
-            {/* <button className="btn btn-primary btn-block mb-4 openModalBtn" onClick={() => { setModalOpen(true);
+            
+           {/* <button  className="btn btn-primary btn-block mb-4" value="Make Payment"
+            onChange={(e)=>{dispatch({type: 'update', field: 'paymentstatus', val: true })}}/>
+            { orderdetails.paymentstatus ? <p>Payment is Successfull !!</p>: ""}
+             <button className="btn btn-primary btn-block mb-4 openModalBtn" onClick={() => { setModalOpen(true);
         }}>Make Payment</button>
-        {modalOpen && <Payment closeModel={setModalOpen} />}*/}
-         </div>         
+        {modalOpen && <Payment closeModel={setModalOpen} />}
+            <div>
+         <div className="btn" onClick={()=>{togglePop()}}>
+            <button>New User?</button>
+         </div>
+         {state ? <Payment toggle={()=>{togglePop()}} /> : null}
+         </div> */}   
+               </div>     
          <hr></hr>
          
          <div className="form-outline mb-4">

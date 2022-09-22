@@ -52,8 +52,8 @@ export default function AllFeedback() {
                 <tr>
                     <td scope="col"><b>Feedback Id</b></td>
                     <td scope="col"><b>Feedback Description</b></td>
-                    <td scope="col"><b>Customer Id</b></td>
-                    <td scope="col"><b>Company Id</b></td>                    
+                    <td scope="col"><b>Customer Name</b></td>
+                    <td scope="col"><b>Company Name</b></td>                    
                 </tr>
             </thead>
             <tbody>
@@ -63,9 +63,9 @@ export default function AllFeedback() {
                     return(                        
                         <tr scope="row">
                             <td >{v.feedbackId}</td>
-                            <td >{v.feedbackDiscription}</td>
-                            <td >{v.customerId}</td>
-                            <td >{v.companyId}</td>                       
+                            <td >{v.feedbackDesc}</td>
+                            <td >{v.customerName}</td>
+                            <td >{v.companyName}</td>                       
                         
                         </tr>
                         )

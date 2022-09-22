@@ -67,10 +67,10 @@ public class OrdersController {
 		return services.trackingStatus(order,id);
 	}
 	//Order Invoice with customerId and courierDetailsId 
-	@GetMapping("/{customerid}/{orderid}/invoice")
-	public InvoiceResponse invoiceGenerate(@PathVariable(name="customerid") int customerId,@PathVariable(name="orderid") Integer orderId)
+	@GetMapping("/{customerid}/invoice")
+	public List<InvoiceResponse> invoiceGenerate(@PathVariable(name="customerid") int customerId)
 	{
-		return services.invoiceGenerate(customerId, orderId);
+		return services.invoiceGenerate(customerId);
 	}
 	
 	//get count of orders based on companyId

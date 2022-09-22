@@ -84,26 +84,31 @@ public class OrdersService {
 	
 	//Invoice send in Response according to customerId
 	@Transactional
-	public InvoiceResponse invoiceGenerate(int customerId,Integer orderId)
+	public List<InvoiceResponse> invoiceGenerate(int customerId)
 	{
-		Orders order = repo.findForInvoice(customerId,orderId);
-		Company company = companyrepo.findById(order.getCompanyId()).get();
-		Customer customer = customerrepo.findById(order.getCustomerId()).get();
-		CategoryPrice categoryprice = categorypricerepo.findById(order.getCategoryPricingId()).get();
-		DeliveryBoy deliveryBoy = deliveryboyrepo.findById(order.getDeliveryBoyId()).get();
-		VehicleDetails vehicleDetails = vehiclerepo.findById(order.getVehiclesDetailsId()).get();
+		List<Orders> order = repo.findForInvoice(customerId);
+		List<InvoiceResponse> resp = new ArrayList<>();
+		for(Orders f : order) {
+		Company company = companyrepo.findById(f.getCompanyId()).get();
+		Customer customer = customerrepo.findById(f.getCustomerId()).get();
+		CategoryPrice categoryprice = categorypricerepo.findById(f.getCategoryPricingId()).get();
+		if(f.getDeliveryBoyId()!=null) {
+		DeliveryBoy deliveryBoy = deliveryboyrepo.findById(f.getDeliveryBoyId()).get();
+		VehicleDetails vehicleDetails = vehiclerepo.findById(f.getVehiclesDetailsId()).get();
 		
 		OrderDetails details = new OrderDetails(company, customer, deliveryBoy, vehicleDetails, categoryprice);
 		
-		InvoiceResponse resp = new InvoiceResponse(order.getCourierDetailsId(),
+		 resp.add( new InvoiceResponse(f.getCourierDetailsId(),
 				details.getCustomer().getCustomerName(), details.getCustomer().getCustomerEmail(),
 				details.getCustomer().getCustomerContactNo(), details.getCompany().getCompanyName(),
 				details.getCompany().getCompanyEmail(), details.getCompany().getCompanyContactNo(),
 				details.getDeliveryBoy().getDeliveryBoyName(), details.getDeliveryBoy().getDeliveryBoyEmail(),
 				details.getDeliveryBoy().getDeliveryBoyContactNo(), details.getVehicleDetails().getVehiclesDetailsNo(),
 				details.getCategoryPrice().getCategory().getCategoryName(), details.getCategoryPrice().getCategoryPrice(),
-				order.getPickupAddress(),order.getReceiverName(),order.getDeliveryAddress(),
-				order.getPaymentStatus(),order.getTrackingStatus(),order.getRequestTime());
+				f.getPickupAddress(),f.getReceiverName(),f.getDeliveryAddress(),
+				f.getPaymentStatus(),f.getTrackingStatus(),f.getRequestTime()));
+		}
+		}
 		return resp;
 	}
 

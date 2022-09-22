@@ -1,26 +1,23 @@
-import React from "react";
-import "../styles/Payment.css";
+import React from 'react'
 
-function Payment({ closeModel }) {
+export default function Payment(props) {
+
+ const handleClick = () => {
+    props.toggle();
+   };
+console.log("in payment")
   return (
-    <div className="modalBackground">
-      <div className="modalContainer">
-        <div className="titleCloseBtn">
-          <button onClick={() => { closeModel(false);}}>X</button>
-        </div>
-        <div className="title">
-          <h1>Are You Sure You Want to Continue?</h1>
-        </div>
-        <div className="body">
-          <p>The next page looks amazing. Hope you want to go there!</p>
-        </div>
-        <div className="footer">
-          <button onClick={() => { closeModel(false); }} id="cancelBtn" > Cancel </button>
-          <button>Continue</button>
-        </div>
-      </div>
+    <div className="modal" style={{
+      display: "none",
+      position: "fixed",
+      zIndex: "1",
+      backgroundColor: "rgba(0, 0, 0, 0.25)"
+    }}>
+     <div className="modal_content" style={{ backgroundColor: "white",
+  position: "absolute"}}>
+     <span className="close" onClick={()=>{handleClick()}}>&times;    </span>
+     <p>I'm A Pop Up!!!</p>
     </div>
-  );
+   </div>
+  )
 }
-
-export default Payment;
