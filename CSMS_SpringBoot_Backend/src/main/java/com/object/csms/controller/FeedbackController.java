@@ -44,10 +44,10 @@ public class FeedbackController {
 	}
 	
 	@GetMapping("/{id}/getfeedbackcustomer")
-	public List<Feedback> getfeedbackcustomer(@PathVariable(name="id")Integer id)
+	public List<FeedbackResponseAdmin> getfeedbackcustomer(@PathVariable(name="id")Integer id)
 	{
-		List<Feedback> resp = services.getFeedbackByCustomerId(id);
-		return resp;
+		return services.getFeedbackByCustomerId(id);
+		
 	}
 	
 	//get count of feedback based on companyId

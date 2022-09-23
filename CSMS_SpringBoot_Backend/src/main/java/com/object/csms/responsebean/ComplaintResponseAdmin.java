@@ -20,6 +20,12 @@ public class ComplaintResponseAdmin {
 		ComplaintDesc = complaintDesc;
 		this.complaintStatus = complaintStatus;
 	}
+	
+	public ComplaintResponseAdmin(int complaintId, String complaintStatus) {
+		super();
+		this.complaintId = complaintId;
+		this.complaintStatus = complaintStatus;
+	}
 	public int getComplaintId() {
 		return complaintId;
 	}

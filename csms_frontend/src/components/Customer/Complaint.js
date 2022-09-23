@@ -1,5 +1,6 @@
 import React from "react";
 import {useState, useReducer,useEffect} from 'react';
+import { useNavigate } from "react-router-dom";
 import "../../styles/Registration.css";
 
 const init = {      
@@ -20,7 +21,7 @@ export default function Complaint() {
     const [isSubmit, setIsSubmit] = useState(false);
     const [valueCompany, setValueCompany] = useState(0);
     const [company,setCompany] = useState([]); 
-    
+    const navigate = useNavigate();
 const getCompany = () =>{
   fetch("http://localhost:8080/approvedcompany")
   .then(resp=>resp.json())
@@ -79,6 +80,7 @@ const sendData = (e) => {
   .then(function(response) {
       if(response.status === 200) {
           alert("Complaint send succesfully");
+          navigate("/customerpanel/complaint")
         }
         else
         alert("unable to register complaint");             

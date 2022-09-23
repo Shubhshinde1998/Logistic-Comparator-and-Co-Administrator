@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import com.object.csms.entity.Company;
 import com.object.csms.entity.Customer;
 import com.object.csms.entity.User;
+import com.object.csms.exceptions.NotFoundException;
 import com.object.csms.repository.CompanyRepository;
 import com.object.csms.repository.CustomerRepository;
 import com.object.csms.repository.UserRepository;
@@ -33,12 +34,15 @@ public class UserService {
 		return repo.findById(id);
 	}
 	
-	public User getUserById(int id)  
-	{  
-		return repo.findById(id).get();  
+	public User getUserById(int id) throws NotFoundException  
+	{  Optional<User> u = repo.findById(id); 
+		if(u.isPresent())
+			return u.get();
+		else
+			throw new NotFoundException("User Not Found");
 	}
 	
-	public Object checkLogin(String username,String password)
+	public Object checkLogin(String username,String password) throws NotFoundException
 	{
 		String encodePassword = Base64.getEncoder().encodeToString(password.getBytes());
 		Optional<User> u = repo.checkLogin(username, encodePassword);	
@@ -52,7 +56,7 @@ public class UserService {
 				return com;
 			}
 			else
-				return null;
+				throw new NotFoundException("Company Not Found with username : "+ uobj.getUserUsername());
 		}
 		else if(u.isPresent() && u.get().getUserRole()==3)
 		{
@@ -64,10 +68,18 @@ public class UserService {
 				return cus;
 			}
 			else
-				return null;
+				throw new NotFoundException("Customer Not Found with username : "+ uobj.getUserUsername());
 		}
 		else
-			return repo.checkLogin(username, encodePassword);
+		{
+			if(u.isPresent())
+			{
+				return repo.checkLogin(username, encodePassword);
+			}
+			else
+				throw new NotFoundException("User Not Found with username : "+ username);
+		}
+			
 			
 	}
 	

@@ -83,7 +83,7 @@ export default function DashboardCom() {
                         <div className="rotate">
                           <i className="fab fa-twitter fa-4x"></i>
                         </div>
-                        <h6 className="text-uppercase">Compaints</h6>
+                        <h6 className="text-uppercase">Complaints</h6>
                         <h1 className="display-4">{complaintCount}</h1>
                     </div>
                 </div>

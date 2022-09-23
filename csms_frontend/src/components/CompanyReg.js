@@ -7,13 +7,13 @@ import { useNavigate } from 'react-router-dom';
 const init = {
     
    company_name: null,
-   company_email:null,
-    city:null,
-    pincode:null,
-    contact:null,
-    password:null,
+   company_email: null,
+    city: null,
+    pincode: null,
+    contact: null,
+    password: null,
     role:"2",
-    agree:false
+    agree: false
 }
 const reducer = (state,action) => {
     switch(action.type){
@@ -45,6 +45,7 @@ let CompanyReg =() =>
         const regexpincode = /^[0-9]{6,6}$/;
         const regexcontact = /^[0-9]{10,10}$/;
         const strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
+
         if (!values.company_name) {
           errors.name = "Name is required!";
         } else if(!regexname.test(values.company_name)) {
@@ -68,7 +69,7 @@ let CompanyReg =() =>
         if (!values.contact) {
             errors.contact = "Contact No is required";
         }else if(!regexcontact.test(values.contact)){
-            errors.contact = "Conatct must contain 10 Digit"
+            errors.contact = "Contact must contain 10 Digit"
         }
         if (!values.password) {
             errors.password = "Passsword is required";
@@ -85,8 +86,7 @@ let CompanyReg =() =>
         e.preventDefault();
         setFormErrors(validate(com));
         setIsSubmit(true);
-        if (Object.keys(formErrors).length === 0 && isSubmit) {
-            //console.log(com);
+        if (Object.keys(formErrors).length === 0 && isSubmit) {            
             sendData(e);
           }
       };
@@ -117,8 +117,12 @@ let CompanyReg =() =>
             
         fetch("http://localhost:8080/companyregister",reqData)
         .then(resp => {if(resp.status===201){            
-            alert("Registration Successfull!!!")}})
-        .then(resp => {  navigate('/login')})        
+            alert("Registration Successfull!!!")
+            navigate('/login')}
+        else{
+            alert("Registration Failed !!!")
+        }})
+               
         
     }
 

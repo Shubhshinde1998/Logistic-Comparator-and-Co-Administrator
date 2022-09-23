@@ -70,13 +70,12 @@ let Login = () => {
         fetch("http://localhost:8080/login",reqData)
         .then(resp => (resp.ok ? resp : Promise.reject(resp)))
         .then(resp => resp.text())
-        .then(data => {
-            
+        .then(data => {           
            
             const json=JSON.parse(data);
             
             if(!json.error){
-               
+                alert("Login Successfull !!!")
                 if(json.userRole===1)
                 {      
                     localStorage.setItem("admin",data)    
@@ -104,7 +103,7 @@ let Login = () => {
             }
             else
             {
-                alert("invalid");
+                alert("Invalid Username/Password");
             }
         })          
     }

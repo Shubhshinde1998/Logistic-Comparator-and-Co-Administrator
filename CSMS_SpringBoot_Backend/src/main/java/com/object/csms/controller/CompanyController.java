@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.object.csms.ErrorsDto.ErrorDto;
 import com.object.csms.entity.Company;
 import com.object.csms.service.CompanyService;
 
@@ -45,10 +46,11 @@ public class CompanyController {
 	}
 	
 	@PostMapping("/companyregister")
-	private ResponseEntity<Company> saveCompany (@RequestBody Company company)  
-	{  
-		services.saveOrUpdate(company);
-		return  new ResponseEntity<>(HttpStatus.CREATED);
+	private ResponseEntity<Company> saveCompany (@RequestBody Company company) throws Exception  
+	{  		
+			services.saveOrUpdate(company);
+			return new ResponseEntity<>(HttpStatus.CREATED);	
+		 
 	}
 	
 	@RequestMapping("/company/{id}")  
@@ -59,7 +61,7 @@ public class CompanyController {
 	}  
 	    
 	@PutMapping("/updatecompany/{id}")	 
-    private Company update(@RequestBody Company company,@PathVariable int id)  
+    private Company update(@RequestBody Company company,@PathVariable int id) throws Exception  
     {  
 		company.setCompanyId(id);
 		services.saveOrUpdate(company); 
@@ -67,9 +69,14 @@ public class CompanyController {
     } 
 	
 	@PutMapping("/approve/{id}")
-	public Optional<Company> approved(@PathVariable int id)
+	public Object approved(@PathVariable int id)throws Exception
 	{
-		return services.approved(id);
+		try {
+			return services.approved(id);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			return new ErrorDto(e.getMessage());
+		}
 	}
 	 
 	@DeleteMapping("/{id}/deletecompany")  

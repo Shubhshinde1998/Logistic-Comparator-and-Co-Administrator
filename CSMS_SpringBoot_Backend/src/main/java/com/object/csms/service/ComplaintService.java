@@ -56,16 +56,24 @@ public class ComplaintService {
 		{
 			Customer cus = crepo.findById(list.getCustomerId()).get();
 			Company com = comrepo.findById(list.getCompanyId()).get();
-			resp.add(new ComplaintResponseAdmin(list.getComplaintId(),cus.getCustomerName(),list.getComplaintDescription(),com.getCompanyName(),list.getComplaintStatus()));
+			resp.add(new ComplaintResponseAdmin(list.getComplaintId(),com.getCompanyName(),cus.getCustomerName(),list.getComplaintDescription(),list.getComplaintStatus()));
 		}
 		return resp;		
 	}
 
 	
 
-	public List<Complaint> getComplaintByCustomerId(Integer id) {
+	public List<ComplaintResponseAdmin> getComplaintByCustomerId(Integer id) {
 		// TODO Auto-generated method stub
-		return repo.findByCustomerId(id);
+		List<Complaint> complaint= repo.findByCustomerId(id);
+		List<ComplaintResponseAdmin> resp =new ArrayList<>();
+		for(Complaint list : complaint)
+		{
+			Customer cus = crepo.findById(list.getCustomerId()).get();
+			Company com = comrepo.findById(list.getCompanyId()).get();
+			resp.add(new ComplaintResponseAdmin(list.getComplaintId(),com.getCompanyName(),cus.getCustomerName(),list.getComplaintDescription(),list.getComplaintStatus()));
+		}
+		return resp;
 	}
 
 	//get count of complaint based on companyId
@@ -77,5 +85,12 @@ public class ComplaintService {
 	public int getComplaintCountAdmin() {
 		// TODO Auto-generated method stub
 		return repo.getComplaintCountAdmin();
+	}
+
+	public int complaintStatus(ComplaintResponseAdmin complaint, int id) {
+		Complaint com = repo.findById(id).get();
+		com.setComplaintStatus(complaint.getComplaintStatus());
+		repo.save(com);
+		return id;
 	}
 }

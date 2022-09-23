@@ -48,7 +48,7 @@ const getCategoryPrice = (com) =>{
    fetch("http://localhost:8080/"+com+"/getprice")
    .then(resp=>resp.json())
    .then(data=>setPrice(data))
-   console.log(price)
+   
    
 }
 
@@ -108,7 +108,7 @@ const handleSubmit = (e) => {
  };
 
  const sendData = (e) => {    
-   e.preventDefault();
+   //e.preventDefault();
    let customerId= (JSON.parse(localStorage.getItem("customer")).customerId)
    const requestTime = new Date();
    
@@ -139,9 +139,8 @@ const handleSubmit = (e) => {
       }
       else{
          alert("Failed to send Order!!!")
-      }
-     
-});
+      }})
+
 }
      
     const  togglePop = () => {

@@ -54,9 +54,17 @@ public class FeedbackService {
 		return resp;
 		
 	}
-	public List<Feedback> getFeedbackByCustomerId(Integer id) {
+	public List<FeedbackResponseAdmin> getFeedbackByCustomerId(Integer id) {
 		// TODO Auto-generated method stub
-		return repo.findByCustomerId(id);
+		List<Feedback> f= repo.findByCustomerId(id);
+		List<FeedbackResponseAdmin> resp =new ArrayList<>();
+		for(Feedback list : f)
+		{
+			Customer cus = crepo.findById(list.getCustomerId()).get();
+			Company com = comrepo.findById(list.getCompanyId()).get();
+			resp.add(new FeedbackResponseAdmin(list.getFeedbackId(), cus.getCustomerName(), com.getCompanyName(), list.getFeedbackDiscription()));
+		}
+		return resp;
 	}
 	//get count of feedback based on companyId
 	public int getFeedbackCount(int id) {

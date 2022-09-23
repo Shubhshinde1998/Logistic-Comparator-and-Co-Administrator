@@ -1,5 +1,6 @@
 import React from "react";
 import {useState, useReducer,useEffect} from 'react';
+import { useNavigate } from "react-router-dom";
 import "../../styles/Registration.css";
 
 const init = {      
@@ -21,7 +22,7 @@ export default function Feedback() {
     const [company,setCompany] = useState([]); 
     const [valueCompany, setValueCompany] = useState(0);
     let customerName= (JSON.parse(localStorage.getItem("customer")).customerName)
-    
+    const navigate = useNavigate();
     const getCompany = () =>{
       fetch("http://localhost:8080/approvedcompany")
       .then(resp=>resp.json())
@@ -74,6 +75,7 @@ export default function Feedback() {
         .then(function(response) {
             if(response.status === 200) {
                alert("Feedback send succesfully");
+               navigate("/customerpanel/feedback")
              }
              else
                 alert("unable to add Feedback");

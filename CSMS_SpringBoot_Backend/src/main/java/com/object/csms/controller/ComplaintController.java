@@ -54,12 +54,17 @@ public class ComplaintController {
 		return  services.getComplaintByCompanyId(id);
 		
 	}
+	@PutMapping("/{id}/complaintstatus")
+	public int complaintStatus(@RequestBody ComplaintResponseAdmin complaint,@PathVariable(name="id") int id)
+	{
+		return services.complaintStatus(complaint,id);
+	}
 	
 	@GetMapping("/{id}/getcomplaintcustomer")
-	public List<Complaint> getcomplaintcustomer(@PathVariable(name="id")Integer id)
+	public List<ComplaintResponseAdmin> getcomplaintcustomer(@PathVariable(name="id")Integer id)
 	{
-		List<Complaint> resp = services.getComplaintByCustomerId(id);
-		return resp;
+		return  services.getComplaintByCustomerId(id);
+		
 	}
 	
 	//get count of complaint based on companyId
