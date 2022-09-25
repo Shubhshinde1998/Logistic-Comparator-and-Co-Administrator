@@ -3,6 +3,7 @@ import React from "react";
 import {useState, useReducer,useEffect} from 'react';
 import "../styles/Registration.css";
 import { useNavigate } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const init = {
     
@@ -176,7 +177,7 @@ let CompanyReg =() =>
             <button type="submit" id="btn1"className="btn btn-primary btn-block mb-4" value="Submit" 
                 onClick = { (e)=>{ handleSubmit(e) } }>Submit</button>
             <div className="text-center">
-                <p>Already Have Account? <a href="/login">Login</a></p>
+                <p>Already Have Account? <Link to="/login">Login</Link></p>
                 </div>
             </form>
             

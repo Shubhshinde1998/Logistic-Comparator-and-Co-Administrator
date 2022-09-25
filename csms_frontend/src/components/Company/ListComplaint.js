@@ -47,6 +47,7 @@ export default function ListComplaint() {
                     <td scope="col"><b>Customer Name</b></td>
                     <td scope="col"><b>Complaint Description</b></td>
                     <td scope="col"><b>Complaint Status</b></td>
+                    <td scope="col"><b>Action</b></td>
                     
                 </tr>
             </thead>

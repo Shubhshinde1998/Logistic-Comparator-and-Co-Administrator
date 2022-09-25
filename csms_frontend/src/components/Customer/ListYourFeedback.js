@@ -21,7 +21,7 @@ export default function ListYourFeedback() {
             <h3>Your Feedbacks</h3>
             <div className="">
             <Link to="/customerpanel/feedback/form">
-                <button type="button" class="btn btn-primary">Add New feedback</button>
+                <button type="button" class="btn btn-primary mb-3">Add New feedback</button>
             </Link>
             <div className="table-responsive">                        
             <table className="table table-striped">

@@ -2,7 +2,7 @@
 import React from "react";
 import {useState, useReducer,useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import { Link } from "react-router-dom";
 const init = {
     
     name : null,
@@ -172,7 +172,7 @@ let CustomerReg =() =>
             <button type="submit" id="btn1"className="btn btn-primary btn-block mb-4" value="Submit" 
                 onClick = { (e)=>{ handleSubmit(e) } }>Submit</button>
             <div className="text-center">
-                <p>Already Have Account? <a href="/login">Login</a></p>
+                <p>Already Have Account? <Link to="/login">Login</Link></p>
                 </div>
             </form>
         </div>

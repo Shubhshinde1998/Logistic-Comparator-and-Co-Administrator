@@ -97,10 +97,8 @@ public class CompanyService {
 	{		
 		Optional<Company> c = repo.findById(id);
 		
-		if(c.isPresent()) {
-			/*int userid = c.get().getUser().getUserId();
-			Optional<User> u = urepo.findById(userid);
-			u.get().setUserStatus("true");*/
+		if(c.isPresent()) 
+		{			
 			c.get().getUser().setUserStatus("true");
 			repo.save(c.get());
 		}

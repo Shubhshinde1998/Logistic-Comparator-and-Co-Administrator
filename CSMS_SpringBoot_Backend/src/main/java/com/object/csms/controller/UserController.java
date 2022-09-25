@@ -28,7 +28,7 @@ public class UserController {
 	@GetMapping("/getall")
 	public ResponseEntity<Iterable<User>> getUsers()
 	{
-		throw new RuntimeException("Test getuser runtime exception");
+		throw new RuntimeException("Test get user runtime exception");
 		//return new ResponseEntity<>(services.listAll(),HttpStatus.OK);    
 	}
 	 
@@ -56,10 +56,10 @@ public class UserController {
 		User u =services.getUserById(userid) ;
 		return new ResponseEntity<Object>(u, HttpStatus.OK);
 		
-	}catch(NotFoundException e)
-	{
+		}catch(NotFoundException e)
+			{
 		return new ResponseEntity<Object>("User Not Found", HttpStatus.NOT_FOUND);
-	}
+			}
 		
 	}  
 	    

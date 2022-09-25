@@ -21,7 +21,7 @@ export default function ListYourComplaint() {
             <h3>Your Complaints</h3>
             <div className="">
             <Link to="/customerpanel/complaint/form">
-                <button type="button" class="btn btn-primary">Add New Complaint</button>
+                <button type="button" class="btn btn-primary mb-3">Add New Complaint</button>
             </Link>
             <div className="table-responsive">                        
             <table className="table table-striped">

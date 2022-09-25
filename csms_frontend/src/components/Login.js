@@ -75,7 +75,7 @@ let Login = () => {
             const json=JSON.parse(data);
             
             if(!json.error){
-                alert("Login Successfull !!!")
+               
                 if(json.userRole===1)
                 {      
                     localStorage.setItem("admin",data)    
@@ -107,10 +107,12 @@ let Login = () => {
             }
         })          
     }
-   
+   const registerhandler = ()=>{
+    navigate("/register")
+   }
     
     return (
-        <div className='login'>
+        <div className='login' style={{width: "600px",margin:"auto",marginTop:"50px", borderColor: "rgb(0, 78, 143)", borderRadius: "10px", borderStyle: "solid", boxShadow: "white 1px 1px 20px 5px"}}>
             <h1> Login Form </h1>
             <form className='form'>
             <div className="form-outline mb-4">
@@ -134,7 +136,7 @@ let Login = () => {
                 onClick={ ()=>{dispatch({type: 'clear'})} }
                 />
                 <div className="text-center">
-                <p>Create a New Account <a href="/register">Register</a></p>
+                <p>Create a New Account <a onClick={registerhandler} style={{textDecoration:"underline",color:"blue",cursor:"pointer"}} >Register</a></p>
                 </div>
 
             </form> 

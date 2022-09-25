@@ -13,10 +13,7 @@ public class CsmsSpringBootBackendApplication {
 	
 	public static void main(String[] args) {
 		SpringApplication.run(CsmsSpringBootBackendApplication.class, args);
-		
-		//ApplicationContext c = SpringApplication.run(CsmsSpringBootBackendApplication.class, args);
-		//List<Company> res = c.getBean(CompanyRepository.class).findPendingCompany();
-		//System.out.println("result");
+
 
 	}
 
