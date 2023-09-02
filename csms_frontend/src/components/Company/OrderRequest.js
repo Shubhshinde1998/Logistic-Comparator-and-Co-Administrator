@@ -101,8 +101,8 @@ export default function OrderRequest() {
     <div>
         <div>
         <h1>Courier Orders</h1>
-        <div className="table-responsive">                        
-            <table className="table table-striped">
+        <div className=" table-responsive" >                        
+            <table className="ordertable table table-striped" style={{textAlign :"left"}}>
             <thead className="thead-light">
                 <tr>
                     <th scope="col">Order Details</th>

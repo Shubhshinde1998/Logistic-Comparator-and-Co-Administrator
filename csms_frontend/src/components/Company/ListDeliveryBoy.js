@@ -30,7 +30,7 @@ export default function ListDeliveryBoy() {
             <h3>Delivery Boys</h3>
             <div className="">
             <Link to="/companypanel/deliveryboys/form">
-                <button type="button" class="btn btn-primary">Add New Delivery Boy</button>
+                <button type="button" className="btn btn-primary mb-3" >Add New Delivery Boy</button>
             </Link>
             <div className="table-responsive">                        
             <table className="table table-striped">

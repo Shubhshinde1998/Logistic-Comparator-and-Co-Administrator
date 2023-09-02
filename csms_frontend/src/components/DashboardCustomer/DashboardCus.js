@@ -12,7 +12,7 @@ export default function DashboardCus() {
 
 
     return(
-    <div className="col main pt-5 mt-3">
+    <div className="col main pt-5 mt-3" style={{paddingLeft:"30px",paddingRight:"20px"}}>
            
         <Routes>
             <Route path="/orderform" element={<OrderForm/>}/>

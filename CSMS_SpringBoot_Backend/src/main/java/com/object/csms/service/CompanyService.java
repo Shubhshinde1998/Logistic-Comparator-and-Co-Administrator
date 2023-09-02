@@ -10,6 +10,9 @@ import com.object.csms.entity.Category;
 import com.object.csms.entity.CategoryPrice;
 import com.object.csms.entity.Company;
 import com.object.csms.entity.User;
+import com.object.csms.exceptions.DuplicateEntryException;
+import com.object.csms.exceptions.InternalServerError;
+import com.object.csms.exceptions.NotFoundException;
 import com.object.csms.repository.CategoryPriceRepository;
 import com.object.csms.repository.CategoryRepository;
 import com.object.csms.repository.CompanyRepository;
@@ -44,9 +47,18 @@ public class CompanyService {
         return this.repo.findAll();
     }
 
-	public void saveOrUpdate(Company company)  
-	{ 
-		repo.save(company); 		
+	public void saveOrUpdate(Company company) throws Exception  
+	{   
+		try {
+		String password = company.getUser().getUserPassword();
+		String encodePassword = Base64.getEncoder().encodeToString(password.getBytes());
+		company.getUser().setUserPassword(encodePassword);
+		repo.save(company); 
+		}
+		catch (Exception e)
+		{
+			throw new DuplicateEntryException(e.getMessage());
+		}
 	}
 	
 	public Company getCompanyById(int id)  
@@ -81,21 +93,31 @@ public class CompanyService {
 	}
 
 	@Transactional
-	public Optional<Company> approved(int id) {
-		
+	public Optional<Company> approved(int id) throws Exception
+	{		
 		Optional<Company> c = repo.findById(id);
-		int userid = c.get().getUser().getUserId();
-		Optional<User> u = urepo.findById(userid);
-		u.get().setUserStatus("true");
 		
+		if(c.isPresent()) 
+		{			
+			c.get().getUser().setUserStatus("true");
+			repo.save(c.get());
+		}
+		else
+			throw new NotFoundException("Company Not Found with id : "+ id);
 		int price=99;
 		List<Category> category = crrepo.findAll();
-		for(int i=0;i<5;i++)
-		{
-			CategoryPrice categoryprice = new CategoryPrice(price, category.get(i), id);
-			crepo.save(categoryprice);
-		}		
-		return c;
+		try {
+			for(int i=0;i<5;i++)
+			{
+				CategoryPrice categoryprice = new CategoryPrice(price, category.get(i), id);
+				crepo.save(categoryprice);
+			}
+			return c;
+		}
+		catch(Exception e) {
+			throw new InternalServerError("Unable to Save Category Price of Company having id : "+id);
+		}
+		
 	}
 	
 }

@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.object.csms.ErrorsDto.ErrorDto;
 import com.object.csms.entity.User;
+import com.object.csms.exceptions.NotFoundException;
 import com.object.csms.requestbean.LoginRequest;
 import com.object.csms.service.UserService;
 
@@ -26,7 +28,7 @@ public class UserController {
 	@GetMapping("/getall")
 	public ResponseEntity<Iterable<User>> getUsers()
 	{
-		throw new RuntimeException("Test getuser runtime exception");
+		throw new RuntimeException("Test get user runtime exception");
 		//return new ResponseEntity<>(services.listAll(),HttpStatus.OK);    
 	}
 	 
@@ -40,13 +42,25 @@ public class UserController {
 	@PostMapping("/login")
 	public Object checkLogin(@RequestBody LoginRequest users)
 	{	
-		return services.checkLogin(users.getUsername(), users.getPassword());
+		try {
+			return services.checkLogin(users.getUsername(), users.getPassword());
+		} catch (NotFoundException e) {
+			return new ErrorDto(e.getMessage());
+			
+		}
 	}
 	  
 	@GetMapping("/user/{id}")  
-	public User getUsers(@PathVariable("id") int userid)  
-	{  
-		return services.getUserById(userid) ;
+	public ResponseEntity<Object> getUsers(@PathVariable("id") int userid)  
+	{  try {
+		User u =services.getUserById(userid) ;
+		return new ResponseEntity<Object>(u, HttpStatus.OK);
+		
+		}catch(NotFoundException e)
+			{
+		return new ResponseEntity<Object>("User Not Found", HttpStatus.NOT_FOUND);
+			}
+		
 	}  
 	    
 	@PutMapping("/update/{id}")	 

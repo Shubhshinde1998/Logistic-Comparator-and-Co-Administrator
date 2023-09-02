@@ -2,7 +2,7 @@
 import React from "react";
 import {useState, useReducer,useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
-import "../styles/Registration.css";
+import { Link } from "react-router-dom";
 const init = {
     
     name : null,
@@ -41,8 +41,14 @@ let CustomerReg =() =>
     const validate = (values) => {
         const errors = {};
         const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+        const regexname = /^[a-zA-Z ]*$/;
+        const regexpincode = /^[0-9]{6,6}$/;
+        const regexcontact = /^[0-9]{10,10}$/;
+        const strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
         if (!values.name) {
           errors.name = "Name is required!";
+        } else if(!regexname.test(values.name)) {
+            errors.name = "Name must contain Alphabets only!";
         }        
         if (!values.email) {
           errors.email = "Email is required";
@@ -51,21 +57,23 @@ let CustomerReg =() =>
           }
         if (!values.city) {
             errors.city = "City is required";
-        }
+        }else if(!regexname.test(values.city)) {
+            errors.city = "City Name must contain Alphabets only!";
+        }  
         if (!values.pincode) {
             errors.pincode = "Pincode is required";
-        }else if (values.pincode.length < 6) {
-            errors.pincode = "Pincode must be in 6 digit";}
+        }else if (!regexpincode.test(values.pincode)) {
+            errors.pincode = "Pincode must be in 6 digit Only";
+        }
         if (!values.contact) {
             errors.contact = "Contact No is required";
-        }else if (values.contact.length < 6) {
-            errors.contact = "Contact must be more than 6 characters";}
+        }else if(!regexcontact.test(values.contact)){
+            errors.contact = "Conatct must contain 10 Digit"
+        }
         if (!values.password) {
             errors.password = "Passsword is required";
-        } else if (values.password.length < 4) {
-            errors.password = "Password must be more than 4 characters";
-        } else if (values.password.length > 10) {
-            errors.password = "Password cannot exceed more than 10 characters";
+        } else if (!strongRegex.test(values.password)) {
+            errors.password = "Password must have One capital letter , one Small letter, one special character and one number";
         }
         if (!values.agree) {
             errors.agree = "Accept terms and condition";
@@ -77,7 +85,11 @@ let CustomerReg =() =>
         e.preventDefault();
         setFormErrors(validate(cus));
         setIsSubmit(true);
-        sendData(e);
+        if (Object.keys(formErrors).length === 0 && isSubmit) {
+            //console.log(com);
+            sendData(e);
+          }
+       
       };
 
     const sendData = (e) => {    
@@ -106,9 +118,8 @@ let CustomerReg =() =>
             
         fetch("http://localhost:8080/customerregister",reqData)
         .then(resp => {if(resp.status===200){            
-            navigate('/login')}
-       
-    })
+            alert("Registration Successfull!!!")}})
+        .then(resp => {  navigate('/login')})
         
     }
     return(
@@ -154,17 +165,16 @@ let CustomerReg =() =>
             </div>
             <div className="form-check d-flex justify-content-center mb-4">
                 <input className="form-check-input me-2" type="checkbox"  id="form2Example33" name="agree" value={cus.agree}
-                    onChange={ (e)=>{setAgree(e.target.checked)}} />
+                    onChange={ (e)=>{dispatch({type: 'update', field: 'agree', val: e.target.checked })}} />
                 <label className="form-check-label" for="form2Example33">Agree Terms and Conditions</label>
                 <p className="text-danger">{formErrors.agree}</p>
             </div>
             <button type="submit" id="btn1"className="btn btn-primary btn-block mb-4" value="Submit" 
                 onClick = { (e)=>{ handleSubmit(e) } }>Submit</button>
             <div className="text-center">
-                <p>Already Have Account? <a href="/login">Login</a></p>
+                <p>Already Have Account? <Link to="/login">Login</Link></p>
                 </div>
             </form>
-            
         </div>
     )
    

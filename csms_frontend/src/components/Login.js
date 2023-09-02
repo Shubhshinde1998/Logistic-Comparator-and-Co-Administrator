@@ -2,7 +2,6 @@ import {useReducer,useEffect,useState} from 'react';
 import "../styles/Login.css";
 import { useNavigate } from 'react-router-dom';
 
-
 const init = {
     user_username:null,
     user_password:null
@@ -48,7 +47,10 @@ let Login = () => {
         e.preventDefault();
         setFormErrors(validate(user));
         setIsSubmit(true);
-        sendData(e);
+        if (Object.keys(formErrors).length === 0 && isSubmit) {
+            //console.log(com);
+            sendData(e);
+          }
       };
       
     const sendData = (e) => {        
@@ -64,15 +66,16 @@ let Login = () => {
                     password: user.user_password
                 })    
             }
-                       
+           
         fetch("http://localhost:8080/login",reqData)
         .then(resp => (resp.ok ? resp : Promise.reject(resp)))
         .then(resp => resp.text())
-        .then(data => {
-            
+        .then(data => {           
+           
             const json=JSON.parse(data);
             
             if(!json.error){
+               
                 if(json.userRole===1)
                 {      
                     localStorage.setItem("admin",data)    
@@ -96,17 +99,20 @@ let Login = () => {
                     localStorage.setItem("customer",data)
                     navigate('/customerpanel');
                 }
+               
             }
             else
             {
-                alert("invalid");
+                alert("Invalid Username/Password");
             }
         })          
     }
-   
+   const registerhandler = ()=>{
+    navigate("/register")
+   }
     
     return (
-        <div className='login'>
+        <div className='login' style={{width: "600px",margin:"auto",marginTop:"50px", borderColor: "rgb(0, 78, 143)", borderRadius: "10px", borderStyle: "solid", boxShadow: "white 1px 1px 20px 5px"}}>
             <h1> Login Form </h1>
             <form className='form'>
             <div className="form-outline mb-4">
@@ -114,7 +120,8 @@ let Login = () => {
             <input type="text" id="form2Example1" className="form-control" name="name" value={user.user_username}
                 onChange={ (e)=>{dispatch({type: 'update', field: 'user_username', val: e.target.value })} } required/>
             <p className="text-danger">{formErrors.username}</p>   
-            </div>                     
+            </div>  
+
             <div className="form-outline mb-4">
             <label className="form-label" for="form2Example2">Password</label>
                 <input type="password" id="form2Example2" className="form-control"  name="pwd" value={user.user_password}
@@ -129,7 +136,7 @@ let Login = () => {
                 onClick={ ()=>{dispatch({type: 'clear'})} }
                 />
                 <div className="text-center">
-                <p>Create a New Account <a href="/register">Register</a></p>
+                <p>Create a New Account <a onClick={registerhandler} style={{textDecoration:"underline",color:"blue",cursor:"pointer"}} >Register</a></p>
                 </div>
 
             </form> 

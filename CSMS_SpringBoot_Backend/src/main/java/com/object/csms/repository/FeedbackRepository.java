@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import com.object.csms.entity.Feedback;
 @Repository
 public interface FeedbackRepository extends JpaRepository<Feedback,Integer> {
-
+	
 	List<Feedback> findByCompanyId(Integer id);
 	//public List<Feedback> getByCustomerId(int id);
 

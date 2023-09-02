@@ -1,7 +1,7 @@
 import React from "react";
 import "../styles/Home.css";
 import { Link } from "react-router-dom";
-import Background from "../images/front_page_background.jpg";
+import Background from "../images/front_page_background.png";
 
 function Home() {
 

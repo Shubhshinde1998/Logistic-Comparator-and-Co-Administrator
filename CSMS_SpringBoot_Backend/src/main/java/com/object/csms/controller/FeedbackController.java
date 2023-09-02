@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.object.csms.entity.DeliveryBoy;
 import com.object.csms.entity.Feedback;
+import com.object.csms.responsebean.FeedbackResponseAdmin;
 import com.object.csms.service.FeedbackService;
 
 @RestController
@@ -36,17 +37,17 @@ public class FeedbackController {
 	}
 	
 	@GetMapping("/{id}/getfeedbackresponse")
-	public List<Feedback> getfeedback(@PathVariable(name="id")Integer id)
+	public List<FeedbackResponseAdmin> getfeedback(@PathVariable(name="id")Integer id)
 	{
-		List<Feedback> resp = services.getFeedbackByCompanyId(id);
-		return resp;
+		return services.getFeedbackByCompanyId(id);
+		
 	}
 	
 	@GetMapping("/{id}/getfeedbackcustomer")
-	public List<Feedback> getfeedbackcustomer(@PathVariable(name="id")Integer id)
+	public List<FeedbackResponseAdmin> getfeedbackcustomer(@PathVariable(name="id")Integer id)
 	{
-		List<Feedback> resp = services.getFeedbackByCustomerId(id);
-		return resp;
+		return services.getFeedbackByCustomerId(id);
+		
 	}
 	
 	//get count of feedback based on companyId

@@ -22,10 +22,11 @@ export default function ListFeedback() {
             <div className="table-responsive">                        
             <table className="table table-striped">
             <thead className="thead-light">
-            <td scope="col"><b>Feedback Id</b></td>
+                <tr>
+                    <td scope="col"><b>Feedback Id</b></td>
                     <td scope="col"><b>Feedback Description</b></td>
-                    <td scope="col"><b>Customer Id</b></td>
-                    <td scope="col"><b>Company Id</b></td>
+                    <td scope="col"><b>Customer Name</b></td>
+                </tr> 
                     
             </thead>
             <tbody>
@@ -35,9 +36,9 @@ export default function ListFeedback() {
                     return(                        
                         <tr scope="row">
                             <td >{v.feedbackId}</td>
-                            <td >{v.feedbackDiscription}</td>
-                            <td >{v.customerId}</td>
-                            <td >{v.companyId}</td>
+                            <td >{v.feedbackDesc}</td>
+                            <td >{v.customerName}</td>
+                           
                            
                           {/* <td><button className='btn btn-danger'onClick={() => { handleDelete(v.deliveryBoyId)}}>Delete</button></td>
                         */}

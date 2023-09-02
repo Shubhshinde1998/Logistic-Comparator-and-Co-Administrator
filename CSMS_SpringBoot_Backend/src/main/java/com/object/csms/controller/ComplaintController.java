@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.object.csms.entity.Complaint;
 import com.object.csms.entity.Feedback;
+import com.object.csms.responsebean.ComplaintResponseAdmin;
 import com.object.csms.service.ComplaintService;
 
 @RestController
@@ -48,17 +49,22 @@ public class ComplaintController {
 	}
 	
 	@GetMapping("/{id}/getcomplaintresponse")
-	public List<Complaint> getcomplaint(@PathVariable(name="id")Integer id)
+	public List<ComplaintResponseAdmin> getcomplaint(@PathVariable(name="id")Integer id)
 	{
-		List<Complaint> resp = services.getComplaintByCompanyId(id);
-		return resp;
+		return  services.getComplaintByCompanyId(id);
+		
+	}
+	@PutMapping("/{id}/complaintstatus")
+	public int complaintStatus(@RequestBody ComplaintResponseAdmin complaint,@PathVariable(name="id") int id)
+	{
+		return services.complaintStatus(complaint,id);
 	}
 	
 	@GetMapping("/{id}/getcomplaintcustomer")
-	public List<Complaint> getcomplaintcustomer(@PathVariable(name="id")Integer id)
+	public List<ComplaintResponseAdmin> getcomplaintcustomer(@PathVariable(name="id")Integer id)
 	{
-		List<Complaint> resp = services.getComplaintByCustomerId(id);
-		return resp;
+		return  services.getComplaintByCustomerId(id);
+		
 	}
 	
 	//get count of complaint based on companyId

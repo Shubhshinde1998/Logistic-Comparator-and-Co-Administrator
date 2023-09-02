@@ -12,8 +12,8 @@ public interface OrdersRepository extends JpaRepository<Orders, Integer> {
 
 	public List<Orders> findByCompanyId(int id);
 
-	@Query("SELECT d FROM Orders d where customerId =:id and courierDetailsId=:orderId")
-	public Orders findForInvoice(int id, Integer orderId);
+	@Query("SELECT d FROM Orders d where customerId =:id")
+	public List<Orders> findForInvoice(int id);
 
 	//Query to select count of orders based on companyID
 	@Query("SELECT COUNT(u) FROM Orders u WHERE u.companyId=:id")

@@ -50,9 +50,9 @@ export default function AllComplaint() {
             <thead className="thead-light">
             <tr>
                     <td scope="col"><b>Complaint Id</b></td>
-                    <td scope="col"><b>Company Id</b></td>
-                    <td scope="col"><b>Complaint Description</b></td>
-                    <td scope="col"><b>Customer Id</b></td>
+                    <td scope="col"><b>Customer Name</b></td>
+                    <td scope="col"><b>Company Name</b></td>
+                    <td scope="col"><b>Complaint Description</b></td>                    
                     <td scope="col"><b>Complaint Status</b></td>
                     
                 </tr>
@@ -64,9 +64,9 @@ export default function AllComplaint() {
                     return(                        
                         <tr scope="row">
                             <td>{v.complaintId}</td>
-                            <td >{v.companyId}</td>
-                            <td >{v.complaintDescription}</td>
-                            <td >{v.customerId}</td>
+                            <td >{v.customerName}</td>
+                            <td >{v.companyName}</td>
+                            <td >{v.complaintDesc}</td>
                             <td >{v.complaintStatus}</td> 
                         </tr>
                         )

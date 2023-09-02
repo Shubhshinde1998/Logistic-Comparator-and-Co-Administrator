@@ -1,5 +1,7 @@
 package com.object.csms.service;
 
+import java.util.Base64;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.object.csms.entity.Customer;
@@ -14,7 +16,9 @@ public class CustomerService {
     }
 
 	public void saveOrUpdate(Customer customer)  
-	{  
+	{  String password = customer.getUser().getUserPassword();
+	   String encodePassword = Base64.getEncoder().encodeToString(password.getBytes());
+	   customer.getUser().setUserPassword(encodePassword);
 		repo.save(customer); 		
 	}
 	

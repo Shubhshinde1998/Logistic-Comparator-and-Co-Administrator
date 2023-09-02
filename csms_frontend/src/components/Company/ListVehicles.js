@@ -32,7 +32,7 @@ export default function ListVehicle() {
             <h3>Vehicle List</h3>
             <div className="">
             <Link to="/companypanel/vehicles/form">
-                <button type="button" class="btn btn-primary">Add New Vehicle</button>
+                <button type="button" class="btn btn-primary mb-3">Add New Vehicle</button>
             </Link>
             <div className="table-responsive">                        
             <table className="table table-striped">

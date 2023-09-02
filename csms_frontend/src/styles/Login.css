@@ -10,10 +10,14 @@
 .form
 {
     border:1em;
-    width: 30%;
+    width: 50%;
     display:inline-block;    
 }
 .btn{
     margin-left: 15px;
+}
+.form label {
+    color: rgb(0, 78, 143);
+    font-weight:700;
 }
 
